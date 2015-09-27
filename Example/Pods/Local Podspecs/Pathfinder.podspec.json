@@ -1,0 +1,25 @@
+{
+  "name": "Pathfinder",
+  "version": "0.1.0",
+  "summary": "Routing made easy.",
+  "description": "Pathfinder provides Routing as a Service.",
+  "homepage": "https://github.com/csse497/pathfinder",
+  "license": "MIT",
+  "authors": {
+    "Adam Michael": "adam@ajmichael.net"
+  },
+  "source": {
+    "git": "https://github.com/csse497/pathfinder-ios.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "requires_arc": true,
+  "source_files": "Pod/Classes/**/*",
+  "resource_bundles": {
+    "Pathfinder": [
+      "Pod/Assets/*.png"
+    ]
+  }
+}
