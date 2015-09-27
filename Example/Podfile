@@ -1,0 +1,10 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+
+target 'Pathfinder_Tests', :exclusive => true do
+  pod "Pathfinder", :path => "../"
+
+  pod 'Specta'
+  pod 'Expecta'
+end
