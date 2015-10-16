@@ -1,8 +1,6 @@
 language: objective-c
 osx_image: xcode7
+podfile: framework/Podfile
 
 # Framework builds
-script: xcodebuild -project framework/Pathfinder.xcodeproj -target Pathfinder -sdk iphonesimulator
-
-# Unit tests
-script: xcodebuild -project framework/Pathfinder.xcodeproj -target PathfinderTests -sdk iphonesimulator
+script: xcodebuild -workspace framework/Pathfinder.xcworkspace -scheme Pathfinder
