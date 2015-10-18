@@ -14,4 +14,4 @@ before_install:
 # Framework builds
 script:
   - set -o pipefail
-  - xcodebuild -verbose -workspace framework/Pathfinder.xcworkspace -scheme Pathfinder -sdk iphoneos -configuration Debug | xcpretty -c
+  - xcodebuild -verbose -workspace framework/Pathfinder.xcworkspace -scheme Pathfinder -sdk iphoneos -configuration Release CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO | xcpretty -c
