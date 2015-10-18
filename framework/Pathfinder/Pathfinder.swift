@@ -25,8 +25,10 @@ public class Pathfinder {
   let userCredentials: String
 
   /**
+  This is the starting point for all interactions with Pathfinder. Once you have constructed a Pathfinder instance, you can begin to interact with vehicles and commodities.
 
-  - Parameter applicationIdentifier:
+  - Parameter applicationIdentifier:  The application id that you were assigned when you registered the application through the web portal.
+  - Parameter userCredentials:        The credentials that identify and authenticate the user on behalf of whom the connection is opened. The form of these credentials are yet to be determined.
   */
   public init(applicationIdentifier applicationIdentifier: String, userCredentials: String) {
     self.applicationIdentifier = applicationIdentifier
@@ -72,7 +74,7 @@ public class Pathfinder {
   - Parameter parameters:   The quantities the parameters of your application's routing calculations. The set of parameters needs to be defined and prioritized via the Pathfinder web interface in advance.
   - Parameter callback:    This function will be called exactly once with the created Commodity object. The Commodity object can be used to receive updates on status, ro utes and cancel the request if needed.
   */
-  public func requestCommodityTransit(cluster cluster: Cluster, start: CLLocationCoordinate2D, end: CLLocationCoordinate2D, parameters: [String:Int], callback: (c: Commodity) -> Void) {
+  public func requestCommodityTransit(cluster cluster: Cluster, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, parameters: [String:Int], callback: (c: Commodity) -> Void) {
 
   }
 }

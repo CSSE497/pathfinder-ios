@@ -40,18 +40,13 @@
                 <a href="../Classes/Pathfinder.html">Pathfinder</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes.html#/s:C10Pathfinder5Route">Route</a>
+                <a href="../Classes/Route.html">Route</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:C10Pathfinder11RouteAction">RouteAction</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/Vehicle.html">Vehicle</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-          <a href="../Extensions.html">Extensions</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Extensions/Pathfinder.html">Pathfinder</a>
               </li>
             </ul>
           </li>
@@ -109,16 +104,49 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This is the starting point for all interactions with Pathfinder. Once you have constructed a Pathfinder instance, you can begin to interact with vehicles and commodities.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Pathfinder</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">applicationIdentifier</span> <span class="nv">applicationIdentifier</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">userCredentials</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>applicationIdentifier</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The application id that you were assigned when you registered the application through the web portal.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>userCredentials</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The credentials that identify and authenticate the user on behalf of whom the connection is opened. The form of these credentials are yet to be determined.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -126,9 +154,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC10Pathfinder10Pathfinder14defaultClusterFS0_FFT7clusterCS_7Cluster_T_T_"></a>
-                    <a name="//apple_ref/swift/Method/defaultCluster(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC10Pathfinder10Pathfinder14defaultClusterFS0_FFT7clusterCS_7Cluster_T_T_">defaultCluster(_:)</a>
+                    <a name="/s:FC10Pathfinder10Pathfinder14defaultClusterFS0_FT8callbackFT7clusterCS_7Cluster_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/defaultCluster(callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10Pathfinder10Pathfinder14defaultClusterFS0_FT8callbackFT7clusterCS_7Cluster_T__T_">defaultCluster(callback:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -143,7 +171,7 @@
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">defaultCluster</span><span class="p">(</span><span class="nv">callback</span><span class="p">:</span> <span class="p">(</span><span class="nv">cluster</span><span class="p">:</span> <span class="kt">Cluster</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">defaultCluster</span><span class="p">(</span><span class="n">callback</span> <span class="nv">callback</span><span class="p">:</span> <span class="p">(</span><span class="nv">cluster</span><span class="p">:</span> <span class="kt">Cluster</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -183,7 +211,11 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Retrieves a previously created cluster by id number for the application, including references to all vehicles and commodities within it. The resulint object can be used to watch for events including vehicle and commodity updates and route assignments.</p>
+                        <p>Retrieves a previously created cluster by id number for the application, including references to all vehicles and commodities within it. The resuling object can be used to watch for events including vehicle and commodity updates and route assignments. This method will only need to be used if your application requires Pathfinder subclusters.</p>
+
+<ul>
+<li>Paremeter id:        The id of the cluster to retrieve.</li>
+</ul>
 
                       </div>
                       <div class="declaration">
@@ -220,9 +252,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC10Pathfinder10Pathfinder22connectDeviceAsVehicleFS0_FTCS_7Cluster19parameterCapacitiesGVSs10DictionarySSSi_8callbackFT7vehicleCS_7Vehicle_T__T_"></a>
-                    <a name="//apple_ref/swift/Method/connectDeviceAsVehicle(_:parameterCapacities:callback:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC10Pathfinder10Pathfinder22connectDeviceAsVehicleFS0_FTCS_7Cluster19parameterCapacitiesGVSs10DictionarySSSi_8callbackFT7vehicleCS_7Vehicle_T__T_">connectDeviceAsVehicle(_:parameterCapacities:callback:)</a>
+                    <a name="/s:FC10Pathfinder10Pathfinder22connectDeviceAsVehicleFS0_FT7clusterCS_7Cluster19parameterCapacitiesGVSs10DictionarySSSi_8callbackFT7vehicleCS_7Vehicle_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/connectDeviceAsVehicle(cluster:parameterCapacities:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10Pathfinder10Pathfinder22connectDeviceAsVehicleFS0_FT7clusterCS_7Cluster19parameterCapacitiesGVSs10DictionarySSSi_8callbackFT7vehicleCS_7Vehicle_T__T_">connectDeviceAsVehicle(cluster:parameterCapacities:callback:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -237,7 +269,7 @@
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">connectDeviceAsVehicle</span><span class="p">(</span><span class="nv">cluster</span><span class="p">:</span> <span class="kt">Cluster</span><span class="p">,</span> <span class="nv">parameterCapacities</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span><span class="kt">Int</span><span class="p">],</span> <span class="nv">callback</span><span class="p">:</span> <span class="p">(</span><span class="nv">vehicle</span><span class="p">:</span> <span class="kt">Vehicle</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">connectDeviceAsVehicle</span><span class="p">(</span><span class="n">cluster</span> <span class="nv">cluster</span><span class="p">:</span> <span class="kt">Cluster</span><span class="p">,</span> <span class="nv">parameterCapacities</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span><span class="kt">Int</span><span class="p">],</span> <span class="nv">callback</span><span class="p">:</span> <span class="p">(</span><span class="nv">vehicle</span><span class="p">:</span> <span class="kt">Vehicle</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -293,9 +325,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC10Pathfinder10Pathfinder23requestCommodityTransitFS0_FTCS_7Cluster5startVSC22CLLocationCoordinate2D3endS2_10parametersGVSs10DictionarySSSi_8callbackFT1cCS_9Commodity_T__T_"></a>
-                    <a name="//apple_ref/swift/Method/requestCommodityTransit(_:start:end:parameters:callback:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC10Pathfinder10Pathfinder23requestCommodityTransitFS0_FTCS_7Cluster5startVSC22CLLocationCoordinate2D3endS2_10parametersGVSs10DictionarySSSi_8callbackFT1cCS_9Commodity_T__T_">requestCommodityTransit(_:start:end:parameters:callback:)</a>
+                    <a name="/s:FC10Pathfinder10Pathfinder23requestCommodityTransitFS0_FT7clusterCS_7Cluster5startVSC22CLLocationCoordinate2D11destinationS2_10parametersGVSs10DictionarySSSi_8callbackFT1cCS_9Commodity_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/requestCommodityTransit(cluster:start:destination:parameters:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10Pathfinder10Pathfinder23requestCommodityTransitFS0_FT7clusterCS_7Cluster5startVSC22CLLocationCoordinate2D11destinationS2_10parametersGVSs10DictionarySSSi_8callbackFT1cCS_9Commodity_T__T_">requestCommodityTransit(cluster:start:destination:parameters:callback:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -310,7 +342,7 @@
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">requestCommodityTransit</span><span class="p">(</span><span class="nv">c</span><span class="p">:</span> <span class="kt">Cluster</span><span class="p">,</span> <span class="nv">start</span><span class="p">:</span> <span class="kt">CLLocationCoordinate2D</span><span class="p">,</span> <span class="nv">end</span><span class="p">:</span> <span class="kt">CLLocationCoordinate2D</span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span><span class="kt">Int</span><span class="p">],</span> <span class="nv">callback</span><span class="p">:</span> <span class="p">(</span><span class="nv">c</span><span class="p">:</span> <span class="kt">Commodity</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">requestCommodityTransit</span><span class="p">(</span><span class="n">cluster</span> <span class="nv">cluster</span><span class="p">:</span> <span class="kt">Cluster</span><span class="p">,</span> <span class="nv">start</span><span class="p">:</span> <span class="kt">CLLocationCoordinate2D</span><span class="p">,</span> <span class="nv">destination</span><span class="p">:</span> <span class="kt">CLLocationCoordinate2D</span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span><span class="kt">Int</span><span class="p">],</span> <span class="nv">callback</span><span class="p">:</span> <span class="p">(</span><span class="nv">c</span><span class="p">:</span> <span class="kt">Commodity</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>

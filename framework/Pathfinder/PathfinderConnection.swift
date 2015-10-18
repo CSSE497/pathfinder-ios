@@ -9,7 +9,9 @@
 import Foundation
 import Starscream
 
+//// A PathfinderConnection handles communication with the Pathfinder backend. This class is not user-facing and does not need to be seen by client developers.
 class PathfinderConnection {
+  let pathfinderSocketUrl = "ws://localhost:9000/socket"
 
 }
 

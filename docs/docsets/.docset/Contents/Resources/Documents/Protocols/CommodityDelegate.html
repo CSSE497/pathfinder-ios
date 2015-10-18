@@ -40,18 +40,13 @@
                 <a href="../Classes/Pathfinder.html">Pathfinder</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes.html#/s:C10Pathfinder5Route">Route</a>
+                <a href="../Classes/Route.html">Route</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:C10Pathfinder11RouteAction">RouteAction</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/Vehicle.html">Vehicle</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-          <a href="../Extensions.html">Extensions</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Extensions/Pathfinder.html">Pathfinder</a>
               </li>
             </ul>
           </li>
@@ -75,7 +70,15 @@
         <section>
           <section class="section">
             <h1>CommodityDelegate</h1>
-            <p>Undocumented</p>
+              <div class="declaration">
+                <div class="Swift">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CommodityDelegate</span></code></pre>
+
+                </div>
+              </div>
+            <p>Receives notifications of updates to a Commodity within the context of the specific application.</p>
+
+<p>The standard use cases are to notify the requesting user that a vehicle has been dispatched to transport them or to observe the state of a commodity in transit from a third part perspective. Note that the vehicle is responsible for notifying the service that it has picked up or dropped off a commodity, not the commodity itself.</p>
 
           </section>
           <section class="section task-group-section">
@@ -84,9 +87,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP10Pathfinder17CommodityDelegate11wasPickedUpuRq_S0__Fq_FT_T_"></a>
-                    <a name="//apple_ref/swift/Method/wasPickedUp()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP10Pathfinder17CommodityDelegate11wasPickedUpuRq_S0__Fq_FT_T_">wasPickedUp()</a>
+                    <a name="/s:FP10Pathfinder17CommodityDelegate13wasPickedUpAtuRq_S0__Fq_FTVSC22CLLocationCoordinate2D9commodityCS_9Commodity9byVehicleCS_7Vehicle_T_"></a>
+                    <a name="//apple_ref/swift/Method/wasPickedUpAt(_:commodity:byVehicle:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP10Pathfinder17CommodityDelegate13wasPickedUpAtuRq_S0__Fq_FTVSC22CLLocationCoordinate2D9commodityCS_9Commodity9byVehicleCS_7Vehicle_T_">wasPickedUpAt(_:commodity:byVehicle:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -94,8 +97,62 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A commodity was picked up at its starting location.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">wasPickedUpAt</span><span class="p">(</span><span class="nv">location</span><span class="p">:</span> <span class="kt">CLLocationCoordinate2D</span><span class="p">,</span> <span class="nv">commodity</span><span class="p">:</span> <span class="kt">Commodity</span><span class="p">,</span> <span class="nv">byVehicle</span><span class="p">:</span> <span class="kt">Vehicle</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>location</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The location where the commodity was picked up.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>commodity</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The commodity that was picked up.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>byVehicle</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The vehicle that is now transporting the commodity.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -103,9 +160,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP10Pathfinder17CommodityDelegate13wasDroppedOffuRq_S0__Fq_FT_T_"></a>
-                    <a name="//apple_ref/swift/Method/wasDroppedOff()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP10Pathfinder17CommodityDelegate13wasDroppedOffuRq_S0__Fq_FT_T_">wasDroppedOff()</a>
+                    <a name="/s:FP10Pathfinder17CommodityDelegate15wasDroppedOffAtuRq_S0__Fq_FTVSC22CLLocationCoordinate2D9commodityCS_9Commodity_T_"></a>
+                    <a name="//apple_ref/swift/Method/wasDroppedOffAt(_:commodity:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP10Pathfinder17CommodityDelegate15wasDroppedOffAtuRq_S0__Fq_FTVSC22CLLocationCoordinate2D9commodityCS_9Commodity_T_">wasDroppedOffAt(_:commodity:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -113,8 +170,49 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A commodity was dropped off at its destination.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">wasDroppedOffAt</span><span class="p">(</span><span class="nv">location</span><span class="p">:</span> <span class="kt">CLLocationCoordinate2D</span><span class="p">,</span> <span class="nv">commodity</span><span class="p">:</span> <span class="kt">Commodity</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>location</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The location where the commodity was dropped off.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>commodity</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The commodity that was dropped off.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -122,9 +220,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP10Pathfinder17CommodityDelegate12wasCancelleduRq_S0__Fq_FT_T_"></a>
-                    <a name="//apple_ref/swift/Method/wasCancelled()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP10Pathfinder17CommodityDelegate12wasCancelleduRq_S0__Fq_FT_T_">wasCancelled()</a>
+                    <a name="/s:FP10Pathfinder17CommodityDelegate12wasCancelleduRq_S0__Fq_FCS_9CommodityT_"></a>
+                    <a name="//apple_ref/swift/Method/wasCancelled(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP10Pathfinder17CommodityDelegate12wasCancelleduRq_S0__Fq_FCS_9CommodityT_">wasCancelled(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -132,8 +230,36 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A commodity transportation request was cancelled.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">wasCancelled</span><span class="p">(</span><span class="nv">commodity</span><span class="p">:</span> <span class="kt">Commodity</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>commodity</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The commodity that will no longer be transported.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -141,9 +267,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP10Pathfinder17CommodityDelegate9wasRouteduRq_S0__Fq_FCS_5RouteT_"></a>
-                    <a name="//apple_ref/swift/Method/wasRouted(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP10Pathfinder17CommodityDelegate9wasRouteduRq_S0__Fq_FCS_5RouteT_">wasRouted(_:)</a>
+                    <a name="/s:FP10Pathfinder17CommodityDelegate9wasRouteduRq_S0__Fq_FTCS_9Commodity9byVehicleCS_7Vehicle7onRouteCS_5Route_T_"></a>
+                    <a name="//apple_ref/swift/Method/wasRouted(_:byVehicle:onRoute:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP10Pathfinder17CommodityDelegate9wasRouteduRq_S0__Fq_FTCS_9Commodity9byVehicleCS_7Vehicle7onRouteCS_5Route_T_">wasRouted(_:byVehicle:onRoute:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -151,8 +277,53 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A route was generated for a vehicle that includes this commodity.</p>
 
+<ul>
+<li>Paramter onRoute:     The route which contains the other commodities that will be picked up by the vehicle.</li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">wasRouted</span><span class="p">(</span><span class="nv">commodity</span><span class="p">:</span> <span class="kt">Commodity</span><span class="p">,</span> <span class="nv">byVehicle</span><span class="p">:</span> <span class="kt">Vehicle</span><span class="p">,</span> <span class="nv">onRoute</span><span class="p">:</span> <span class="kt">Route</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>commodity</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The commodity that will be transported.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>vehicle</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The vehicle that will transport the commodity.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>

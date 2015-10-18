@@ -9,7 +9,7 @@
 import Foundation
 
 /**
-Handles udpates to a Cluster within the context of the specific application.
+Receives notifications of updates to a Cluster within the context of the specific application.
 
 The standard use case is to update views and executing billing and other business logic.
 */
