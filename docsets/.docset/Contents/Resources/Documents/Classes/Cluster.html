@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Commodity Class Reference</title>
+    <title>Cluster Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -9,8 +9,8 @@
     <script src="../js/jazzy.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/Commodity" class="dashAnchor"></a>
-    <a title="Commodity Class Reference"></a>
+    <a name="//apple_ref/swift/Class/Cluster" class="dashAnchor"></a>
+    <a title="Cluster Class Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html"> Docs</a> (100% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html"> Reference</a>
         <img id="carat" src="../img/carat.png" />
-        Commodity Class Reference
+        Cluster Class Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -69,30 +69,16 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Commodity</h1>
+            <h1>Cluster</h1>
               <div class="declaration">
                 <div class="Swift">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Commodity</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Cluster</span></code></pre>
 
                 </div>
               </div>
-            <p>A commodity that has requested transportation via your application.</p>
+            <p>A container in which vehicles are routed to transport commodities. Every registered Pathfinder application is created one default cluster. Additional sub-clusters can be created by the developer through the Pathfinder web interface.</p>
 
-<p>This class should never be instantiated directly because it represents the state of the data from the Pathfinder backend. Instead, request commodity transportation via the helper method in the Pathfinder class.</p>
-
-<pre class="highlight plaintext"><code>let clusterToRouteIn = self.cluster
-let start = CLLocationCoordinate2D(latitude: startLat, longitude: startLng)
-let end = CLLocationCoordinate2D(latitude: endLat, longitude: endLng)
-let parameters = [String:Int]()
-parameters["people"] = 2
-parameters["sheep"] = 0
-pathfinder.requestCommodityTransit(cluster: clusterToRouteIn, start: start, destination: end, parameters: parameters) { (c:Commodity) -&gt; Void in
-  c.delegate = self
-  self.drawCommodityOnMap(c)
-}
-</code></pre>
-
-<p>The primary purpose of creating a commodity is to set its delegate. The delegate will receive updates on the status of the commodity as defined in <code>CommodityDelegate</code>.</p>
+<p>This class should not be instantiated directly since it represents the state of the Pathfinder backend service. Instead, use the factory methods in the Pathfinder class. The typical use case of creating a Cluster object is to set a delegate for it which will receive all of the updates defined in <code>ClusterDelegate</code>.</p>
 
           </section>
           <section class="section task-group-section">
@@ -101,9 +87,9 @@ pathfinder.requestCommodityTransit(cluster: clusterToRouteIn, start: start, dest
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC10Pathfinder9Commodity8delegateGSqPS_17CommodityDelegate__"></a>
+                    <a name="/s:vC10Pathfinder7Cluster8delegateGSqPS_15ClusterDelegate__"></a>
                     <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC10Pathfinder9Commodity8delegateGSqPS_17CommodityDelegate__">delegate</a>
+                    <a class="token" href="#/s:vC10Pathfinder7Cluster8delegateGSqPS_15ClusterDelegate__">delegate</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -111,14 +97,14 @@ pathfinder.requestCommodityTransit(cluster: clusterToRouteIn, start: start, dest
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The delegate that will receive notifications when any aspect of the commodity is updated.</p>
+                        <p>The delegate that will receive notifications when any aspect of the cluster is updated.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt">CommodityDelegate</span><span class="p">?</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt">ClusterDelegate</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -128,9 +114,9 @@ pathfinder.requestCommodityTransit(cluster: clusterToRouteIn, start: start, dest
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC10Pathfinder9Commodity2idSi"></a>
+                    <a name="/s:vC10Pathfinder7Cluster2idSi"></a>
                     <a name="//apple_ref/swift/Property/id" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC10Pathfinder9Commodity2idSi">id</a>
+                    <a class="token" href="#/s:vC10Pathfinder7Cluster2idSi">id</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -138,14 +124,14 @@ pathfinder.requestCommodityTransit(cluster: clusterToRouteIn, start: start, dest
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The unique id of the vehicle, as generated by Pathfinder.</p>
+                        <p>The unique id of the cluster, as generated by Pathfinder.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">Int</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
@@ -155,9 +141,9 @@ pathfinder.requestCommodityTransit(cluster: clusterToRouteIn, start: start, dest
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC10Pathfinder9Commodity5startVSC22CLLocationCoordinate2D"></a>
-                    <a name="//apple_ref/swift/Property/start" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC10Pathfinder9Commodity5startVSC22CLLocationCoordinate2D">start</a>
+                    <a name="/s:vC10Pathfinder7Cluster8vehiclesGSaCS_7Vehicle_"></a>
+                    <a name="//apple_ref/swift/Property/vehicles" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC10Pathfinder7Cluster8vehiclesGSaCS_7Vehicle_">vehicles</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -165,14 +151,14 @@ pathfinder.requestCommodityTransit(cluster: clusterToRouteIn, start: start, dest
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The starting location of the commodity&rsquo;s journey.</p>
+                        <p>The vehicles that are currently online within the cluster.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">start</span><span class="p">:</span> <span class="kt">CLLocationCoordinate2D</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">vehicles</span><span class="p">:</span> <span class="p">[</span><span class="kt">Vehicle</span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
@@ -182,9 +168,9 @@ pathfinder.requestCommodityTransit(cluster: clusterToRouteIn, start: start, dest
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC10Pathfinder9Commodity11destinationVSC22CLLocationCoordinate2D"></a>
-                    <a name="//apple_ref/swift/Property/destination" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC10Pathfinder9Commodity11destinationVSC22CLLocationCoordinate2D">destination</a>
+                    <a name="/s:vC10Pathfinder7Cluster11commoditiesGSaCS_9Commodity_"></a>
+                    <a name="//apple_ref/swift/Property/commodities" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC10Pathfinder7Cluster11commoditiesGSaCS_9Commodity_">commodities</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -192,14 +178,14 @@ pathfinder.requestCommodityTransit(cluster: clusterToRouteIn, start: start, dest
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The destination location of the commodity&rsquo;s journey.</p>
+                        <p>The commodities that are currently waiting on transit or are in transit within the cluster.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">destination</span><span class="p">:</span> <span class="kt">CLLocationCoordinate2D</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">commodities</span><span class="p">:</span> <span class="p">[</span><span class="kt">Commodity</span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
@@ -209,9 +195,9 @@ pathfinder.requestCommodityTransit(cluster: clusterToRouteIn, start: start, dest
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC10Pathfinder9Commodity5routeGSqCS_5Route_"></a>
-                    <a name="//apple_ref/swift/Property/route" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC10Pathfinder9Commodity5routeGSqCS_5Route_">route</a>
+                    <a name="/s:vC10Pathfinder7Cluster6routesGSaCS_5Route_"></a>
+                    <a name="//apple_ref/swift/Property/routes" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC10Pathfinder7Cluster6routesGSaCS_5Route_">routes</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -219,63 +205,16 @@ pathfinder.requestCommodityTransit(cluster: clusterToRouteIn, start: start, dest
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The route that is assigned to pick up the commodity, if there is one.</p>
+                        <p>All of the routes that are currently in progress for the cluster.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">Route</span><span class="p">?</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">routes</span><span class="p">:</span> <span class="p">[</span><span class="kt">Route</span><span class="p">]</span></code></pre>
 
                         </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FC10Pathfinder9Commodity6cancelFS0_FFT7successSb_T_T_"></a>
-                    <a name="//apple_ref/swift/Method/cancel(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC10Pathfinder9Commodity6cancelFS0_FFT7successSb_T_T_">cancel(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Cancels the commodity request. The vehicle on route to pickup the commodity will be notified that the request was cancelled.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="Swift">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">cancel</span><span class="p">(</span><span class="nv">callback</span><span class="p">:</span> <span class="p">(</span><span class="nv">success</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>callback</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>This function will be called once Pathfinder has verified that the commodity transit request was successfully cancelled.</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
