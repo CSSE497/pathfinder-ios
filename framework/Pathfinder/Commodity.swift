@@ -9,6 +9,8 @@
 import Foundation
 
 public class Commodity {
+    var delegate: CommodityDelegate?
+
     let id: Int
     let startLat: Double
     let startLng: Double

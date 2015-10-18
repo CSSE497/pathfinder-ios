@@ -10,7 +10,32 @@ import Foundation
 import Starscream
 
 public class Pathfinder: WebSocketDelegate {
+    let appId: String
+    let userCreds: String
     
+    public init(appId: String, userCreds: String) {
+        self.appId = appId
+        self.userCreds = userCreds
+    }
+    
+    public func defaultCluster(callback: (c: Cluster) -> Void) {
+        
+    }
+    
+    public func clusterById(id: Int, callback: (c: Cluster) -> Void) {
+        
+    }
+    
+    public func connectDeviceAsVehicle(c: Cluster, capacities: [String:Int], callback: (v: Vehicle) -> Void) {
+
+    }
+    
+    public func requestCommodityTransit(c: Cluster, params: [String:Int], callback: (c: Commodity) -> Void) {
+        
+    }
+    
+    // MARK: WebSocketDelegate
+
     public func websocketDidConnect(socket: WebSocket) {
         
     }

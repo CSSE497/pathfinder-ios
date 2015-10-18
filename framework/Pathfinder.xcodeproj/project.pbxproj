@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		05632C02D4CB11F7BE047CAA /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AD000D8A3FB551F7F4F1E91 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		665239891BD31E1F0010893A /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665239881BD31E1F0010893A /* Route.swift */; settings = {ASSET_TAGS = (); }; };
+		6652398B1BD330330010893A /* VehicleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6652398A1BD330330010893A /* VehicleDelegate.swift */; settings = {ASSET_TAGS = (); }; };
 		66FDFE881BD06D81003A9EC3 /* Pathfinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 66FDFE871BD06D81003A9EC3 /* Pathfinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		66FDFE8F1BD06D81003A9EC3 /* Pathfinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FDFE841BD06D81003A9EC3 /* Pathfinder.framework */; settings = {ASSET_TAGS = (); }; };
 		66FDFE941BD06D81003A9EC3 /* PathfinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FDFE931BD06D81003A9EC3 /* PathfinderTests.swift */; };
@@ -31,6 +33,8 @@
 
 /* Begin PBXFileReference section */
 		2624CAA9CEBDDFD28D3FBBC8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		665239881BD31E1F0010893A /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		6652398A1BD330330010893A /* VehicleDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleDelegate.swift; sourceTree = "<group>"; };
 		66FDFE841BD06D81003A9EC3 /* Pathfinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pathfinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66FDFE871BD06D81003A9EC3 /* Pathfinder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pathfinder.h; sourceTree = "<group>"; };
 		66FDFE891BD06D81003A9EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 				66FDFEDE1BD0857B003A9EC3 /* Cluster.swift */,
 				66FDFEE01BD08B11003A9EC3 /* ClusterDelegate.swift */,
 				66FDFEE21BD08C8C003A9EC3 /* CommodityDelegate.swift */,
+				665239881BD31E1F0010893A /* Route.swift */,
+				6652398A1BD330330010893A /* VehicleDelegate.swift */,
 			);
 			path = Pathfinder;
 			sourceTree = "<group>";
@@ -275,8 +281,10 @@
 				66FDFEE31BD08C8C003A9EC3 /* CommodityDelegate.swift in Sources */,
 				66FDFED71BD07734003A9EC3 /* Pathfinder.swift in Sources */,
 				66FDFED51BD076DD003A9EC3 /* Vehicle.swift in Sources */,
+				6652398B1BD330330010893A /* VehicleDelegate.swift in Sources */,
 				66FDFEE11BD08B11003A9EC3 /* ClusterDelegate.swift in Sources */,
 				66FDFEDF1BD0857B003A9EC3 /* Cluster.swift in Sources */,
+				665239891BD31E1F0010893A /* Route.swift in Sources */,
 				66FDFEDD1BD0843F003A9EC3 /* Commodity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

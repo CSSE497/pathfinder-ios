@@ -9,5 +9,12 @@
 import Foundation
 
 public protocol CommodityDelegate {
-    func onStatusChange()
+
+    func wasPickedUp()
+    
+    func wasDroppedOff()
+    
+    func wasCancelled()
+    
+    func wasRouted(r: Route)
 }

@@ -9,10 +9,11 @@
 import Foundation
 
 public class Cluster {
+    var delegate: ClusterDelegate?
+
     let id: Int;
     let vehicles: [Vehicle]
     let commodities: [Commodity]
-    var delegate: ClusterDelegate?
     
     public convenience init(id: Int) {
         self.init(id: id, vehicles: [Vehicle](), commodities: [Commodity]())

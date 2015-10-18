@@ -9,12 +9,18 @@
 import Foundation
 
 public class Vehicle {
-    let id: Int;
+    var route: Route?
+    var delegate: VehicleDelegate?
 
-    public init(id: Int) {
-        self.id = id
+    public init(capacities: [String:Int]) {
+        
     }
-
-    public func newLocation(lat: Double, lng: Double) {
+    
+    public func completeNextRouteAction() {
+    
+    }
+    
+    public func goOffline() {
+        
     }
 }
