@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Classes  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+  </head>
+  <body>
+    <a title="Classes  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html"> Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/csse497/pathfinder-ios"><img src="img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html"> Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Classes  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+          <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/Cluster.html">Cluster</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Commodity.html">Commodity</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Pathfinder.html">Pathfinder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Route.html">Route</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/RouteAction.html">RouteAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Vehicle.html">Vehicle</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+          <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/ClusterDelegate.html">ClusterDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/CommodityDelegate.html">CommodityDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/VehicleDelegate.html">VehicleDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Classes</h1>
+            <p>The following classes are available globally.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C10Pathfinder10Pathfinder"></a>
+                    <a name="//apple_ref/swift/Class/Pathfinder" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C10Pathfinder10Pathfinder">Pathfinder</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A connection to the Pathfinder service, specific to one authenticated user belonging to a single application.</p>
+
+<p>This is the starting point for all interactions with Pathfinder. The typical use case of this library is:</p>
+
+<ol>
+<li>Retrieve a Cluster, either by id or the default cluster of the application. All vehicles, commodities and routes within specific clusters. Additional clusters can be configured via the Pathfinder web interface.</li>
+<li>Register as a vehicle or create a commodity within that cluster.</li>
+<li>Create a delegate object for the newly created vehicle or commodity.</li>
+<li>Respond to the CommodityDelegate or VehicleDelegate protocol methods by displaying them on a MapView and executing the appropriate business logic.</li>
+</ol>
+
+                        <a href="Classes/Pathfinder.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Pathfinder</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C10Pathfinder7Vehicle"></a>
+                    <a name="//apple_ref/swift/Class/Vehicle" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C10Pathfinder7Vehicle">Vehicle</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A registered vehicle that can be routed to transport commodities.</p>
+
+<p>This class should never be instantiated directly because it represents the state of the data from the Pathfinder backend. Instead, connect your device as a vehicle.</p>
+
+<pre class="highlight plaintext"><code>pathfinder.connectDeviceAsVehicle(cluster: myDefaultCluster, parameterCapacities: myCapacities) { (vehicle: Vehicle) -&gt; Void in
+self.vehicle = vehicle
+}
+</code></pre>
+
+                        <a href="Classes/Vehicle.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Vehicle</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C10Pathfinder7Cluster"></a>
+                    <a name="//apple_ref/swift/Class/Cluster" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C10Pathfinder7Cluster">Cluster</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A container in which vehicles are routed to transport commodities. Every registered Pathfinder application is created one default cluster. Additional sub-clusters can be created by the developer through the Pathfinder web interface.</p>
+
+<p>This class should not be instantiated directly since it represents the state of the Pathfinder backend service. Instead, use the factory methods in the Pathfinder class. The typical use case of creating a Cluster object is to set a delegate for it which will receive all of the updates defined in <code>ClusterDelegate</code>.</p>
+
+                        <a href="Classes/Cluster.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Cluster</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C10Pathfinder5Route"></a>
+                    <a name="//apple_ref/swift/Class/Route" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C10Pathfinder5Route">Route</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A list of actions that a vehicle is tasked with. This class provides several view methods to convert the data to a convenient format for plotting or logging. The route is update in real-time by the Pathfinder service. To be notified of updates, you will need to implement one of ClusterDelegate, CommodityDelegate or VehicleDelegate.</p>
+
+<p>This class should never be instantiated directly because it represents the state of the data from the Pathfinder backend. Instead, routes can be obtained by querying Cluster, Vehicle or Commodity object properties or by instantiating a ClusterDelegate, CommodityDelegate or VehicleDelegate.</p>
+
+                        <a href="Classes/Route.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Route</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C10Pathfinder11RouteAction"></a>
+                    <a name="//apple_ref/swift/Class/RouteAction" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C10Pathfinder11RouteAction">RouteAction</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A data object containing a commodity, a location and a field indicating pickup or dropoff.</p>
+
+                        <a href="Classes/RouteAction.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">RouteAction</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C10Pathfinder9Commodity"></a>
+                    <a name="//apple_ref/swift/Class/Commodity" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C10Pathfinder9Commodity">Commodity</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A commodity that has requested transportation via your application.</p>
+
+<p>This class should never be instantiated directly because it represents the state of the data from the Pathfinder backend. Instead, request commodity transportation via the helper method in the Pathfinder class.</p>
+
+<pre class="highlight plaintext"><code>let clusterToRouteIn = self.cluster
+let start = CLLocationCoordinate2D(latitude: startLat, longitude: startLng)
+let end = CLLocationCoordinate2D(latitude: endLat, longitude: endLng)
+let parameters = [String:Int]()
+parameters["people"] = 2
+parameters["sheep"] = 0
+pathfinder.requestCommodityTransit(cluster: clusterToRouteIn, start: start, destination: end, parameters: parameters) { (c:Commodity) -&gt; Void in
+  c.delegate = self
+  self.drawCommodityOnMap(c)
+}
+</code></pre>
+
+<p>The primary purpose of creating a commodity is to set its delegate. The delegate will receive updates on the status of the commodity as defined in <code>CommodityDelegate</code>.</p>
+
+                        <a href="Classes/Commodity.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Commodity</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2015 <a class="link" href="https://github.com/csse497/pathfinder" target="_blank" rel="external">Adam Michael</a>. All rights reserved. (Last updated: 2015-10-18)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.3.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

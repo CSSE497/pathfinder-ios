@@ -1,0 +1,17 @@
+language: objective-c
+osx_image: xcode7
+podfile: framework/Podfile
+
+env:
+  global:
+  - LC_CTYPE=en_US.UTF-8
+  - LANG=en_US.UTF-8
+
+before_install:
+  - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
+  - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+
+# Framework builds
+script:
+  - set -o pipefail
+  - xcodebuild -verbose -workspace framework/Pathfinder.xcworkspace -scheme Pathfinder -sdk iphoneos -configuration Release CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO | xcpretty -c

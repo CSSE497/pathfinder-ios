@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>VehicleDelegate Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/VehicleDelegate" class="dashAnchor"></a>
+    <a title="VehicleDelegate Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/csse497/pathfinder-ios"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        VehicleDelegate Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+          <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Cluster.html">Cluster</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Commodity.html">Commodity</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Pathfinder.html">Pathfinder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Route.html">Route</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RouteAction.html">RouteAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Vehicle.html">Vehicle</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+          <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ClusterDelegate.html">ClusterDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/CommodityDelegate.html">CommodityDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/VehicleDelegate.html">VehicleDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>VehicleDelegate</h1>
+              <div class="declaration">
+                <div class="Swift">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">VehicleDelegate</span></code></pre>
+
+                </div>
+              </div>
+            <p>Receives notifications of updates to a vehicle within the context of the specific application.</p>
+
+<p>The standard use cases are two-fold:</p>
+
+<ol>
+<li>To notify the vehicle driver of route changes.</li>
+<li>To notify a commodity who is waiting on a vehicle of that vehicles actions.</li>
+</ol>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP10Pathfinder15VehicleDelegate20performedRouteActionuRq_S0__Fq_FTCS_11RouteAction7vehicleCS_7Vehicle_T_"></a>
+                    <a name="//apple_ref/swift/Method/performedRouteAction(_:vehicle:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP10Pathfinder15VehicleDelegate20performedRouteActionuRq_S0__Fq_FTCS_11RouteAction7vehicleCS_7Vehicle_T_">performedRouteAction(_:vehicle:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The vehicle performed a pickup or dropoff action.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">performedRouteAction</span><span class="p">(</span><span class="nv">action</span><span class="p">:</span> <span class="kt">RouteAction</span><span class="p">,</span> <span class="nv">vehicle</span><span class="p">:</span> <span class="kt">Vehicle</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>action</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The action that was performed, including the related commodity.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>vehicle</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The vehicle that performed the pickup or drop off.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP10Pathfinder15VehicleDelegate9wasRouteduRq_S0__Fq_FTCS_5Route7vehicleCS_7Vehicle_T_"></a>
+                    <a name="//apple_ref/swift/Method/wasRouted(_:vehicle:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP10Pathfinder15VehicleDelegate9wasRouteduRq_S0__Fq_FTCS_5Route7vehicleCS_7Vehicle_T_">wasRouted(_:vehicle:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The vehicle was assigned a route. This route supercedes all previous routes. Stale routes should be discarded.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">wasRouted</span><span class="p">(</span><span class="nv">route</span><span class="p">:</span> <span class="kt">Route</span><span class="p">,</span> <span class="nv">vehicle</span><span class="p">:</span> <span class="kt">Vehicle</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>route</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The route that the vehicle is assigned to.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>vehicle</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The vehicle that received a route assignment.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP10Pathfinder15VehicleDelegate13didComeOnlineuRq_S0__Fq_FCS_7VehicleT_"></a>
+                    <a name="//apple_ref/swift/Method/didComeOnline(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP10Pathfinder15VehicleDelegate13didComeOnlineuRq_S0__Fq_FCS_7VehicleT_">didComeOnline(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The vehicle was previous offline but now it is online.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">didComeOnline</span><span class="p">(</span><span class="nv">vehicle</span><span class="p">:</span> <span class="kt">Vehicle</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>vehicle</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The vehicle that came online.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP10Pathfinder15VehicleDelegate12didGoOfflineuRq_S0__Fq_FCS_7VehicleT_"></a>
+                    <a name="//apple_ref/swift/Method/didGoOffline(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP10Pathfinder15VehicleDelegate12didGoOfflineuRq_S0__Fq_FCS_7VehicleT_">didGoOffline(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The vehicle was previously online but now it is offline.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">didGoOffline</span><span class="p">(</span><span class="nv">vehicle</span><span class="p">:</span> <span class="kt">Vehicle</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>vehicle</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The vehicle that went offline.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2015 <a class="link" href="https://github.com/csse497/pathfinder" target="_blank" rel="external">Adam Michael</a>. All rights reserved. (Last updated: 2015-10-18)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.3.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
