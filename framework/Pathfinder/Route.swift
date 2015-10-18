@@ -15,7 +15,9 @@ A list of actions that a vehicle is tasked with. This class provides several vie
 This class should never be instantiated directly because it represents the state of the data from the Pathfinder backend. Instead, routes can be obtained by querying Cluster, Vehicle or Commodity object properties or by instantiating a ClusterDelegate, CommodityDelegate or VehicleDelegate.
 */
 public class Route {
-  let actions: [RouteAction]
+
+  /// The queue of actions that make up the route.
+  public let actions: [RouteAction]
 
   init() {
     actions = [RouteAction]()
@@ -33,14 +35,21 @@ public class Route {
 
 /// A data object containing a commodity, a location and a field indicating pickup or dropoff.
 public class RouteAction {
-  enum Action {
+
+  /// The possible actions that can be performed on commodities by vehicles.
+  public enum Action {
     case Pickup
     case Dropoff
   }
 
-  let action: Action
-  let commodity: Commodity
-  let location: CLLocationCoordinate2D
+  /// Whether the action is a pickup or dropoff.
+  public let action: Action
+
+  /// The commodity that is picked up or dropped off.
+  public let commodity: Commodity
+
+  /// The location where the action is to occur.
+  public let location: CLLocationCoordinate2D
 
   init(action: Action, commodity: Commodity, location: CLLocationCoordinate2D) {
     self.action = action

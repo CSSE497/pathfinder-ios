@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Route Class Reference</title>
+    <title>RouteAction Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -9,8 +9,8 @@
     <script src="../js/jazzy.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/Route" class="dashAnchor"></a>
-    <a title="Route Class Reference"></a>
+    <a name="//apple_ref/swift/Class/RouteAction" class="dashAnchor"></a>
+    <a title="RouteAction Class Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html"> Docs</a> (100% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html"> Reference</a>
         <img id="carat" src="../img/carat.png" />
-        Route Class Reference
+        RouteAction Class Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -69,16 +69,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Route</h1>
+            <h1>RouteAction</h1>
               <div class="declaration">
                 <div class="Swift">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Route</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">RouteAction</span></code></pre>
 
                 </div>
               </div>
-            <p>A list of actions that a vehicle is tasked with. This class provides several view methods to convert the data to a convenient format for plotting or logging. The route is update in real-time by the Pathfinder service. To be notified of updates, you will need to implement one of ClusterDelegate, CommodityDelegate or VehicleDelegate.</p>
-
-<p>This class should never be instantiated directly because it represents the state of the data from the Pathfinder backend. Instead, routes can be obtained by querying Cluster, Vehicle or Commodity object properties or by instantiating a ClusterDelegate, CommodityDelegate or VehicleDelegate.</p>
+            <p>A data object containing a commodity, a location and a field indicating pickup or dropoff.</p>
 
           </section>
           <section class="section task-group-section">
@@ -87,9 +85,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC10Pathfinder5Route7actionsGSaCS_11RouteAction_"></a>
-                    <a name="//apple_ref/swift/Property/actions" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC10Pathfinder5Route7actionsGSaCS_11RouteAction_">actions</a>
+                    <a name="/s:OC10Pathfinder11RouteAction6Action"></a>
+                    <a name="//apple_ref/swift/Enum/Action" class="dashAnchor"></a>
+                    <a class="token" href="#/s:OC10Pathfinder11RouteAction6Action">Action</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -97,14 +95,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The queue of actions that make up the route.</p>
+                        <p>The possible actions that can be performed on commodities by vehicles.</p>
 
+                        <a href="../Classes/RouteAction/Action.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">actions</span><span class="p">:</span> <span class="p">[</span><span class="kt">RouteAction</span><span class="p">]</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Action</span></code></pre>
 
                         </div>
                       </div>
@@ -114,9 +113,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC10Pathfinder5Route13asCoordinatesFS0_FT_GSaVSC22CLLocationCoordinate2D_"></a>
-                    <a name="//apple_ref/swift/Method/asCoordinates()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC10Pathfinder5Route13asCoordinatesFS0_FT_GSaVSC22CLLocationCoordinate2D_">asCoordinates()</a>
+                    <a name="/s:vC10Pathfinder11RouteAction6actionOS0_6Action"></a>
+                    <a name="//apple_ref/swift/Property/action" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC10Pathfinder11RouteAction6actionOS0_6Action">action</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -124,21 +123,70 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Converts the array of RouteAction to an array of CLLocationCoordinate2D.</p>
+                        <p>Whether the action is a pickup or dropoff.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">asCoordinates</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">CLLocationCoordinate2D</span><span class="p">]</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">action</span><span class="p">:</span> <span class="kt">Action</span></code></pre>
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>An array of CLLocationCoordinate2D objects representing the route.</p>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC10Pathfinder11RouteAction9commodityCS_9Commodity"></a>
+                    <a name="//apple_ref/swift/Property/commodity" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC10Pathfinder11RouteAction9commodityCS_9Commodity">commodity</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The commodity that is picked up or dropped off.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">commodity</span><span class="p">:</span> <span class="kt">Commodity</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC10Pathfinder11RouteAction8locationVSC22CLLocationCoordinate2D"></a>
+                    <a name="//apple_ref/swift/Property/location" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC10Pathfinder11RouteAction8locationVSC22CLLocationCoordinate2D">location</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The location where the action is to occur.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">location</span><span class="p">:</span> <span class="kt">CLLocationCoordinate2D</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
