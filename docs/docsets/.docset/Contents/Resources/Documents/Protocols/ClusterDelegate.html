@@ -78,7 +78,7 @@
               </div>
             <p>Receives notifications of updates to a Cluster within the context of the specific application.</p>
 
-<p>The standard use case is to update views and executing billing and other business logic.</p>
+<p>The standard use case is to update views and execute billing and other business logic.</p>
 
           </section>
           <section class="section task-group-section">
@@ -99,8 +99,6 @@
                       <div class="abstract">
                         <p>A vehicle that was previously offline or did not exist is now online and ready to be routed in the cluster.</p>
 
-<p>Parameter vehicle: The newly online vehicle.</p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -109,6 +107,26 @@
                           <pre class="highlight"><code><span class="kd">func</span> <span class="nf">vehicleDidComeOnline</span><span class="p">(</span><span class="nv">vehicle</span><span class="p">:</span> <span class="kt">Vehicle</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>vehicle</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The newly online vehicle.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -128,8 +146,6 @@
                       <div class="abstract">
                         <p>A vehicle that was previously online is now offline. If the vehicle was assigned a route, all commodities on that route will be reassigned.</p>
 
-<p>Parameter vehicle: The newly offline vehicle.</p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -138,6 +154,26 @@
                           <pre class="highlight"><code><span class="kd">func</span> <span class="nf">vehicleDidGoOffline</span><span class="p">(</span><span class="nv">vehicle</span><span class="p">:</span> <span class="kt">Vehicle</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>vehicle</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The newly offline vehicle.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -157,8 +193,6 @@
                       <div class="abstract">
                         <p>A new commodity requested transportation within the cluster.</p>
 
-<p>Parameter commodity: The commodity that is waiting to be picked up.</p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -167,6 +201,26 @@
                           <pre class="highlight"><code><span class="kd">func</span> <span class="nf">commodityWasRequested</span><span class="p">(</span><span class="nv">commodity</span><span class="p">:</span> <span class="kt">Commodity</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>commodity</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The commodity that is waiting to be picked up.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -186,8 +240,6 @@
                       <div class="abstract">
                         <p>A commodity was picked up by a vehicle.</p>
 
-<p>Parameter commodity: The commodity that is now in transit to its destination.</p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -196,6 +248,26 @@
                           <pre class="highlight"><code><span class="kd">func</span> <span class="nf">commodityWasPickuped</span><span class="p">(</span><span class="nv">commodity</span><span class="p">:</span> <span class="kt">Commodity</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>commodity</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The commodity that is now in transit to its destination.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -215,8 +287,6 @@
                       <div class="abstract">
                         <p>A commodity was dropped off at its destination.</p>
 
-<p>Parameter commodity: The commodity that was just dropped off at its destination.</p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -225,6 +295,26 @@
                           <pre class="highlight"><code><span class="kd">func</span> <span class="nf">commodityWasDroppedOff</span><span class="p">(</span><span class="nv">commodity</span><span class="p">:</span> <span class="kt">Commodity</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>commodity</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The commodity that was just dropped off at its destination.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -244,8 +334,6 @@
                       <div class="abstract">
                         <p>A commodity cancelled its request for transportation. It will not be transported to its destination.</p>
 
-<p>Parameter commodity: The commodity that cancelled its transportation request.</p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -254,6 +342,26 @@
                           <pre class="highlight"><code><span class="kd">func</span> <span class="nf">commodityWasCancelled</span><span class="p">(</span><span class="nv">c</span><span class="p">:</span> <span class="kt">Commodity</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>commodity</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The commodity that cancelled its transportation request.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -273,8 +381,6 @@
                       <div class="abstract">
                         <p>The routing for the cluster was updated. Since every vehicle in a cluster has the potential to transport any vehicle in the same cluster, routes are calculated on a cluster level. When this method is called, all previously provided routes should be considered obsolete.</p>
 
-<p>Parameter routes: All of the routes for the cluster.</p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -283,6 +389,26 @@
                           <pre class="highlight"><code><span class="kd">func</span> <span class="nf">clusterWasRouted</span><span class="p">(</span><span class="nv">routes</span><span class="p">:</span> <span class="p">[</span><span class="kt">Route</span><span class="p">])</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>routes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>All of the routes for the cluster.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
