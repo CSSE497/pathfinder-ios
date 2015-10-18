@@ -1,5 +1,7 @@
 # Pathfinder iOS Client Library
 
+[![Build Status](https://travis-ci.org/CSSE497/pathfinder-ios.svg)](https://travis-ci.org/CSSE497/pathfinder-ios)
+
 The Pathfinder iOS Client Library allows developers to easily integrate Pathfinder routing service in their iOS applications.
 
 Pathfinder provides routing as a service, removing the need for developers to implement their own routing logistics. This SDK allows for iOS applications to act as commodities that need transportation or vehicles that provide transportation. Additionally, there is support for viewing routes for sets of commodities and vehicles.
