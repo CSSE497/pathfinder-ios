@@ -12,6 +12,10 @@ Pathfinder is distributed through CocoaPods. To use Pathfinder in your applicati
 pod "Pathfinder"
 ```
 
+## Documentation
+
+The Pathfinder iOS API documentation is located at [https://csse497.github.io/pathfinder-ios/index.html](https://csse497.github.io/pathfinder-ios/index.html).
+
 ## Using Pathfinder
 
 There are three primary ways for an application to interact with the Pathfinder service; as an observer, a vehicle driver or a commodity transportation requester. In each case you will need to provider an application identifier and a set of user credentials. The application identifier can be obtained from the Pathfinder web portal when you register your application. The user credentials identifier the end user of your application.
