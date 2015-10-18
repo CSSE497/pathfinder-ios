@@ -9,19 +9,19 @@
 import Foundation
 
 public class Cluster {
-    var delegate: ClusterDelegate?
-
-    let id: Int;
-    let vehicles: [Vehicle]
-    let commodities: [Commodity]
-    
-    public convenience init(id: Int) {
-        self.init(id: id, vehicles: [Vehicle](), commodities: [Commodity]())
-    }
-    
-    public init(id: Int, vehicles: [Vehicle], commodities: [Commodity]) {
-        self.id = id
-        self.vehicles = vehicles
-        self.commodities = commodities
-    }
+  var delegate: ClusterDelegate?
+  
+  let id: Int;
+  let vehicles: [Vehicle]
+  let commodities: [Commodity]
+  
+  public convenience init(id: Int) {
+    self.init(id: id, vehicles: [Vehicle](), commodities: [Commodity]())
+  }
+  
+  public init(id: Int, vehicles: [Vehicle], commodities: [Commodity]) {
+    self.id = id
+    self.vehicles = vehicles
+    self.commodities = commodities
+  }
 }

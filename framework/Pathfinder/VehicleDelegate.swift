@@ -9,6 +9,6 @@
 import Foundation
 
 public protocol VehicleDelegate {
-    
-    func wasRouted(route: Route)
+  
+  func wasRouted(route: Route)
 }

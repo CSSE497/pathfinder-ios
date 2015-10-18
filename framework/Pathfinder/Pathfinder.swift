@@ -9,46 +9,51 @@
 import Foundation
 import Starscream
 
-public class Pathfinder: WebSocketDelegate {
-    let appId: String
-    let userCreds: String
+/**
+A connection to the Pathfinder service, specific to one authenticated user belonging to a single application.
+*/
+public class Pathfinder {
+  let appId: String
+  let userCreds: String
+  
+  public init(appId: String, userCreds: String) {
+    self.appId = appId
+    self.userCreds = userCreds
+  }
+  
+  public func defaultCluster(callback: (c: Cluster) -> Void) {
     
-    public init(appId: String, userCreds: String) {
-        self.appId = appId
-        self.userCreds = userCreds
-    }
+  }
+  
+  public func clusterById(id: Int, callback: (c: Cluster) -> Void) {
     
-    public func defaultCluster(callback: (c: Cluster) -> Void) {
-        
-    }
+  }
+  
+  public func connectDeviceAsVehicle(c: Cluster, capacities: [String:Int], callback: (v: Vehicle) -> Void) {
     
-    public func clusterById(id: Int, callback: (c: Cluster) -> Void) {
-        
-    }
+  }
+  
+  public func requestCommodityTransit(c: Cluster, params: [String:Int], callback: (c: Commodity) -> Void) {
     
-    public func connectDeviceAsVehicle(c: Cluster, capacities: [String:Int], callback: (v: Vehicle) -> Void) {
+  }
+}
 
-    }
+// MARK: - WebSocketDelegate
+extension Pathfinder: WebSocketDelegate {
+  
+  public func websocketDidConnect(socket: WebSocket) {
     
-    public func requestCommodityTransit(c: Cluster, params: [String:Int], callback: (c: Commodity) -> Void) {
-        
-    }
+  }
+  
+  public func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
     
-    // MARK: WebSocketDelegate
-
-    public func websocketDidConnect(socket: WebSocket) {
-        
-    }
-
-    public func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
-        
-    }
-
-    public func websocketDidReceiveMessage(socket: WebSocket, text: String) {
-        
-    }
-
-    public func websocketDidReceiveData(socket: WebSocket, data: NSData) {
-        
-    }
+  }
+  
+  public func websocketDidReceiveMessage(socket: WebSocket, text: String) {
+    
+  }
+  
+  public func websocketDidReceiveData(socket: WebSocket, data: NSData) {
+    
+  }
 }

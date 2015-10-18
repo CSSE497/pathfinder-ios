@@ -9,23 +9,23 @@
 import Foundation
 
 public class Commodity {
-    var delegate: CommodityDelegate?
-
-    let id: Int
-    let startLat: Double
-    let startLng: Double
-    let endLat: Double
-    let endLng: Double
+  var delegate: CommodityDelegate?
+  
+  let id: Int
+  let startLat: Double
+  let startLng: Double
+  let endLat: Double
+  let endLng: Double
+  
+  public init(id: Int, startLat: Double, startLng: Double, endLat: Double, endLng: Double) {
+    self.id = id
+    self.startLat = startLat
+    self.startLng = startLng
+    self.endLat = endLat
+    self.endLng = endLng
+  }
+  
+  public func cancel() {
     
-    public init(id: Int, startLat: Double, startLng: Double, endLat: Double, endLng: Double) {
-        self.id = id
-        self.startLat = startLat
-        self.startLng = startLng
-        self.endLat = endLat
-        self.endLng = endLng
-    }
-    
-    public func cancel() {
-        
-    }
+  }
 }
