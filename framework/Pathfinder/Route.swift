@@ -11,3 +11,7 @@ import Foundation
 public class Route {
 
 }
+
+public class RouteAction {
+
+}

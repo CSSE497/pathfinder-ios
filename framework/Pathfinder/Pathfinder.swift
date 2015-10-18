@@ -28,7 +28,7 @@ public class Pathfinder {
 
   - Parameter applicationIdentifier:
   */
-  public init(applicationIdentifier: String, userCredentials: String) {
+  public init(applicationIdentifier applicationIdentifier: String, userCredentials: String) {
     self.applicationIdentifier = applicationIdentifier
     self.userCredentials = userCredentials
   }
@@ -38,13 +38,14 @@ public class Pathfinder {
 
   - Parameter callback:  This function will be called exactly once with the populated Cluster object once it is retrieved.
   */
-  public func defaultCluster(callback: (cluster: Cluster) -> Void) {
+  public func defaultCluster(callback callback: (cluster: Cluster) -> Void) {
 
   }
 
   /**
-  Retrieves a previously created cluster by id number for the application, including references to all vehicles and commodities within it. The resulint object can be used to watch for events including vehicle and commodity updates and route assignments.
+  Retrieves a previously created cluster by id number for the application, including references to all vehicles and commodities within it. The resuling object can be used to watch for events including vehicle and commodity updates and route assignments. This method will only need to be used if your application requires Pathfinder subclusters.
 
+  - Paremeter id:        The id of the cluster to retrieve.
   - Parameter callback:  This function will be called exactly once with the populated Cluster object once it is retrieved.
   */
   public func clusterById(id: Int, callback: (cluster: Cluster) -> Void) {
@@ -58,7 +59,7 @@ public class Pathfinder {
   - Parameter capacities:  The limiting constraints of the vehicle of the parameters of your application's routing calculations. The set of parameters needs to be defined and prioritized via the Pathfinder web interface in advance. All vehicles will be routed while keeping their sum occupant parameters to be less than or equal to their limiting constraints.
   - Parameter callback:    This function will be called exactly once with the registered Vehicle object. The Vehicle object can be used to set the vehicle as online or offline, to receive route assignments and send updates regarding pickups and dropoffs.
   */
-  public func connectDeviceAsVehicle(cluster: Cluster, parameterCapacities: [String:Int], callback: (vehicle: Vehicle) -> Void) {
+  public func connectDeviceAsVehicle(cluster cluster: Cluster, parameterCapacities: [String:Int], callback: (vehicle: Vehicle) -> Void) {
 
   }
 
@@ -71,27 +72,7 @@ public class Pathfinder {
   - Parameter parameters:   The quantities the parameters of your application's routing calculations. The set of parameters needs to be defined and prioritized via the Pathfinder web interface in advance.
   - Parameter callback:    This function will be called exactly once with the created Commodity object. The Commodity object can be used to receive updates on status, ro utes and cancel the request if needed.
   */
-  public func requestCommodityTransit(c: Cluster, start: CLLocationCoordinate2D, end: CLLocationCoordinate2D, parameters: [String:Int], callback: (c: Commodity) -> Void) {
+  public func requestCommodityTransit(cluster cluster: Cluster, start: CLLocationCoordinate2D, end: CLLocationCoordinate2D, parameters: [String:Int], callback: (c: Commodity) -> Void) {
 
-  }
-}
-
-// MARK: - WebSocketDelegate
-extension Pathfinder: WebSocketDelegate {
-
-  public func websocketDidConnect(socket: WebSocket) {
-
-  }
-
-  public func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
-
-  }
-
-  public func websocketDidReceiveMessage(socket: WebSocket, text: String) {
-
-  }
-
-  public func websocketDidReceiveData(socket: WebSocket, data: NSData) {
-    
   }
 }

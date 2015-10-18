@@ -24,7 +24,7 @@ public protocol ClusterDelegate {
 
   /**
   A vehicle that was previously online is now offline. If the vehicle was assigned a route, all commodities on that route will be reassigned.
-  
+
   Parameter vehicle: The newly offline vehicle.
   */
   func vehicleDidGoOffline(vehicle: Vehicle)
