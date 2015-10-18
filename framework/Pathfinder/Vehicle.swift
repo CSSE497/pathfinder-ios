@@ -8,6 +8,10 @@
 
 import Foundation
 
+/**
+A registered vehicle that can be routed to transport commodities.
+
+*/
 public class Vehicle {
   var route: Route?
   var delegate: VehicleDelegate?

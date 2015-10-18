@@ -10,6 +10,7 @@
 		05632C02D4CB11F7BE047CAA /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AD000D8A3FB551F7F4F1E91 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		665239891BD31E1F0010893A /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665239881BD31E1F0010893A /* Route.swift */; settings = {ASSET_TAGS = (); }; };
 		6652398B1BD330330010893A /* VehicleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6652398A1BD330330010893A /* VehicleDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		6652398D1BD35C050010893A /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6652398C1BD35C050010893A /* Starscream.framework */; };
 		66FDFE881BD06D81003A9EC3 /* Pathfinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 66FDFE871BD06D81003A9EC3 /* Pathfinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		66FDFE8F1BD06D81003A9EC3 /* Pathfinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FDFE841BD06D81003A9EC3 /* Pathfinder.framework */; settings = {ASSET_TAGS = (); }; };
 		66FDFE941BD06D81003A9EC3 /* PathfinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FDFE931BD06D81003A9EC3 /* PathfinderTests.swift */; };
@@ -35,6 +36,7 @@
 		2624CAA9CEBDDFD28D3FBBC8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		665239881BD31E1F0010893A /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		6652398A1BD330330010893A /* VehicleDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleDelegate.swift; sourceTree = "<group>"; };
+		6652398C1BD35C050010893A /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = "Pods/../build/Debug-iphoneos/Starscream.framework"; sourceTree = "<group>"; };
 		66FDFE841BD06D81003A9EC3 /* Pathfinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pathfinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66FDFE871BD06D81003A9EC3 /* Pathfinder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pathfinder.h; sourceTree = "<group>"; };
 		66FDFE891BD06D81003A9EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6652398D1BD35C050010893A /* Starscream.framework in Frameworks */,
 				05632C02D4CB11F7BE047CAA /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -129,6 +132,7 @@
 		B0F2658778CE341F25AB7F17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6652398C1BD35C050010893A /* Starscream.framework */,
 				8AD000D8A3FB551F7F4F1E91 /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -153,11 +157,11 @@
 			buildConfigurationList = 66FDFE981BD06D81003A9EC3 /* Build configuration list for PBXNativeTarget "Pathfinder" */;
 			buildPhases = (
 				89A225AF19085511BD194BF0 /* Check Pods Manifest.lock */,
-				66FDFE7F1BD06D81003A9EC3 /* Sources */,
 				66FDFE801BD06D81003A9EC3 /* Frameworks */,
-				66FDFE811BD06D81003A9EC3 /* Headers */,
 				66FDFE821BD06D81003A9EC3 /* Resources */,
 				B8B555B5EF1C9B484F669D63 /* Copy Pods Resources */,
+				66FDFE7F1BD06D81003A9EC3 /* Sources */,
+				66FDFE811BD06D81003A9EC3 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -407,6 +411,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = Pathfinder/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -428,6 +436,10 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = Pathfinder/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

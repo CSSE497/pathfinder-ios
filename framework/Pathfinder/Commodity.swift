@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 public class Commodity {
   var delegate: CommodityDelegate?
   
