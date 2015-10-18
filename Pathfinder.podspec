@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '9.0'
   s.name = 'Pathfinder'
   s.summary = 'Pathfinder makes routing easy.'
-  s.requires_arc = True
+  s.requires_arc = true
 
   s.version = '0.1'
 

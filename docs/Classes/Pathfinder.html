@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Pathfinder Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/Pathfinder" class="dashAnchor"></a>
+    <a title="Pathfinder Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/csse497/pathfinder-ios"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Pathfinder Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+          <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:C10Pathfinder7Cluster">Cluster</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Commodity.html">Commodity</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Pathfinder.html">Pathfinder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:C10Pathfinder5Route">Route</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Vehicle.html">Vehicle</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+          <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Pathfinder.html">Pathfinder</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+          <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ClusterDelegate.html">ClusterDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/CommodityDelegate.html">CommodityDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/VehicleDelegate.html">VehicleDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Pathfinder</h1>
+              <div class="declaration">
+                <div class="Swift">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Pathfinder</span></code></pre>
+
+                </div>
+              </div>
+            <p>A connection to the Pathfinder service, specific to one authenticated user belonging to a single application.</p>
+
+<p>This is the starting point for all interactions with Pathfinder. The typical use case of this library is:</p>
+
+<ol>
+<li>Retrieve a Cluster, either by id or the default cluster of the application. All vehicles, commodities and routes within specific clusters. Additional clusters can be configured via the Pathfinder web interface.</li>
+<li>Register as a vehicle or create a commodity within that cluster.</li>
+<li>Create a delegate object for the newly created vehicle or commodity.</li>
+<li>Respond to the CommodityDelegate or VehicleDelegate protocol methods by displaying them on a MapView and executing the appropriate business logic.</li>
+</ol>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC10Pathfinder10PathfindercFMS0_FT21applicationIdentifierSS15userCredentialsSS_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(applicationIdentifier:userCredentials:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10Pathfinder10PathfindercFMS0_FT21applicationIdentifierSS15userCredentialsSS_S0_">init(applicationIdentifier:userCredentials:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Pathfinder</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC10Pathfinder10Pathfinder14defaultClusterFS0_FFT7clusterCS_7Cluster_T_T_"></a>
+                    <a name="//apple_ref/swift/Method/defaultCluster(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10Pathfinder10Pathfinder14defaultClusterFS0_FFT7clusterCS_7Cluster_T_T_">defaultCluster(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieves the top-level cluster for the application, including references to all vehicles and commodities within it. The resulting object can be used to watch for events including vehicle and commodity updates and route assignments.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">defaultCluster</span><span class="p">(</span><span class="nv">callback</span><span class="p">:</span> <span class="p">(</span><span class="nv">cluster</span><span class="p">:</span> <span class="kt">Cluster</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callback</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>This function will be called exactly once with the populated Cluster object once it is retrieved.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC10Pathfinder10Pathfinder11clusterByIdFS0_FTSi8callbackFT7clusterCS_7Cluster_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/clusterById(_:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10Pathfinder10Pathfinder11clusterByIdFS0_FTSi8callbackFT7clusterCS_7Cluster_T__T_">clusterById(_:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieves a previously created cluster by id number for the application, including references to all vehicles and commodities within it. The resulint object can be used to watch for events including vehicle and commodity updates and route assignments.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">clusterById</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="p">(</span><span class="nv">cluster</span><span class="p">:</span> <span class="kt">Cluster</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callback</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>This function will be called exactly once with the populated Cluster object once it is retrieved.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC10Pathfinder10Pathfinder22connectDeviceAsVehicleFS0_FTCS_7Cluster19parameterCapacitiesGVSs10DictionarySSSi_8callbackFT7vehicleCS_7Vehicle_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/connectDeviceAsVehicle(_:parameterCapacities:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10Pathfinder10Pathfinder22connectDeviceAsVehicleFS0_FTCS_7Cluster19parameterCapacitiesGVSs10DictionarySSSi_8callbackFT7vehicleCS_7Vehicle_T__T_">connectDeviceAsVehicle(_:parameterCapacities:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Registers the current device as a vehicle with the Pathfinder service or uses the user&rsquo;s authentication to determine if an existing vehicle record exists and retrieves it. This will NOT set the vehicle to the online state. No routes will be generated for the vehicle until it is set to online.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">connectDeviceAsVehicle</span><span class="p">(</span><span class="nv">cluster</span><span class="p">:</span> <span class="kt">Cluster</span><span class="p">,</span> <span class="nv">parameterCapacities</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span><span class="kt">Int</span><span class="p">],</span> <span class="nv">callback</span><span class="p">:</span> <span class="p">(</span><span class="nv">vehicle</span><span class="p">:</span> <span class="kt">Vehicle</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>cluster</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The cluster to register the vehicle within. Pathfinder does not support moving vehicles between clusters, so the cluster in which the vehicle is created restricts the routes to which it can be assigned.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>capacities</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The limiting constraints of the vehicle of the parameters of your application&rsquo;s routing calculations. The set of parameters needs to be defined and prioritized via the Pathfinder web interface in advance. All vehicles will be routed while keeping their sum occupant parameters to be less than or equal to their limiting constraints.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callback</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>This function will be called exactly once with the registered Vehicle object. The Vehicle object can be used to set the vehicle as online or offline, to receive route assignments and send updates regarding pickups and dropoffs.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC10Pathfinder10Pathfinder23requestCommodityTransitFS0_FTCS_7Cluster5startVSC22CLLocationCoordinate2D3endS2_10parametersGVSs10DictionarySSSi_8callbackFT1cCS_9Commodity_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/requestCommodityTransit(_:start:end:parameters:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10Pathfinder10Pathfinder23requestCommodityTransitFS0_FTCS_7Cluster5startVSC22CLLocationCoordinate2D3endS2_10parametersGVSs10DictionarySSSi_8callbackFT1cCS_9Commodity_T__T_">requestCommodityTransit(_:start:end:parameters:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Requests transportation for a physical entity from one geographical location to another. This will immediately route a vehicle to pick up the commodity if one is available that can hold the commodities parameters within the vehicles capacity.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">requestCommodityTransit</span><span class="p">(</span><span class="nv">c</span><span class="p">:</span> <span class="kt">Cluster</span><span class="p">,</span> <span class="nv">start</span><span class="p">:</span> <span class="kt">CLLocationCoordinate2D</span><span class="p">,</span> <span class="nv">end</span><span class="p">:</span> <span class="kt">CLLocationCoordinate2D</span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span><span class="kt">Int</span><span class="p">],</span> <span class="nv">callback</span><span class="p">:</span> <span class="p">(</span><span class="nv">c</span><span class="p">:</span> <span class="kt">Commodity</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>cluster</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The cluster to request commodity transit within. Pathfinder does not support moving commodities between clusters after they have been created. The cluster in which the commodity is created determines the set of vehicles that can transport it and the set of other commodities that can share transit with it.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>start</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The starting location of the commodity.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>destination</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The destination location of the commodity.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>parameters</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The quantities the parameters of your application&rsquo;s routing calculations. The set of parameters needs to be defined and prioritized via the Pathfinder web interface in advance.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callback</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>This function will be called exactly once with the created Commodity object. The Commodity object can be used to receive updates on status, ro utes and cancel the request if needed.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2015 <a class="link" href="https://github.com/csse497/pathfinder" target="_blank" rel="external">Adam Michael</a>. All rights reserved. (Last updated: 2015-10-18)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.3.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
