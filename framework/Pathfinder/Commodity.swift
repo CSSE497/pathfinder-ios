@@ -66,3 +66,21 @@ public class Commodity {
 
   }
 }
+
+class CommodityResponse {
+  let id: Int
+  let start: CLLocationCoordinate2D
+  let destination: CLLocationCoordinate2D
+  let param: Int
+
+  class func parse(message: NSDictionary) -> CommodityResponse? {
+    return CommodityResponse(id: 12, start: CLLocationCoordinate2D(), destination: CLLocationCoordinate2D(), param: 10)
+  }
+
+  init(id: Int, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, param: Int) {
+    self.id = id
+    self.start = start
+    self.destination = destination
+    self.param = param
+  }
+}

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 /**
 A registered vehicle that can be routed to transport commodities.
@@ -66,5 +67,22 @@ public class Vehicle {
   */
   public func goOffline() -> Bool {
     return false
+  }
+}
+
+class VehicleResponse {
+  let id: Int
+  let location: CLLocationCoordinate2D
+  let capacity: Int
+
+  class func parse(message: NSDictionary) -> VehicleResponse? {
+    return VehicleResponse(id: 0, location: CLLocationCoordinate2D(), capacity: 0)
+
+  }
+
+  init(id: Int, location: CLLocationCoordinate2D, capacity: Int) {
+    self.id = id
+    self.location = location
+    self.capacity = capacity
   }
 }

@@ -23,10 +23,10 @@ public class Cluster {
   public var id: Int?
 
   /// The vehicles that are currently online within the cluster.
-  public let vehicles: [Vehicle]
+  public var vehicles: [Vehicle]
 
   /// The commodities that are currently waiting on transit or are in transit within the cluster.
-  public let commodities: [Commodity]
+  public var commodities: [Commodity]
 
   /// All of the routes that are currently in progress for the cluster.
   public let routes: [Route]
@@ -50,7 +50,23 @@ public class Cluster {
 
   //// Attempts to authenticate and retrieve a reference to the requested cluster. If the connection succeeds, the corresponding method on the delegate will be executed. This method should only be utilized if you wish to receive updates on all commodities, vehicles and routes for the entire cluster.
   public func connect() {
-
+    if id != nil {
+      self.conn.getClusterById(id!) { (resp: ClusterResponse) -> Void in
+        self.id = resp.id
+        self.vehicles = resp.vehicles
+        self.commodities = resp.commodities
+        self.delegate?.connectedTo(self)
+      }
+    } else {
+      self.conn.getDefaultCluster { (appResp: ApplicationResponse) -> Void in
+        self.conn.getClusterById(appResp.defaultId) { (resp: ClusterResponse) -> Void in
+          self.id = resp.id
+          self.vehicles = resp.vehicles
+          self.commodities = resp.commodities
+          self.delegate?.connectedTo(self)
+        }
+      }
+    }
   }
 
   /**
@@ -73,5 +89,36 @@ public class Cluster {
    */
   public func requestCommodity(start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, parameters: [String:Int]) -> Commodity {
     return Commodity(start: start, destination: destination, parameters: parameters)
+  }
+}
+
+class ApplicationResponse {
+  let defaultId: Int
+  let clusterIds: [Int]
+
+  class func parse(message: NSDictionary) -> ApplicationResponse? {
+    return ApplicationResponse(defaultId: 1, clusterIds: [Int]())
+
+  }
+
+  init(defaultId: Int, clusterIds: [Int]) {
+    self.defaultId = defaultId
+    self.clusterIds = clusterIds
+  }
+}
+
+class ClusterResponse {
+  let id: Int
+  let vehicles: [Vehicle]
+  let commodities: [Commodity]
+
+  class func parse(message: NSDictionary) -> ClusterResponse? {
+    return ClusterResponse(id: 4, vehicles: [Vehicle](), commodities: [Commodity]())
+  }
+
+  init(id: Int, vehicles: [Vehicle], commodities: [Commodity]) {
+    self.id = id
+    self.vehicles = vehicles
+    self.commodities = commodities
   }
 }
