@@ -1,0 +1,20 @@
+PODS:
+  - GoogleMaps (1.10.4)
+  - Pathfinder (0.1):
+    - Starscream
+  - Starscream (1.0.1)
+
+DEPENDENCIES:
+  - GoogleMaps
+  - Pathfinder (from `../../`)
+
+EXTERNAL SOURCES:
+  Pathfinder:
+    :path: ../../
+
+SPEC CHECKSUMS:
+  GoogleMaps: 134bcf57e8d489efbc0c29d532ed421554fabdb2
+  Pathfinder: c8d79c6977edae56b6d15eef700a34607a9cdeff
+  Starscream: 7b731637cd167ed5a059331f52c0254b1aa69095
+
+COCOAPODS: 0.39.0
