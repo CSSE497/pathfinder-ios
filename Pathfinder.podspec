@@ -26,5 +26,7 @@ Pod::Spec.new do |s|
 
   s.source_files = 'framework/Pathfinder/*.{h,swift}'
   s.exclude_files = '**/*{TestCase,Tests}.{h,swift}'
+
+  s.dependency 'Starscream'
 end
 
