@@ -26,6 +26,7 @@
 		6647222D1BDCAED400E067A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		664722301BDCAED400E067A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		664722321BDCAED400E067A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		664722391BDD0EFA00E067A7 /* ClusterObserver-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ClusterObserver-Bridging-Header.h"; sourceTree = "<group>"; };
 		66E9D0EF53ABD81DBE0408A1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C8C2B51ED38E12B957BB5EA6 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -79,6 +80,7 @@
 				6647222F1BDCAED400E067A7 /* LaunchScreen.storyboard */,
 				664722321BDCAED400E067A7 /* Info.plist */,
 				6647222A1BDCAED400E067A7 /* ClusterObserver.xcdatamodeld */,
+				664722391BDD0EFA00E067A7 /* ClusterObserver-Bridging-Header.h */,
 			);
 			path = ClusterObserver;
 			sourceTree = "<group>";
@@ -126,6 +128,7 @@
 				TargetAttributes = {
 					6647221F1BDCAED400E067A7 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = BS9VZ54W3M;
 					};
 				};
 			};
@@ -329,10 +332,17 @@
 			baseConfigurationReference = 66E9D0EF53ABD81DBE0408A1 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ClusterObserver/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.pathfinder.ClusterObserver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "ClusterObserver/ClusterObserver-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -341,10 +351,16 @@
 			baseConfigurationReference = 5E2ACD3F980338DB68F54F24 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ClusterObserver/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.pathfinder.ClusterObserver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "ClusterObserver/ClusterObserver-Bridging-Header.h";
 			};
 			name = Release;
 		};
