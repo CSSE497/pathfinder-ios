@@ -16,6 +16,13 @@ The standard use case is to update views and execute billing and other business 
 public protocol ClusterDelegate {
 
   /**
+  The connection to the cluster has been established.
+  
+  - Parameter cluster:  The newly connected cluster.
+  */
+  func connectedTo(cluster: Cluster)
+
+  /**
   A vehicle that was previously offline or did not exist is now online and ready to be routed in the cluster.
 
   - Parameter vehicle: The newly online vehicle.
