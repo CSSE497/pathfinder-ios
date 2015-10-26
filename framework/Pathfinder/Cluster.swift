@@ -31,6 +31,9 @@ public class Cluster {
   /// All of the routes that are currently in progress for the cluster.
   public let routes: [Route]
 
+  /// True if the connection to Pathfinder is active.
+  public var connected: Bool
+
   let conn: PathfinderConnection
 
   init(conn: PathfinderConnection) {
@@ -38,6 +41,7 @@ public class Cluster {
     self.commodities = [Commodity]()
     self.routes = [Route]()
     self.conn = conn
+    self.connected = false
   }
 
   init(conn: PathfinderConnection, id: Int) {
@@ -46,27 +50,12 @@ public class Cluster {
     self.commodities = [Commodity]()
     self.routes = [Route]()
     self.conn = conn
+    self.connected = true
   }
 
   //// Attempts to authenticate and retrieve a reference to the requested cluster. If the connection succeeds, the corresponding method on the delegate will be executed. This method should only be utilized if you wish to receive updates on all commodities, vehicles and routes for the entire cluster.
   public func connect() {
-    if id != nil {
-      self.conn.getClusterById(id!) { (resp: ClusterResponse) -> Void in
-        self.id = resp.id
-        self.vehicles = resp.vehicles
-        self.commodities = resp.commodities
-        self.delegate?.connectedTo(self)
-      }
-    } else {
-      self.conn.getDefaultCluster { (appResp: ApplicationResponse) -> Void in
-        self.conn.getClusterById(appResp.defaultId) { (resp: ClusterResponse) -> Void in
-          self.id = resp.id
-          self.vehicles = resp.vehicles
-          self.commodities = resp.commodities
-          self.delegate?.connectedTo(self)
-        }
-      }
-    }
+    connect { _ in }
   }
 
   /**
@@ -75,8 +64,8 @@ public class Cluster {
   - Parameter capacities:  The limiting constraints of the vehicle of the parameters of your application's routing calculations. The set of parameters needs to be defined and prioritized via the Pathfinder web interface in advance. All vehicles will be routed while keeping their sum occupant parameters to be less than or equal to their limiting constraints.
   - Parameter callback:    This function will be called exactly once with the registered Vehicle object. The Vehicle object can be used to set the vehicle as online or offline, to receive route assignments and send updates regarding pickups and dropoffs.
   */
-  public func connectAsVehicle(parameterCapacities: [String:Int]) -> Vehicle {
-    return Vehicle(capacities: parameterCapacities)
+  public func createVehicle(parameterCapacities: [String:Int]) -> Vehicle {
+    return Vehicle(cluster: self, capacities: parameterCapacities)
   }
 
   /**
@@ -87,8 +76,34 @@ public class Cluster {
    - Parameter parameters:   The quantities the parameters of your application's routing calculations. The set of parameters needs to be defined and prioritized via the Pathfinder web interface in advance.
    - Parameter callback:    This function will be called exactly once with the created Commodity object. The Commodity object can be used to receive updates on status, routes and cancel the request if needed.
    */
-  public func requestCommodity(start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, parameters: [String:Int]) -> Commodity {
-    return Commodity(start: start, destination: destination, parameters: parameters)
+  public func createCommodity(start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, parameters: [String:Int]) -> Commodity {
+    return Commodity(cluster: self, start: start, destination: destination, parameters: parameters)
+  }
+
+  func connect(callback: (cluster: Cluster) -> Void) {
+    if !connected {
+      if id != nil {
+        conn.getClusterById(id!) { (resp: ClusterResponse) -> Void in
+          self.connected = true
+          self.id = resp.id
+          self.vehicles = resp.vehicles
+          self.commodities = resp.commodities
+          self.delegate?.connectedTo(self)
+          callback(cluster: self)
+        }
+      } else {
+        conn.getDefaultCluster { (appResp: ApplicationResponse) -> Void in
+          self.conn.getClusterById(appResp.defaultId) { (resp: ClusterResponse) -> Void in
+            self.connected = true
+            self.id = resp.id
+            self.vehicles = resp.vehicles
+            self.commodities = resp.commodities
+            self.delegate?.connectedTo(self)
+            callback(cluster: self)
+          }
+        }
+      }
+    }
   }
 }
 
@@ -97,8 +112,11 @@ class ApplicationResponse {
   let clusterIds: [Int]
 
   class func parse(message: NSDictionary) -> ApplicationResponse? {
-    return ApplicationResponse(defaultId: 1, clusterIds: [Int]())
-
+    if let value: NSDictionary = message["applicationCluster"] as? NSDictionary {
+      let clusterId = value["clusterId"] as! Int
+      return ApplicationResponse(defaultId: clusterId, clusterIds: [Int]())
+    }
+    return nil
   }
 
   init(defaultId: Int, clusterIds: [Int]) {
@@ -113,7 +131,30 @@ class ClusterResponse {
   let commodities: [Commodity]
 
   class func parse(message: NSDictionary) -> ClusterResponse? {
-    return ClusterResponse(id: 4, vehicles: [Vehicle](), commodities: [Commodity]())
+    if let model: NSDictionary = message["model"] as? NSDictionary {
+      if model["model"] as? String == "Cluster" {
+        if let value: NSDictionary = model["value"] as? NSDictionary {
+          let clusterId = value["id"] as! Int
+          let vehicles = (value["vehicles"] as! NSArray).map() { (anyObj: AnyObject) -> Vehicle in
+            let vehicleDict = anyObj as! NSDictionary
+            let id = vehicleDict["id"] as! Int
+            let capacities = ["chimney":vehicleDict["capacity"] as! Int]
+            let location = CLLocationCoordinate2D(latitude: vehicleDict["latitude"] as! Double, longitude: vehicleDict["longitude"] as! Double)
+            return Vehicle(clusterId: clusterId, id: id, capacities: capacities, location: location)
+          }
+          let commodities = (value["commodities"] as! NSArray).map() { (anyObj: AnyObject) -> Commodity in
+            let commodityDict = anyObj as! NSDictionary
+            let id = commodityDict["id"] as! Int
+            let start = CLLocationCoordinate2D(latitude: commodityDict["startLatitude"] as! Double, longitude: commodityDict["startLongitude"] as! Double)
+            let destination = CLLocationCoordinate2D(latitude: commodityDict["endLatitude"] as! Double, longitude: commodityDict["endLongitude"] as! Double)
+            let parameters = ["chimney":commodityDict["param"] as! Int]
+            return Commodity(clusterId: clusterId, id: id, start: start, destination: destination, parameters: parameters)
+          }
+          return ClusterResponse(id: clusterId, vehicles: vehicles, commodities: commodities)
+        }
+      }
+    }
+    return nil
   }
 
   init(id: Int, vehicles: [Vehicle], commodities: [Commodity]) {

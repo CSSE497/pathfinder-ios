@@ -21,10 +21,12 @@ class PathfinderConnection {
   var commodityFns: [CommodityFn]
   var vehicleFns: [VehicleFn]
 
-
-  let pathfinderSocketUrl = "ws://108.59.85.151/socket"
+  let pathfinderSocketUrl = "ws://130.211.184.70:9000/socket"
   let pathfinderSocket: WebSocket
   let applicationIdentifier: String
+
+  var connected = false
+  var queuedMessages = [[String:NSDictionary]]()
 
   init(applicationIdentifier: String) {
     print("PathfinderConnection created, attempting to connect")
@@ -41,12 +43,12 @@ class PathfinderConnection {
     pathfinderSocket.connect()
   }
 
-  func getDefaultCluster(callback: (resp: ApplicationResponse) -> Void) {
+  func getDefaultCluster(callback: ApplicationFn) {
     applicationFns.append(callback)
-    writeData([ "getClusters": [ "id": applicationIdentifier ] ])
+    writeData([ "getApplicationCluster": [ "id": applicationIdentifier ] ])
   }
 
-  func getClusterById(id: Int, callback: (resp: ClusterResponse) -> Void) {
+  func getClusterById(id: Int, callback: ClusterFn) {
     clusterFns.append(callback)
     writeData([
       "read": [
@@ -56,13 +58,61 @@ class PathfinderConnection {
     ])
   }
 
+  func create(vehicle: Vehicle, callback: VehicleFn) {
+    vehicleFns.append(callback)
+    writeData([
+      "create": [
+        "model": "Vehicle",
+        "value": [
+          "latitude": vehicle.location!.latitude,
+          "longitude": vehicle.location!.longitude,
+          "capacity": vehicle.capacities.first!.1,
+          "clusterId": vehicle.cluster.id!
+        ]
+      ]
+    ])
+  }
+
+  func update(vehicle: Vehicle, callback: VehicleFn) {
+    vehicleFns.append(callback)
+    writeData([
+      "update": [
+        "model": "Vehicle",
+        "id": vehicle.id!,
+        "value": [
+          "latitude": vehicle.location!.latitude,
+          "longitude": vehicle.location!.longitude
+        ]
+      ]
+    ])
+  }
+
+  func subscribe(vehicle: Vehicle) {
+    writeData([
+      "routeSubscribe": [
+        "model": "Vehicle",
+        "id": vehicle.id!
+      ]
+    ])
+  }
+
+  func dontWriteData(data: [String:NSDictionary]) {
+    print("You were about to write: \(data)")
+  }
+
   func writeData(data: [String:NSDictionary]) {
-    do {
-      let jsonData = try NSJSONSerialization.dataWithJSONObject(data, options: NSJSONWritingOptions(rawValue: 0))
-      let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding)
-      pathfinderSocket.writeString(jsonString! as String)
-    } catch {
-      print(error)
+    if connected == true {
+      print("Sending message: \(data)")
+      do {
+        let jsonData = try NSJSONSerialization.dataWithJSONObject(data, options: NSJSONWritingOptions(rawValue: 0))
+        let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding)
+        pathfinderSocket.writeString(jsonString! as String)
+      } catch {
+        print(error)
+      }
+    } else {
+      print("Waiting to send message: \(data)")
+      queuedMessages.append(data)
     }
   }
 
@@ -71,10 +121,10 @@ class PathfinderConnection {
       applicationFns.removeFirst()(applicationResponse)
     } else if let clusterResponse: ClusterResponse = ClusterResponse.parse(message) {
       clusterFns.removeFirst()(clusterResponse)
-    } else if let commodityResponse: CommodityResponse = CommodityResponse.parse(message) {
-      commodityFns.removeFirst()(commodityResponse)
     } else if let vehicleResponse: VehicleResponse = VehicleResponse.parse(message) {
       vehicleFns.removeFirst()(vehicleResponse)
+    //} else if let commodityResponse: CommodityResponse = CommodityResponse.parse(message) {
+    //  commodityFns.removeFirst()(commodityResponse)
     } else {
       print("PathfinderConnection received unparseable message: \(message)")
     }
@@ -86,7 +136,11 @@ extension PathfinderConnection: WebSocketDelegate {
 
   func websocketDidConnect(socket: WebSocket) {
     print("PathfinderConnection received connect from \(socket)")
-
+    connected = true
+    queuedMessages.forEach {  (data: [String:NSDictionary]) -> Void in
+      writeData(data)
+    }
+    queuedMessages = [[String:NSDictionary]]()
   }
 
   func websocketDidDisconnect(socket: WebSocket, error: NSError?) {

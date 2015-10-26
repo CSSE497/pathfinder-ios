@@ -43,18 +43,40 @@ public class Commodity {
   /// The destination location of the commodity's journey.
   public let destination: CLLocationCoordinate2D
 
+  /// The parameters that constrain the number of commodities that can be transported by one vehicle.
+  public let parameters: [String:Int]
+
   /// The route that is assigned to pick up the commodity, if there is one.
   public var route: Route?
 
-  init(start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, parameters: [String:Int]) {
+  var cluster: Cluster?
+
+  init(cluster: Cluster, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, parameters: [String:Int]) {
+    self.cluster = cluster
     self.start = start
     self.destination = destination
+    self.parameters = parameters
   }
 
-  init(id: Int, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, parameters: [String:Int]) {
+  init(cluster: Cluster, id: Int, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, parameters: [String:Int]) {
+    self.cluster = cluster
     self.id = id
     self.start = start
     self.destination = destination
+    self.parameters = parameters
+  }
+
+  init(clusterId: Int, id: Int, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, parameters: [String:Int]) {
+    self.id = id
+    self.start = start
+    self.destination = destination
+    self.parameters = parameters
+  }
+
+  public func connect() {
+    cluster!.connect() { (cluster: Cluster) -> Void in
+
+    }
   }
 
   /**
