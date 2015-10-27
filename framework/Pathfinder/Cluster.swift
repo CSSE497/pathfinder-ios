@@ -88,7 +88,7 @@ public class Cluster {
           self.id = resp.id
           self.vehicles = resp.vehicles
           self.commodities = resp.commodities
-          self.delegate?.connectedTo(self)
+          self.delegate?.connected(self)
           callback(cluster: self)
         }
       } else {
@@ -98,7 +98,7 @@ public class Cluster {
             self.id = resp.id
             self.vehicles = resp.vehicles
             self.commodities = resp.commodities
-            self.delegate?.connectedTo(self)
+            self.delegate?.connected(self)
             callback(cluster: self)
           }
         }

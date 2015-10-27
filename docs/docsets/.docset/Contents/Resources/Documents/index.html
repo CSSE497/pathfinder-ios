@@ -107,12 +107,28 @@
 
 <ol>
 <li><p>Obtain a cluster reference from the pathfinder object.</p>
-<pre class="highlight swift"><code><span class="n">pathfinderRef</span><span class="o">.</span><span class="n">defaultCluster</span> <span class="p">{</span> <span class="p">(</span><span class="nv">cluster</span><span class="p">:</span> <span class="kt">Cluster</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span>
-    <span class="k">self</span><span class="o">.</span><span class="n">cluster</span> <span class="o">=</span> <span class="n">cluster</span>
-<span class="p">}</span>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">cluster</span> <span class="o">=</span> <span class="n">pathfinderRef</span><span class="o">.</span><span class="nf">defaultCluster</span><span class="p">()</span>
 </code></pre></li>
 <li><p>Set your ViewController to be the cluster&rsquo;s delegate via the ClusterDelegate protocol.</p>
-<pre class="highlight swift"><code><span class="k">self</span><span class="o">.</span><span class="n">cluster</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+<pre class="highlight swift"><code><span class="n">cluster</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+</code></pre></li>
+<li><p>Connect your cluster to Pathfinder.</p>
+<pre class="highlight swift"><code><span class="n">cluster</span><span class="o">.</span><span class="nf">connect</span><span class="p">()</span>
+</code></pre></li>
+<li><p>Implement the <code>ClusterDelegate</code> protocol.</p>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">ClusterDelegate</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">connected</span><span class="p">(</span><span class="nv">cluster</span><span class="p">:</span> <span class="kt">Cluster</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cluster</span><span class="o">.</span><span class="nf">vehicles</span><span class="p">()</span><span class="o">.</span><span class="n">foreach</span> <span class="p">{</span> <span class="p">(</span><span class="nv">v</span><span class="p">:</span> <span class="kt">Vehicle</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span> <span class="nf">draw</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="p">}</span>
+        <span class="n">cluster</span><span class="o">.</span><span class="nf">commodities</span><span class="p">()</span><span class="o">.</span><span class="n">foreach</span> <span class="p">{</span> <span class="p">(</span><span class="nv">c</span><span class="p">:</span> <span class="kt">Commodity</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span> <span class="nf">draw</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">clusterWasRouted</span><span class="p">(</span><span class="nv">routes</span><span class="p">:</span> <span class="p">[</span><span class="kt">Route</span><span class="p">])</span> <span class="p">{</span>
+        <span class="nf">clearOldRoutes</span><span class="p">()</span>
+        <span class="n">routes</span><span class="o">.</span><span class="n">foreach</span> <span class="p">{</span> <span class="p">(</span><span class="nv">r</span><span class="p">:</span> <span class="kt">Route</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span> <span class="nf">draw</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="o">...</span>
+<span class="p">}</span>
 </code></pre></li>
 </ol>
 
@@ -129,12 +145,21 @@
 <span class="n">parameters</span><span class="p">[</span><span class="err">'</span><span class="n">pizzas</span><span class="err">'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">25</span>
 </code></pre></li>
 <li><p>Obtain a Vehicle reference for your application.</p>
-<pre class="highlight swift"><code><span class="n">pathfinder</span><span class="o">.</span><span class="nf">connectDeviceAsVehicle</span><span class="p">(</span><span class="nv">cluster</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">cluster</span><span class="p">,</span> <span class="nv">parameterCapacities</span><span class="p">:</span> <span class="n">parameters</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="nv">v</span><span class="p">:</span> <span class="kt">Vehicle</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span>
-    <span class="k">self</span><span class="o">.</span><span class="n">vehicle</span> <span class="o">=</span> <span class="n">v</span>
-<span class="p">}</span>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">vehicle</span> <span class="o">=</span> <span class="n">pathfinder</span><span class="o">.</span><span class="nf">defaultCluster</span><span class="p">()</span><span class="o">.</span><span class="nf">createVehicle</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
 </code></pre></li>
 <li><p>Set your ViewController to be the vehicle&rsquo;s delegate via the VehicleDelegate protocol.</p>
-<pre class="highlight swift"><code><span class="k">self</span><span class="o">.</span><span class="n">vehicle</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+<pre class="highlight swift"><code><span class="n">vehicle</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+</code></pre></li>
+<li><p>Connect your vehicle to Pathfinder</p>
+<pre class="highlight swift"><code><span class="n">vehicle</span><span class="o">.</span><span class="nf">connect</span><span class="p">()</span>
+</code></pre></li>
+<li><p>Implement the <code>VehicleDelegate</code> protocol</p>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">VehicleDelegate</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">wasRouted</span><span class="p">(</span><span class="nv">vehicle</span><span class="p">:</span> <span class="kt">Vehicle</span><span class="p">,</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">Route</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">drawRouteOnMyMap</span><span class="p">(</span><span class="n">route</span><span class="o">.</span><span class="nf">coordinates</span><span class="p">())</span>
+        <span class="nf">drawCommoditiesOnMyMap</span><span class="p">(</span><span class="n">route</span><span class="o">.</span><span class="nf">commodities</span><span class="p">())</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></li>
 </ol>
 
@@ -149,12 +174,26 @@
 <span class="n">parameters</span><span class="p">[</span><span class="err">'</span><span class="n">people</span><span class="err">'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
 </code></pre></li>
 <li><p>Initiate the request and obtain a commodity reference from the top-level Pathfinder object.</p>
-<pre class="highlight swift"><code><span class="n">pathfinder</span><span class="o">.</span><span class="nf">requestCommodityTransit</span><span class="p">(</span><span class="nv">cluster</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">cluster</span><span class="p">,</span> <span class="nv">start</span><span class="p">:</span> <span class="n">startCoordinates</span><span class="p">,</span> <span class="nv">destination</span><span class="p">:</span> <span class="n">endCoordinates</span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="n">parameters</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="nv">c</span><span class="p">:</span> <span class="kt">Commodity</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span>
-    <span class="k">self</span><span class="o">.</span><span class="n">commodity</span> <span class="o">=</span> <span class="n">c</span>
-<span class="p">}</span>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">commodity</span> <span class="o">=</span> <span class="n">pathfinder</span><span class="o">.</span><span class="nf">defaultCluster</span><span class="p">()</span><span class="o">.</span><span class="nf">createCommodity</span><span class="p">(</span>
+    <span class="nv">start</span><span class="p">:</span> <span class="n">startCoordinates</span><span class="p">,</span> <span class="nv">destination</span><span class="p">:</span> <span class="n">endCoordinates</span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="n">parameters</span><span class="p">)</span>
 </code></pre></li>
 <li><p>Set your ViewController to be the commodity&rsquo;s delegate via the CommodityDelegate protocol.</p>
-<pre class="highlight swift"><code><span class="k">self</span><span class="o">.</span><span class="n">commodity</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+<pre class="highlight swift"><code>    <span class="n">commodity</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+</code></pre></li>
+<li><p>Implement the <code>CommodityDelegate</code> protocol.</p>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">CommodityDelegate</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">connected</span><span class="p">(</span><span class="nv">commodity</span><span class="p">:</span> <span class="kt">Commodity</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">draw</span><span class="p">(</span><span class="n">commodity</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">wasRouted</span><span class="p">(</span><span class="nv">commodity</span><span class="p">:</span> <span class="kt">Commodity</span><span class="p">,</span> <span class="nv">byVehicle</span><span class="p">:</span> <span class="kt">Vehicle</span><span class="p">,</span> <span class="nv">onRoute</span><span class="p">:</span> <span class="kt">Route</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">byVehicle</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+        <span class="n">byVehicle</span><span class="o">.</span><span class="nf">connect</span><span class="p">()</span>
+        <span class="nf">draw</span><span class="p">(</span><span class="n">onRoute</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="o">...</span>
+<span class="p">}</span>
 </code></pre></li>
 </ol>
 

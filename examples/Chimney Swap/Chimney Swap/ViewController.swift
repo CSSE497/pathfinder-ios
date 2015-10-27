@@ -137,6 +137,10 @@ extension ViewController: GMSMapViewDelegate {
 // Mark: - VehicleDelegate
 extension ViewController: VehicleDelegate {
 
+  func connected(vehicle: Vehicle) {
+    print("Vehicle was connected")
+  }
+
   func wasRouted(route: Route, vehicle: Vehicle) {
     print("Vehicle delegate received updated route")
     var locations = route.coordinates()

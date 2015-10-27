@@ -17,6 +17,13 @@ The standard use cases are to notify the requesting user that a vehicle has been
 public protocol CommodityDelegate {
 
   /**
+  A commodity was connected to the Pathfinder backend.
+
+  - Parameter commodity:  The commodity that was connected.
+  */
+  func connected(commodity: Commodity)
+
+  /**
   A commodity was picked up at its starting location.
   
   - Parameter location:   The location where the commodity was picked up.

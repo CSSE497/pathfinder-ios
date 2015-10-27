@@ -20,7 +20,7 @@ public protocol ClusterDelegate {
   
   - Parameter cluster:  The newly connected cluster.
   */
-  func connectedTo(cluster: Cluster)
+  func connected(cluster: Cluster)
 
   /**
   A vehicle that was previously offline or did not exist is now online and ready to be routed in the cluster.
