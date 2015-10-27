@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>RouteAction Class Reference</title>
+    <title>Vehicle Extension Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -9,8 +9,8 @@
     <script src="../js/jazzy.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/RouteAction" class="dashAnchor"></a>
-    <a title="RouteAction Class Reference"></a>
+    <a name="//apple_ref/swift/Extension/Vehicle" class="dashAnchor"></a>
+    <a title="Vehicle Extension Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html"> Docs</a> (100% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html"> Reference</a>
         <img id="carat" src="../img/carat.png" />
-        RouteAction Class Reference
+        Vehicle Extension Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -77,14 +77,21 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>RouteAction</h1>
+            <h1>Vehicle</h1>
               <div class="declaration">
                 <div class="Swift">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">RouteAction</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Vehicle</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                 </div>
               </div>
-            <p>A data object containing a commodity, a location and a field indicating pickup or dropoff.</p>
+            <p>A registered vehicle that can be routed to transport commodities.</p>
+
+<p>This class should never be instantiated directly because it represents the state of the data from the Pathfinder backend. Instead, connect your device as a vehicle.</p>
+
+<pre class="highlight plaintext"><code>pathfinder.connectDeviceAsVehicle(cluster: myDefaultCluster, parameterCapacities: myCapacities) { (vehicle: Vehicle) -&gt; Void in
+self.vehicle = vehicle
+}
+</code></pre>
 
           </section>
           <section class="section task-group-section">
@@ -93,9 +100,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:OC10Pathfinder11RouteAction6Action"></a>
-                    <a name="//apple_ref/swift/Enum/Action" class="dashAnchor"></a>
-                    <a class="token" href="#/s:OC10Pathfinder11RouteAction6Action">Action</a>
+                    <a name="/s:FC10Pathfinder7Vehicle15locationManagerFS0_FTCSo17CLLocationManager28didChangeAuthorizationStatusOSC21CLAuthorizationStatus_T_"></a>
+                    <a name="//apple_ref/swift/Method/locationManager(_:didChangeAuthorizationStatus:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10Pathfinder7Vehicle15locationManagerFS0_FTCSo17CLLocationManager28didChangeAuthorizationStatusOSC21CLAuthorizationStatus_T_">locationManager(_:didChangeAuthorizationStatus:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -103,15 +110,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The possible actions that can be performed on commodities by vehicles.</p>
+                        <p>Undocumented</p>
 
-                        <a href="../Classes/RouteAction/Action.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Action</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Vehicle</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                         </div>
                       </div>
@@ -121,9 +127,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC10Pathfinder11RouteAction6actionOS0_6Action"></a>
-                    <a name="//apple_ref/swift/Property/action" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC10Pathfinder11RouteAction6actionOS0_6Action">action</a>
+                    <a name="/s:FC10Pathfinder7Vehicle15locationManagerFS0_FTCSo17CLLocationManager18didUpdateLocationsGSaCSo10CLLocation__T_"></a>
+                    <a name="//apple_ref/swift/Method/locationManager(_:didUpdateLocations:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10Pathfinder7Vehicle15locationManagerFS0_FTCSo17CLLocationManager18didUpdateLocationsGSaCSo10CLLocation__T_">locationManager(_:didUpdateLocations:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -131,68 +137,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Whether the action is a pickup or dropoff.</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">action</span><span class="p">:</span> <span class="kt">Action</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:vC10Pathfinder11RouteAction9commodityGSqCS_9Commodity_"></a>
-                    <a name="//apple_ref/swift/Property/commodity" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC10Pathfinder11RouteAction9commodityGSqCS_9Commodity_">commodity</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The commodity that is picked up or dropped off.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="Swift">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">commodity</span><span class="p">:</span> <span class="kt">Commodity</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:vC10Pathfinder11RouteAction8locationVSC22CLLocationCoordinate2D"></a>
-                    <a name="//apple_ref/swift/Property/location" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC10Pathfinder11RouteAction8locationVSC22CLLocationCoordinate2D">location</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The location where the action is to occur.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="Swift">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">location</span><span class="p">:</span> <span class="kt">CLLocationCoordinate2D</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Vehicle</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                         </div>
                       </div>
