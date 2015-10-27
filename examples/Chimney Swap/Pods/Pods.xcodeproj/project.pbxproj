@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0A08B578FF5350985D69ED9CE6BD4495 /* Commodity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD030A1D440F71ACC0E893AF5FCA742A /* Commodity.swift */; };
 		0B2530CD17B14289B2747E1C83A38B20 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012A32E983E71CE134F0E8D7763483AB /* Route.swift */; };
-		0E983A1F1C91C6C38B0566B09B3AA64D /* SSLSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2363A644B75A5D4C07746D2FFCC62317 /* SSLSecurity.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0E983A1F1C91C6C38B0566B09B3AA64D /* SSLSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA57356105A045958D2B3342C9B6FCDA /* SSLSecurity.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1482363CD2D12BF0967E1F9010E213EB /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EF5341F11FDB0459C8606D0F3B239D /* Vehicle.swift */; };
 		156285296F04DB4947CA0947F4AD783E /* Pods-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		22963BF7D6D984CEBDC056742FE23E12 /* Pathfinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A1248BEC404921C72C170E9E5A0B06E /* Pathfinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -19,16 +19,16 @@
 		5996DE9118B128663D31B0E5E630C362 /* Pathfinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B304BE0645FE9F373AA2249EC241A957 /* Pathfinder.swift */; };
 		5B164747228825D21F09EE50C436738C /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */; };
 		64E10BE4518DEA2583D86EE2813CF92A /* Cluster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8DA4EBA2DC1F036F8E3EB16D9838B1 /* Cluster.swift */; };
-		6BBD826FB2DC0D04D3A8D6FA6FD47BB4 /* Starscream-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E36E3C06AE760EC29E2041E05E4103C9 /* Starscream-dummy.m */; };
+		6BBD826FB2DC0D04D3A8D6FA6FD47BB4 /* Starscream-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 172BCEF3F4D58675D3A26ABD6B11B2D9 /* Starscream-dummy.m */; };
 		79BAAD3587B9ABAEF5ED7AEBAEA18170 /* CommodityDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A0873705B1530EA184CBA7AB8931EB /* CommodityDelegate.swift */; };
-		7D76C57B543FD039C7BF73BEB1F176D0 /* Starscream-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EA72D31E278DCCA42F50D0302BFC444 /* Starscream-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7D76C57B543FD039C7BF73BEB1F176D0 /* Starscream-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 91E53EA30E3E60AADD9FFCD7D4644715 /* Starscream-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8BCC21D621B6A44336EF94A15E4845A2 /* Pathfinder-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6526A411277DDCAD226059CB0D6EDCE5 /* Pathfinder-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9897B042188DD3568363FFE47ADC1585 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97BBFB9F6DEE534A9118A4F9299E1794 /* Foundation.framework */; };
 		B3B7E05CFBAE8A9FC89D095F8ACB6BAB /* ClusterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0385191502D5BB05481D258775DEB917 /* ClusterDelegate.swift */; };
 		C55B7513D1D9F3F9DBB1F89091C6A7B0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97BBFB9F6DEE534A9118A4F9299E1794 /* Foundation.framework */; };
 		C7E3611A13BF56035ED2DFC4BE9DC6A0 /* VehicleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609718B3CB52DD43DC757D09A368EC22 /* VehicleDelegate.swift */; };
 		CF126C0BB43E7284DF0B5472D7AC47A2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97BBFB9F6DEE534A9118A4F9299E1794 /* Foundation.framework */; };
-		F5C626F1EFB32984011B52B57B6EF07D /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC50D222996F49B3AE1F5D6E55B047 /* WebSocket.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F5C626F1EFB32984011B52B57B6EF07D /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF104BFB1D4814A7886C160123907499 /* WebSocket.swift */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,46 +57,88 @@
 
 /* Begin PBXFileReference section */
 		012A32E983E71CE134F0E8D7763483AB /* Route.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		035432AF599418FF13AB317452B6A60A /* GIDSignIn.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GIDSignIn.h; path = Headers/Public/GIDSignIn.h; sourceTree = "<group>"; };
 		0385191502D5BB05481D258775DEB917 /* ClusterDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ClusterDelegate.swift; sourceTree = "<group>"; };
 		0F52249DD4D3DD3159B64A42F2E7349B /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2363A644B75A5D4C07746D2FFCC62317 /* SSLSecurity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SSLSecurity.swift; sourceTree = "<group>"; };
+		140B098BAC602B29E4788DF3A2FEA565 /* libGTMOAuth2_external.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTMOAuth2_external.a; path = Libraries/libGTMOAuth2_external.a; sourceTree = "<group>"; };
+		16A54864280FBFC4A5CBB53EAD4DF644 /* Starscream-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Starscream-prefix.pch"; sourceTree = "<group>"; };
+		172BCEF3F4D58675D3A26ABD6B11B2D9 /* Starscream-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Starscream-dummy.m"; sourceTree = "<group>"; };
 		29B0C22D57A22D8AE5305289555B9CB7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-umbrella.h"; sourceTree = "<group>"; };
 		2D8DA4EBA2DC1F036F8E3EB16D9838B1 /* Cluster.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Cluster.swift; sourceTree = "<group>"; };
-		385C428A66FC9062C75FBFBEE356594D /* Starscream-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Starscream-prefix.pch"; sourceTree = "<group>"; };
+		321B4EDD9F98C0ED23682A36A4EA1000 /* GIDProfileData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GIDProfileData.h; path = Headers/Public/GIDProfileData.h; sourceTree = "<group>"; };
+		39AADCF625CE0344E73E9A98D16BA258 /* libGTM_NSStringHTML.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_NSStringHTML.a; path = Libraries/libGTM_NSStringHTML.a; sourceTree = "<group>"; };
 		4021726B50FF830373103A114EE49B12 /* Pathfinder-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pathfinder-prefix.pch"; sourceTree = "<group>"; };
+		4223B75EB4D1504EC0F6F670C40C41E8 /* libGTM_Regex.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_Regex.a; path = Libraries/libGTM_Regex.a; sourceTree = "<group>"; };
+		482A35B481CC152D5C04865D9F31745B /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
+		48702580366556F8C827BB954C6324E0 /* libGTM_NSDictionary+URLArguments.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = "libGTM_NSDictionary+URLArguments.a"; path = "Libraries/libGTM_NSDictionary+URLArguments.a"; sourceTree = "<group>"; };
 		49FEC358018425846863F47364E591F0 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		51A346FD7C6FA4C05C77D55E04651057 /* GITAccount.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GITAccount.h; path = Headers/Public/GITAccount.h; sourceTree = "<group>"; };
+		53B861909B122080C3AC74614A55837A /* Starscream.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Starscream.xcconfig; sourceTree = "<group>"; };
+		56DB1F17320015D968787F624EC8B71B /* GITkit.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GITkit.bundle; path = Resources/GITkit.bundle; sourceTree = "<group>"; };
+		57CDE051C81381CF81BFB59808384DB1 /* libGTM_SystemVersion.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_SystemVersion.a; path = Libraries/libGTM_SystemVersion.a; sourceTree = "<group>"; };
+		5DA1DAD4BE3DA3DE4305D9793D2F064B /* libGIPNSURL+FIFE.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = "libGIPNSURL+FIFE.a"; path = "Libraries/libGIPNSURL+FIFE.a"; sourceTree = "<group>"; };
 		5F1F1DAC3773DE130C962C913AD02FF2 /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		609718B3CB52DD43DC757D09A368EC22 /* VehicleDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VehicleDelegate.swift; sourceTree = "<group>"; };
 		6526A411277DDCAD226059CB0D6EDCE5 /* Pathfinder-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pathfinder-umbrella.h"; sourceTree = "<group>"; };
 		67EF5341F11FDB0459C8606D0F3B239D /* Vehicle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
+		69A8C4FF3AF7816CBEED333B3BB01622 /* Starscream.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Starscream.modulemap; sourceTree = "<group>"; };
 		6A1248BEC404921C72C170E9E5A0B06E /* Pathfinder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Pathfinder.h; sourceTree = "<group>"; };
+		6B7BA495D017C0BE5C30260D38D5D795 /* libGTM_AddressBook.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_AddressBook.a; path = Libraries/libGTM_AddressBook.a; sourceTree = "<group>"; };
+		6E8D775439A226A7C8256B982CD41BC1 /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		6F4D2CD6E42C67C2A7D262CCB14E9B79 /* Pathfinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pathfinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		79A9DEDC89FE8336BF5FEDAAF75BF7FC /* Pods.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Pods.modulemap; sourceTree = "<group>"; };
 		87B213035BAC5F75386F62D3C75D2342 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
 		894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
+		898F320BA4A86FBF5C101B1793634D08 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleSignIn.bundle; path = Resources/GoogleSignIn.bundle; sourceTree = "<group>"; };
+		8BB02C3006D95DA0E61BB0A223F4A350 /* libGITkit.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGITkit.a; path = Libraries/libGITkit.a; sourceTree = "<group>"; };
+		8DF0867CF300BA8C83C2CE00B7F99BE0 /* GITInterfaceManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GITInterfaceManager.h; path = Headers/Public/GITInterfaceManager.h; sourceTree = "<group>"; };
+		900155EAAD9F10BC354F07678F36BFDD /* libGTM_KVO.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_KVO.a; path = Libraries/libGTM_KVO.a; sourceTree = "<group>"; };
+		91E53EA30E3E60AADD9FFCD7D4644715 /* Starscream-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Starscream-umbrella.h"; sourceTree = "<group>"; };
+		92B611461BDF32981C1F30ED0C71A22E /* libGTM_GTMURLBuilder.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_GTMURLBuilder.a; path = Libraries/libGTM_GTMURLBuilder.a; sourceTree = "<group>"; };
+		940E58D0C3F1783ED4B303C46E7AF172 /* GoogleSignIn.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GoogleSignIn.h; path = Headers/Public/GoogleSignIn.h; sourceTree = "<group>"; };
+		959C8EF30650C3AECDEDEA9BEA240CA6 /* libGTMSessionFetcher_full.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTMSessionFetcher_full.a; path = Libraries/libGTMSessionFetcher_full.a; sourceTree = "<group>"; };
+		95A9E5737ABB6E6D22A08183218F42C4 /* GIDGoogleUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GIDGoogleUser.h; path = Headers/Public/GIDGoogleUser.h; sourceTree = "<group>"; };
 		977577C045EDA9D9D1F46E2598D19FC7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
 		97BBFB9F6DEE534A9118A4F9299E1794 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		9EA72D31E278DCCA42F50D0302BFC444 /* Starscream-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Starscream-umbrella.h"; sourceTree = "<group>"; };
+		9CC7C51D588361FEE43683DA32932570 /* GIDSignInButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GIDSignInButton.h; path = Headers/Public/GIDSignInButton.h; sourceTree = "<group>"; };
+		9E0FAF0557C5B3F8514A84417EF48146 /* GIDAuthentication.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GIDAuthentication.h; path = Headers/Public/GIDAuthentication.h; sourceTree = "<group>"; };
 		9F0A090D765BA2CEDF7E73F590477754 /* Pathfinder.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pathfinder.xcconfig; sourceTree = "<group>"; };
-		ADF0F35B9398FB8C0018DC44D3D05940 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A05F12B3D96286501300318A59094442 /* libGTM_UIFont+LineHeight.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = "libGTM_UIFont+LineHeight.a"; path = "Libraries/libGTM_UIFont+LineHeight.a"; sourceTree = "<group>"; };
 		B304BE0645FE9F373AA2249EC241A957 /* Pathfinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Pathfinder.swift; sourceTree = "<group>"; };
 		B745CF92E38A0A458B48D580E3000EB0 /* Pathfinder-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pathfinder-dummy.m"; sourceTree = "<group>"; };
+		B8FF706C0C3FEFED02F3A3FEAF87A948 /* GITClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GITClient.h; path = Headers/Public/GITClient.h; sourceTree = "<group>"; };
+		BA3ECAECEDD809F133487E8610801B51 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		BAFF6B9ADB9D4351F2D5486B218F544A /* Starscream.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Starscream.modulemap; sourceTree = "<group>"; };
+		BAD9936C82CB4C864E72DDE3A2B98700 /* libGTM_NSStringXML.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_NSStringXML.a; path = Libraries/libGTM_NSStringXML.a; sourceTree = "<group>"; };
 		BD030A1D440F71ACC0E893AF5FCA742A /* Commodity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Commodity.swift; sourceTree = "<group>"; };
-		C0D810C4F889AC78A8BB437A4048BD30 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
+		BD070B2B645E7EEC37A961AEC6F415D6 /* libGTM_NSScannerJSON.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_NSScannerJSON.a; path = Libraries/libGTM_NSScannerJSON.a; sourceTree = "<group>"; };
+		C04945DADBC3545D308492E0298D2302 /* libGTM_iPhone.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_iPhone.a; path = Libraries/libGTM_iPhone.a; sourceTree = "<group>"; };
+		C15A371F57530737EE815A85C6AE85FB /* GITkit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GITkit.h; path = Headers/Public/GITkit.h; sourceTree = "<group>"; };
+		C30990C1267026E4B3D1CA408E5E9905 /* libGTMOAuth2_internal.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTMOAuth2_internal.a; path = Libraries/libGTMOAuth2_internal.a; sourceTree = "<group>"; };
+		C70284043585EC21930A567427A782D1 /* libGTM_StringEncoding.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_StringEncoding.a; path = Libraries/libGTM_StringEncoding.a; sourceTree = "<group>"; };
+		C839EDD491EC3FDE6097A92635651378 /* libSignIn.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libSignIn.a; path = Libraries/libSignIn.a; sourceTree = "<group>"; };
+		C86DD43B4D8695019D4F7E1CC9AEDEB4 /* GITAuth.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GITAuth.h; path = Headers/Public/GITAuth.h; sourceTree = "<group>"; };
+		C930A0BBC51E7FA54081E443E01EB066 /* libGTM_RoundedRectPath.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_RoundedRectPath.a; path = Libraries/libGTM_RoundedRectPath.a; sourceTree = "<group>"; };
+		CA57356105A045958D2B3342C9B6FCDA /* SSLSecurity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SSLSecurity.swift; sourceTree = "<group>"; };
 		CBC0F7C552B739C909B650A0F42F7F38 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+		CE402F645D88E7153264797EE687FC25 /* libGTM_core.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_core.a; path = Libraries/libGTM_core.a; sourceTree = "<group>"; };
+		CE9C2CF5605282285DADBFC538264B34 /* libGTM_DebugUtils.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_DebugUtils.a; path = Libraries/libGTM_DebugUtils.a; sourceTree = "<group>"; };
+		CF104BFB1D4814A7886C160123907499 /* WebSocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
 		D0405803033A2A777B8E4DFA0C1800ED /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
 		D4A0873705B1530EA184CBA7AB8931EB /* CommodityDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CommodityDelegate.swift; sourceTree = "<group>"; };
-		D7B5BC42B6F29DBB9CCC3F756D803FE3 /* Starscream.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Starscream.xcconfig; sourceTree = "<group>"; };
-		D8BC50D222996F49B3AE1F5D6E55B047 /* WebSocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
+		D4F144A92E7EF4ECC56BDBBA77973623 /* libOpenInChrome.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libOpenInChrome.a; path = Libraries/libOpenInChrome.a; sourceTree = "<group>"; };
 		DA312349A49333542E6F4B36B329960E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
-		E36E3C06AE760EC29E2041E05E4103C9 /* Starscream-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Starscream-dummy.m"; sourceTree = "<group>"; };
-		E5DE815CB98A0B2861FEDCB80F93ED81 /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		E61E2CD71BADEDDB36373FA17679F62C /* libGIDExShared.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGIDExShared.a; path = Libraries/libGIDExShared.a; sourceTree = "<group>"; };
 		E7F21354943D9F42A70697D5A5EF72E9 /* Pods-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-frameworks.sh"; sourceTree = "<group>"; };
 		E8446514FBAD26C0E18F24A5715AEF67 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E87D014AA40865735EC60D9DDAB0A2BB /* libGTLCore.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTLCore.a; path = Libraries/libGTLCore.a; sourceTree = "<group>"; };
+		E8EB623B8FE319A04756A320B5DEA0AF /* GITIDToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GITIDToken.h; path = Headers/Public/GITIDToken.h; sourceTree = "<group>"; };
+		E99600DAF9D0B883BD4D193449704404 /* libGTMSessionFetcher_core.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTMSessionFetcher_core.a; path = Libraries/libGTMSessionFetcher_core.a; sourceTree = "<group>"; };
+		EA65B4445EA610FDF1CE97F371ECCB1B /* libGTMStackTrace.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTMStackTrace.a; path = Libraries/libGTMStackTrace.a; sourceTree = "<group>"; };
+		EB14172931EB12C28EA5FDE7AA32B9D2 /* libGSDK_Overload.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGSDK_Overload.a; path = Libraries/libGSDK_Overload.a; sourceTree = "<group>"; };
 		ECCAE728B60AD77F620ADD7F23EF5487 /* PathfinderConnection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PathfinderConnection.swift; sourceTree = "<group>"; };
+		EE9D10FDD804519A530DAC241EA323F8 /* UIViewController+SignIn.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+SignIn.h"; path = "Headers/Public/UIViewController+SignIn.h"; sourceTree = "<group>"; };
 		F0402EE94FE874A16F2E7CB29D3A0B5A /* Pathfinder.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Pathfinder.modulemap; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,22 +171,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0100B7EE23EDE5D0D820747AB11412F4 /* GoogleMaps */ = {
+		09553C2182B89713EE9522FDB614772C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AECD9D56C801EDB17E5CB1255EAED765 /* Frameworks */,
-				A23B63F441D7BFB8DAB0617C9849226C /* Resources */,
+				140B098BAC602B29E4788DF3A2FEA565 /* libGTMOAuth2_external.a */,
+				C30990C1267026E4B3D1CA408E5E9905 /* libGTMOAuth2_internal.a */,
 			);
-			path = GoogleMaps;
-			sourceTree = "<group>";
-		};
-		11B5D62387679C02A7EE763B90A940EF /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				0100B7EE23EDE5D0D820747AB11412F4 /* GoogleMaps */,
-				CA97E23272B8D1839F349EE745DC0323 /* Starscream */,
-			);
-			name = Pods;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		15B350838E7D626A69DA209C7BCF373D /* Support Files */ = {
@@ -159,6 +192,30 @@
 			);
 			name = "Support Files";
 			path = "examples/Chimney Swap/Pods/Target Support Files/Pathfinder";
+			sourceTree = "<group>";
+		};
+		1B90ADF1BE5244A42ED62CF8D36DE34E /* GoogleSymbolUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				A34B48A5A626EE8C45C2486C40550928 /* Frameworks */,
+			);
+			path = GoogleSymbolUtilities;
+			sourceTree = "<group>";
+		};
+		2794C1E9E9B2DC667B99CF85065DE4EF /* GoogleAppUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				B75C9FF38CB8C9E4C432262D167B7DE8 /* Frameworks */,
+			);
+			path = GoogleAppUtilities;
+			sourceTree = "<group>";
+		};
+		2C85F05A372D3050E64C4D2B744C23B9 /* GoogleNetworkingUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				BE5892E4C699ADE1EFF02B563A6A6A66 /* Frameworks */,
+			);
+			path = GoogleNetworkingUtilities;
 			sourceTree = "<group>";
 		};
 		3CADA36F9CFAE05DAE92E7F75344DE27 /* iOS */ = {
@@ -186,18 +243,12 @@
 			path = Pathfinder;
 			sourceTree = "<group>";
 		};
-		4154CFC70A17A37D2EE9625DE7E3D1AA /* Support Files */ = {
+		5B7AB382652A209A23EBD57E35B89C79 /* GoogleAuthUtilities */ = {
 			isa = PBXGroup;
 			children = (
-				ADF0F35B9398FB8C0018DC44D3D05940 /* Info.plist */,
-				BAFF6B9ADB9D4351F2D5486B218F544A /* Starscream.modulemap */,
-				D7B5BC42B6F29DBB9CCC3F756D803FE3 /* Starscream.xcconfig */,
-				E36E3C06AE760EC29E2041E05E4103C9 /* Starscream-dummy.m */,
-				385C428A66FC9062C75FBFBEE356594D /* Starscream-prefix.pch */,
-				9EA72D31E278DCCA42F50D0302BFC444 /* Starscream-umbrella.h */,
+				09553C2182B89713EE9522FDB614772C /* Frameworks */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/Starscream";
+			path = GoogleAuthUtilities;
 			sourceTree = "<group>";
 		};
 		60908255A30DD4958C05826F4616FA67 /* Products */ = {
@@ -208,6 +259,15 @@
 				5F1F1DAC3773DE130C962C913AD02FF2 /* Starscream.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		70BEB3214D3515CA2ED6FCFA92B5C53F /* GoogleMaps */ = {
+			isa = PBXGroup;
+			children = (
+				D66629605F5076A65CD46E723EED9136 /* Frameworks */,
+				950C6831F2F0CDB8DF6D20FE75C4BCAB /* Resources */,
+			);
+			path = GoogleMaps;
 			sourceTree = "<group>";
 		};
 		75D98FF52E597A11900E131B6C4E1ADA /* Pods */ = {
@@ -234,10 +294,28 @@
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
 				B166639ED9A5057CD4164B40EA98A0CC /* Development Pods */,
 				C6C6CF85326A60B112CC4A77BAD281D7 /* Frameworks */,
-				11B5D62387679C02A7EE763B90A940EF /* Pods */,
+				AF756C2238A4E9BBDB1D570AC2252136 /* Pods */,
 				60908255A30DD4958C05826F4616FA67 /* Products */,
 				B7B80995527643776607AFFA75B91E24 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		84DF84421E23E016F20A1E44D95B58B0 /* GoogleUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				D731BFDF42E9CFF53EDBD568BD9A6DDD /* Frameworks */,
+			);
+			path = GoogleUtilities;
+			sourceTree = "<group>";
+		};
+		85C1785D224F358343DF54FD235524CE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E61E2CD71BADEDDB36373FA17679F62C /* libGIDExShared.a */,
+				5DA1DAD4BE3DA3DE4305D9793D2F064B /* libGIPNSURL+FIFE.a */,
+				C839EDD491EC3FDE6097A92635651378 /* libSignIn.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		8A33B82CBA128FD5A56AE761EB1C4EB5 /* framework */ = {
@@ -258,20 +336,53 @@
 			path = ../../..;
 			sourceTree = "<group>";
 		};
-		A23B63F441D7BFB8DAB0617C9849226C /* Resources */ = {
+		950C6831F2F0CDB8DF6D20FE75C4BCAB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E5DE815CB98A0B2861FEDCB80F93ED81 /* GoogleMaps.bundle */,
+				6E8D775439A226A7C8256B982CD41BC1 /* GoogleMaps.bundle */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		AECD9D56C801EDB17E5CB1255EAED765 /* Frameworks */ = {
+		9FE51A70DC678BAA0D9D0967B50C8554 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C0D810C4F889AC78A8BB437A4048BD30 /* GoogleMaps.framework */,
+				8BB02C3006D95DA0E61BB0A223F4A350 /* libGITkit.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A34B48A5A626EE8C45C2486C40550928 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EB14172931EB12C28EA5FDE7AA32B9D2 /* libGSDK_Overload.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AA783E19186C86169E98A8BDA43194C0 /* GoogleParsingUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				DB84968009D0A81D042E5E5342ABAA95 /* Frameworks */,
+			);
+			path = GoogleParsingUtilities;
+			sourceTree = "<group>";
+		};
+		AF756C2238A4E9BBDB1D570AC2252136 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2794C1E9E9B2DC667B99CF85065DE4EF /* GoogleAppUtilities */,
+				5B7AB382652A209A23EBD57E35B89C79 /* GoogleAuthUtilities */,
+				EF49C88AE90678D719BEFEC2EF44789B /* GoogleIdentityToolkit */,
+				70BEB3214D3515CA2ED6FCFA92B5C53F /* GoogleMaps */,
+				2C85F05A372D3050E64C4D2B744C23B9 /* GoogleNetworkingUtilities */,
+				AA783E19186C86169E98A8BDA43194C0 /* GoogleParsingUtilities */,
+				BB3CD653F3AF69A04B3F734A48C95168 /* GoogleSignIn */,
+				1B90ADF1BE5244A42ED62CF8D36DE34E /* GoogleSymbolUtilities */,
+				84DF84421E23E016F20A1E44D95B58B0 /* GoogleUtilities */,
+				EA823DD0EE2D1265D123A2F921E5D457 /* Starscream */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		B166639ED9A5057CD4164B40EA98A0CC /* Development Pods */ = {
@@ -282,12 +393,67 @@
 			name = "Development Pods";
 			sourceTree = "<group>";
 		};
+		B53D85FB2C1BCD02E2D306BFF5B412A6 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				BA3ECAECEDD809F133487E8610801B51 /* Info.plist */,
+				69A8C4FF3AF7816CBEED333B3BB01622 /* Starscream.modulemap */,
+				53B861909B122080C3AC74614A55837A /* Starscream.xcconfig */,
+				172BCEF3F4D58675D3A26ABD6B11B2D9 /* Starscream-dummy.m */,
+				16A54864280FBFC4A5CBB53EAD4DF644 /* Starscream-prefix.pch */,
+				91E53EA30E3E60AADD9FFCD7D4644715 /* Starscream-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Starscream";
+			sourceTree = "<group>";
+		};
+		B64BBCECDAF724C242F5B756F128C523 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				898F320BA4A86FBF5C101B1793634D08 /* GoogleSignIn.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		B75C9FF38CB8C9E4C432262D167B7DE8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D4F144A92E7EF4ECC56BDBBA77973623 /* libOpenInChrome.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B7B80995527643776607AFFA75B91E24 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
 				75D98FF52E597A11900E131B6C4E1ADA /* Pods */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		BB3CD653F3AF69A04B3F734A48C95168 /* GoogleSignIn */ = {
+			isa = PBXGroup;
+			children = (
+				9E0FAF0557C5B3F8514A84417EF48146 /* GIDAuthentication.h */,
+				95A9E5737ABB6E6D22A08183218F42C4 /* GIDGoogleUser.h */,
+				321B4EDD9F98C0ED23682A36A4EA1000 /* GIDProfileData.h */,
+				035432AF599418FF13AB317452B6A60A /* GIDSignIn.h */,
+				9CC7C51D588361FEE43683DA32932570 /* GIDSignInButton.h */,
+				940E58D0C3F1783ED4B303C46E7AF172 /* GoogleSignIn.h */,
+				EE9D10FDD804519A530DAC241EA323F8 /* UIViewController+SignIn.h */,
+				85C1785D224F358343DF54FD235524CE /* Frameworks */,
+				B64BBCECDAF724C242F5B756F128C523 /* Resources */,
+			);
+			path = GoogleSignIn;
+			sourceTree = "<group>";
+		};
+		BE5892E4C699ADE1EFF02B563A6A6A66 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E99600DAF9D0B883BD4D193449704404 /* libGTMSessionFetcher_core.a */,
+				959C8EF30650C3AECDEDEA9BEA240CA6 /* libGTMSessionFetcher_full.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		C6C6CF85326A60B112CC4A77BAD281D7 /* Frameworks */ = {
@@ -299,14 +465,76 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CA97E23272B8D1839F349EE745DC0323 /* Starscream */ = {
+		C9DBFEB3D73B6DB034C0DD42A835C7B3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2363A644B75A5D4C07746D2FFCC62317 /* SSLSecurity.swift */,
-				D8BC50D222996F49B3AE1F5D6E55B047 /* WebSocket.swift */,
-				4154CFC70A17A37D2EE9625DE7E3D1AA /* Support Files */,
+				56DB1F17320015D968787F624EC8B71B /* GITkit.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		D66629605F5076A65CD46E723EED9136 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				482A35B481CC152D5C04865D9F31745B /* GoogleMaps.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D731BFDF42E9CFF53EDBD568BD9A6DDD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6B7BA495D017C0BE5C30260D38D5D795 /* libGTM_AddressBook.a */,
+				CE402F645D88E7153264797EE687FC25 /* libGTM_core.a */,
+				CE9C2CF5605282285DADBFC538264B34 /* libGTM_DebugUtils.a */,
+				92B611461BDF32981C1F30ED0C71A22E /* libGTM_GTMURLBuilder.a */,
+				C04945DADBC3545D308492E0298D2302 /* libGTM_iPhone.a */,
+				900155EAAD9F10BC354F07678F36BFDD /* libGTM_KVO.a */,
+				48702580366556F8C827BB954C6324E0 /* libGTM_NSDictionary+URLArguments.a */,
+				BD070B2B645E7EEC37A961AEC6F415D6 /* libGTM_NSScannerJSON.a */,
+				39AADCF625CE0344E73E9A98D16BA258 /* libGTM_NSStringHTML.a */,
+				BAD9936C82CB4C864E72DDE3A2B98700 /* libGTM_NSStringXML.a */,
+				4223B75EB4D1504EC0F6F670C40C41E8 /* libGTM_Regex.a */,
+				C930A0BBC51E7FA54081E443E01EB066 /* libGTM_RoundedRectPath.a */,
+				C70284043585EC21930A567427A782D1 /* libGTM_StringEncoding.a */,
+				57CDE051C81381CF81BFB59808384DB1 /* libGTM_SystemVersion.a */,
+				A05F12B3D96286501300318A59094442 /* libGTM_UIFont+LineHeight.a */,
+				EA65B4445EA610FDF1CE97F371ECCB1B /* libGTMStackTrace.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB84968009D0A81D042E5E5342ABAA95 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E87D014AA40865735EC60D9DDAB0A2BB /* libGTLCore.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EA823DD0EE2D1265D123A2F921E5D457 /* Starscream */ = {
+			isa = PBXGroup;
+			children = (
+				CA57356105A045958D2B3342C9B6FCDA /* SSLSecurity.swift */,
+				CF104BFB1D4814A7886C160123907499 /* WebSocket.swift */,
+				B53D85FB2C1BCD02E2D306BFF5B412A6 /* Support Files */,
 			);
 			path = Starscream;
+			sourceTree = "<group>";
+		};
+		EF49C88AE90678D719BEFEC2EF44789B /* GoogleIdentityToolkit */ = {
+			isa = PBXGroup;
+			children = (
+				51A346FD7C6FA4C05C77D55E04651057 /* GITAccount.h */,
+				C86DD43B4D8695019D4F7E1CC9AEDEB4 /* GITAuth.h */,
+				B8FF706C0C3FEFED02F3A3FEAF87A948 /* GITClient.h */,
+				E8EB623B8FE319A04756A320B5DEA0AF /* GITIDToken.h */,
+				8DF0867CF300BA8C83C2CE00B7F99BE0 /* GITInterfaceManager.h */,
+				C15A371F57530737EE815A85C6AE85FB /* GITkit.h */,
+				9FE51A70DC678BAA0D9D0967B50C8554 /* Frameworks */,
+				C9DBFEB3D73B6DB034C0DD42A835C7B3 /* Resources */,
+			);
+			path = GoogleIdentityToolkit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -551,7 +779,7 @@
 		};
 		655FDB43ED18535F225AA80FE4ABD44F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D7B5BC42B6F29DBB9CCC3F756D803FE3 /* Starscream.xcconfig */;
+			baseConfigurationReference = 53B861909B122080C3AC74614A55837A /* Starscream.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -669,7 +897,7 @@
 		};
 		C2CDD5E087F8D8CC00307A5A671037FC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D7B5BC42B6F29DBB9CCC3F756D803FE3 /* Starscream.xcconfig */;
+			baseConfigurationReference = 53B861909B122080C3AC74614A55837A /* Starscream.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;

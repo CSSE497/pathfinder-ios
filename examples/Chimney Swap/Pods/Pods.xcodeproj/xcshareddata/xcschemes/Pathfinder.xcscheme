@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'D50442DEE8B727497A854876'
+               BlueprintIdentifier = 'F0A2B88BED154ADF2557592C'
                BlueprintName = 'Pathfinder'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pathfinder.framework'>

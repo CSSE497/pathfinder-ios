@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+      /** @private {number} reCAPTCHA widget id */
+      var widgetId_ = null;
+      /** @public {?function()} Function to be executed after reCAPTCHA dependencies are loaded. */
+      var onLoadCallback = null;
+
+      /**
+       * Initializes the application, loads all dependencies, renders the reCAPTCHA widget with the
+       * language provided and registers the callback function to execute on challenge completion.
+       *
+       * @param {Object} recaptchaCredentials Configuration containing the site key and stoken for
+       *     rendering the reCAPTCHA widget.
+       * @param {string) lang The 2 character language code for the reCAPTCHA widget.
+       */
+      var initApplication = function(recaptchaCredentials, lang) {
+        // If application already initialized, ignore.
+        if (typeof recaptchaCredentials['sitekey'] == 'undefined' ||
+            typeof recaptchaCredentials['stoken'] == 'undefined' ||
+            !!onLoadCallback ||
+            !!widgetId_) {
+          return;
+        }
+
+        // Initialize all reCAPTCHA parameters.
+        // reCAPTCHA container id.
+        var recaptchaElementId = 'recaptcha';
+        // On reCAPTCHA completion, pass response to hidden input field and submit the form.
+        // URL change will be caught by native container.
+        var onSuccessCallback = function(response) {
+          var el = document.getElementById('responseToken');
+          el.value = response;
+          var form = document.getElementById('recaptchaForm');
+          form.submit();
+        };
+        // No expired callback since the app will submit automatically on response callback.
+        var onExpiredCallback = null;
+        // On reCAPTCHA dependencies loading, render the widget and update url to notify container
+        // that the reCAPTCHA is ready.
+        onLoadCallback = function() {
+          widgetId_ = renderRecaptcha(
+              recaptchaElementId,
+              recaptchaCredentials,
+              onSuccessCallback,
+              onExpiredCallback);
+          // Will be detected by UIWebViewContoller to hide activity indicator
+          window.location = '?recaptchaReady';
+        };
+        // Build reCAPTCHA api url.
+        var url = 'https://www.google.com/recaptcha/api.js' +
+          '?onload=onLoadCallback&render=explicit&hl=' + lang;
+        // Include reCAPTCHA javascript library.
+        var fileref = document.createElement('script');
+        fileref.setAttribute('type', 'text/javascript');
+        fileref.setAttribute('src', url);
+        document.getElementsByTagName('head')[0].appendChild(fileref);
+
+      };
+
+      /**
+       * Renders the reCAPTCHA widget and returns its id number.
+       * @param {string} recaptchaElementId The id of the element where the reCAPTCHA will be
+       *     rendered.
+       * @param {Object} recaptchaCredentials Configuration containing the site key and stoken for
+       *     rendering the reCAPTCHA widget.
+       * @param {?function(string)} onSuccessCallback Callback function to be executed when the user
+       *     completes the reCAPTCHA challenge. The response token is passed.
+       * @param {?function()} onExpiredCallback Callback function to be executed when the reCAPTCHA
+       *     session expires for the response provided.
+       * @return {number} the reCAPTCHA widget id.
+       */
+      var renderRecaptcha = function(recaptchaElementId,
+          recaptchaCredentials, onSuccessCallback, onExpiredCallback) {
+        // Initialize widget id to -1.
+        var widgetId = -1;
+        // Make sure all required parameters provided and libraries loaded.
+        if (document.getElementById(recaptchaElementId) &&
+            typeof recaptchaCredentials['sitekey'] != 'undefined' &&
+            typeof recaptchaCredentials['stoken'] != 'undefined' &&
+            typeof grecaptcha != 'undefined') {
+          // Container must be empty for reCAPTCHA v2 to render.
+          document.getElementById(recaptchaElementId).innerHTML = '';
+          // Render reCAPTCHA.
+          widgetId = grecaptcha.render(recaptchaElementId, {
+            'sitekey' : recaptchaCredentials['sitekey'],
+            'stoken' : recaptchaCredentials['stoken'],
+            'type' : 'image',
+            'callback' : onSuccessCallback,
+            'expired-callback' : onExpiredCallback
+          });
+        }
+
+        return widgetId;
+      };
+
+      /** Run on document load, notifies native controller container that the document is ready.*/
+      window.onload = function(e){
+        // Will be detected by UIWebViewContoller to initialize application.
+        window.location = '?documentReady';
+      };
+    </script>
+  </head>
+
+  <body>
+    <div style='margin:0 auto;padding:10px;width:300px;'>
+    <form action="?" method="GET" name="recaptchaForm" id="recaptchaForm">
+      <input type="hidden" id="responseToken" name="responseToken" value=""/>
+      <div id="recaptcha"></div>
+    </form>
+    </div>
+  </body>
+
+</html>
