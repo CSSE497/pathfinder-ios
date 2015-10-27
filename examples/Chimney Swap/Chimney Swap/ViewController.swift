@@ -17,7 +17,7 @@ class ViewController: UIViewController {
   var vehicle: Vehicle!
 
   let interfaceManager = GITInterfaceManager()
-  let locationManager = CLLocationManager()
+  var locationManager = CLLocationManager()
 
   var drawnPath: GMSPolyline?
   var markers: [GMSMarker]?
@@ -69,6 +69,7 @@ class ViewController: UIViewController {
   }
 
   func drawMarker(coordinate: CLLocationCoordinate2D, color: UIColor) -> GMSMarker {
+    print("Drawing marker at \(coordinate)")
     let marker = GMSMarker(position: coordinate)
     marker.map = mapView
     marker.appearAnimation = kGMSMarkerAnimationPop
@@ -94,6 +95,7 @@ class ViewController: UIViewController {
     mapView.addObserver(self, forKeyPath: "myLocation", options: NSKeyValueObservingOptions.New, context: nil)
 
     // Request device location
+    locationManager = CLLocationManager()
     locationManager.delegate = self
     locationManager.requestAlwaysAuthorization()
     locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -138,16 +140,18 @@ extension ViewController: VehicleDelegate {
   func wasRouted(route: Route, vehicle: Vehicle) {
     print("Vehicle delegate received updated route")
     var locations = route.coordinates()
-    let startLocation = locations.removeFirst()
-    let endLocation = locations.removeLast()
-    getDirections(startLocation, end: endLocation, waypoints: locations)
-    markers?.forEach { (m: GMSMarker) -> Void in m.map = nil }
-    markers = [GMSMarker]()
-    print("Drawing the following commodities to the map: \(route.commodities())")
-    route.commodities().forEach { (commodity: Commodity) -> Void in
-      let color = randomColor()
-      markers?.append(drawMarker(commodity.start, color: color))
-      markers?.append(drawMarker(commodity.destination, color: color))
+    if locations.count > 1 {
+      let startLocation = locations.removeFirst()
+      let endLocation = locations.removeLast()
+      getDirections(startLocation, end: endLocation, waypoints: locations)
+      markers?.forEach { (m: GMSMarker) -> Void in m.map = nil }
+      markers = [GMSMarker]()
+      print("Drawing the following commodities to the map: \(route.commodities())")
+      route.commodities().forEach { (commodity: Commodity) -> Void in
+        let color = randomColor()
+        markers?.append(drawMarker(commodity.start, color: color))
+        markers?.append(drawMarker(commodity.destination, color: color))
+      }
     }
   }
 

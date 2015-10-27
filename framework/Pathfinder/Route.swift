@@ -41,19 +41,23 @@ public class Route {
   - Returns:  The commodities that are picked up and dropped off on the route.
   */
   public func commodities() -> [Commodity] {
-    return actions.map { (action: RouteAction) -> Commodity? in action.commodity }.flatMap { $0 }
+    var result = [Commodity]()
+    for (index, value) in actions.enumerate() {
+      if index % 2 == 1 {
+        result.append(value.commodity!)
+      }
+    }
+    return result
   }
 
   class func parse(message: NSDictionary) -> Route? {
     if let actionArray = message["actions"] as? NSArray {
-      let actions = actionArray.map { (actionObj: AnyObject) -> RouteAction? in
-        if let action = actionObj as? NSDictionary {
-          return RouteAction.parse(action)
-        }
-        return nil
-        }.flatMap { $0 }
+      let actions = actionArray.map { (actionObj: AnyObject) -> RouteAction in
+        return RouteAction.parse(actionObj as! NSDictionary)!
+      }
       if let vehicleDict = message["vehicle"] as? NSDictionary {
         if let vehicle = Vehicle.parse(vehicleDict) {
+          print("Parsed route with \(actions.count) actions")
           return Route(vehicle: vehicle, actions: actions)
         }
       }
@@ -97,6 +101,7 @@ public class RouteAction {
       let latitude = message["latitude"] as! Double
       let longitude = message["longitude"] as! Double
       let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+      print("Attempting to parse RouteAction at location \(location)")
       if actionString == "start" {
         return RouteAction(action: Action.Start, location: location)
       } else if actionString == "pickup" {
