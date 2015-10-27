@@ -51,6 +51,13 @@ public class Commodity {
 
   var cluster: Cluster?
 
+  init(id: Int, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, parameters: [String:Int]) {
+    self.id = id
+    self.start = start
+    self.destination = destination
+    self.parameters = parameters
+  }
+
   init(cluster: Cluster, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, parameters: [String:Int]) {
     self.cluster = cluster
     self.start = start
@@ -74,8 +81,10 @@ public class Commodity {
   }
 
   public func connect() {
-    cluster!.connect() { (cluster: Cluster) -> Void in
+    if cluster != nil {
+      cluster!.connect() { (cluster: Cluster) -> Void in
 
+      }
     }
   }
 
@@ -87,6 +96,26 @@ public class Commodity {
   public func cancel(callback: (success: Bool) -> Void) {
 
   }
+
+  class func parse(message: NSDictionary) -> Commodity? {
+    if let startLat = message["startLatitude"] as? Double {
+      if let startLng = message["startLongitude"] as? Double {
+        if let endLat = message["endLatitude"] as? Double {
+          if let endLng = message["endLongitude"] as? Double {
+            if let id = message["id"] as? Int {
+              if let param = message["param"] as? Int {
+                let start = CLLocationCoordinate2D(latitude: startLat, longitude: startLng)
+                let end = CLLocationCoordinate2D(latitude: endLat, longitude: endLng)
+                let parameters = ["chimney":param]
+                return Commodity(id: id, start: start, destination: end, parameters: parameters)
+              }
+            }
+          }
+        }
+      }
+    }
+    return nil
+  }
 }
 
 class CommodityResponse {
@@ -96,7 +125,29 @@ class CommodityResponse {
   let param: Int
 
   class func parse(message: NSDictionary) -> CommodityResponse? {
-    return CommodityResponse(id: 12, start: CLLocationCoordinate2D(), destination: CLLocationCoordinate2D(), param: 10)
+    if let content = message["created"] as? NSDictionary {
+      return parseContent(content)
+    } else if let content = message["updated"] as? NSDictionary {
+      return parseContent(content)
+    } else if let content = message["model"] as? NSDictionary {
+      return parseContent(content)
+    }
+    return nil
+  }
+
+  private class func parseContent(content: NSDictionary) -> CommodityResponse? {
+    if content["model"] as? String == "Commodity" {
+      if let value = content["value"] as? NSDictionary {
+        let id = value["id"] as! Int
+        let startLat = value["startLatitude"] as! Double
+        let startLng = value["startLongitude"] as! Double
+        let endLat = value["endLatitude"] as! Double
+        let endLng = value["endLongitude"] as! Double
+        let param = value["param"] as! Int
+        return CommodityResponse(id: id, start: CLLocationCoordinate2D(latitude: startLat, longitude: startLng), destination: CLLocationCoordinate2D(latitude: endLat, longitude: endLng), param: param)
+      }
+    }
+    return nil
   }
 
   init(id: Int, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, param: Int) {

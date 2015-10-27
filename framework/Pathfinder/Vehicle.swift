@@ -41,6 +41,12 @@ public class Vehicle: NSObject {
   var locationManager: CLLocationManager?
   var location: CLLocationCoordinate2D?
 
+  init(id: Int, capacities: [String:Int], location: CLLocationCoordinate2D) {
+    self.id = id
+    self.capacities = capacities
+    self.location = location
+  }
+
   init(cluster: Cluster, capacities: [String:Int]) {
     self.cluster = cluster
     self.capacities = capacities
@@ -87,6 +93,20 @@ public class Vehicle: NSObject {
   */
   public func goOffline() -> Bool {
     return false
+  }
+
+  class func parse(message: NSDictionary) -> Vehicle? {
+    if let id = message["id"] as? Int {
+      if let capacity = message["capacity"] as? Int {
+        if let latitude = message["latitude"] as? Double {
+          if let longitude = message["longitude"] as? Double {
+            let capacities = ["chimney": capacity]
+            return Vehicle(id: id, capacities: capacities, location: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
+          }
+        }
+      }
+    }
+    return nil
   }
 }
 

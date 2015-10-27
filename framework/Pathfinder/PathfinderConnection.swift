@@ -21,12 +21,15 @@ class PathfinderConnection {
   var commodityFns: [CommodityFn]
   var vehicleFns: [VehicleFn]
 
+  var vehicleRouteSubscribers: [Int:Vehicle]
+
   let pathfinderSocketUrl = "ws://130.211.184.70:9000/socket"
   let pathfinderSocket: WebSocket
   let applicationIdentifier: String
 
-  var connected = false
   var queuedMessages = [[String:NSDictionary]]()
+
+  var connected = false
 
   init(applicationIdentifier: String) {
     print("PathfinderConnection created, attempting to connect")
@@ -38,6 +41,7 @@ class PathfinderConnection {
     self.commodityFns = [CommodityFn]()
     self.vehicleFns = [VehicleFn]()
 
+    self.vehicleRouteSubscribers = [Int:Vehicle]()
 
     pathfinderSocket.delegate = self
     pathfinderSocket.connect()
@@ -88,16 +92,13 @@ class PathfinderConnection {
   }
 
   func subscribe(vehicle: Vehicle) {
+    vehicleRouteSubscribers[vehicle.id!] = vehicle
     writeData([
       "routeSubscribe": [
         "model": "Vehicle",
         "id": vehicle.id!
       ]
     ])
-  }
-
-  func dontWriteData(data: [String:NSDictionary]) {
-    print("You were about to write: \(data)")
   }
 
   func writeData(data: [String:NSDictionary]) {
@@ -123,8 +124,12 @@ class PathfinderConnection {
       clusterFns.removeFirst()(clusterResponse)
     } else if let vehicleResponse: VehicleResponse = VehicleResponse.parse(message) {
       vehicleFns.removeFirst()(vehicleResponse)
-    //} else if let commodityResponse: CommodityResponse = CommodityResponse.parse(message) {
-    //  commodityFns.removeFirst()(commodityResponse)
+    } else if let commodityResponse: CommodityResponse = CommodityResponse.parse(message) {
+      commodityFns.removeFirst()(commodityResponse)
+    } else if let routedResponse = RoutedResponse.parse(message) {
+      let vehicle = vehicleRouteSubscribers[routedResponse.route.vehicle.id!]
+      vehicle?.route = routedResponse.route
+      vehicle?.delegate?.wasRouted(routedResponse.route, vehicle: vehicle!)
     } else {
       print("PathfinderConnection received unparseable message: \(message)")
     }
@@ -145,7 +150,6 @@ extension PathfinderConnection: WebSocketDelegate {
 
   func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
     print("PathfinderConnection received disconnect from \(socket): \(error)")
-
   }
 
   func websocketDidReceiveMessage(socket: WebSocket, text: String) {
