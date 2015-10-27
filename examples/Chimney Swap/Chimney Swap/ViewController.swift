@@ -22,6 +22,8 @@ class ViewController: UIViewController {
   var drawnPath: GMSPolyline?
   var markers: [GMSMarker]?
 
+  var didFindMyLocation = false
+
   @IBOutlet weak var mapView: GMSMapView!
 
   override func viewDidLoad() {
@@ -104,7 +106,7 @@ extension ViewController: CLLocationManagerDelegate {
 
   func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
     print("ViewController is now authorized to view location.")
-    if status == CLAuthorizationStatus.AuthorizedAlways {
+    if status == CLAuthorizationStatus.AuthorizedAlways || status == CLAuthorizationStatus.AuthorizedWhenInUse || status == CLAuthorizationStatus.Authorized {
       mapView.myLocationEnabled = true
       vehicle.connect()
     }
@@ -120,10 +122,11 @@ extension ViewController: CLLocationManagerDelegate {
 extension ViewController: GMSMapViewDelegate {
 
   override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-    if !mapView.settings.myLocationButton {
+    if !didFindMyLocation {
       let myLocation: CLLocation = change![NSKeyValueChangeNewKey] as! CLLocation
       mapView.camera = GMSCameraPosition.cameraWithTarget(myLocation.coordinate, zoom: 10.0)
       mapView.settings.myLocationButton = true
+      didFindMyLocation = true
     }
   }
   
@@ -140,6 +143,7 @@ extension ViewController: VehicleDelegate {
     getDirections(startLocation, end: endLocation, waypoints: locations)
     markers?.forEach { (m: GMSMarker) -> Void in m.map = nil }
     markers = [GMSMarker]()
+    print("Drawing the following commodities to the map: \(route.commodities())")
     route.commodities().forEach { (commodity: Commodity) -> Void in
       let color = randomColor()
       markers?.append(drawMarker(commodity.start, color: color))

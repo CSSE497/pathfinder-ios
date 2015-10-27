@@ -32,7 +32,7 @@ class PathfinderConnection {
   var connected = false
 
   init(applicationIdentifier: String) {
-    print("PathfinderConnection created, attempting to connect")
+    print("PathfinderConnection created, attempting to connect to \(pathfinderSocketUrl)")
     pathfinderSocket = WebSocket(url: NSURL(string: pathfinderSocketUrl)!)
     self.applicationIdentifier = applicationIdentifier
 

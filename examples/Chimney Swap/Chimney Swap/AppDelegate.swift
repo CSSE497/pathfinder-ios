@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-  let googleAPIKey = ""
+  let googleAPIKey = "AIzaSyCxkw1-mYOy6nsSTdyQ6CIjOjIRP33iIxY"
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     GMSServices.provideAPIKey(googleAPIKey)
