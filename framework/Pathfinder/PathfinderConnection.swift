@@ -23,7 +23,7 @@ class PathfinderConnection {
 
   var vehicleRouteSubscribers: [Int:Vehicle]
 
-  let pathfinderSocketUrl = "ws://130.211.184.70:9000/socket"
+  let pathfinderSocketUrl = "ws://104.197.63.127:9000/socket"
   let pathfinderSocket: WebSocket
   let applicationIdentifier: String
 

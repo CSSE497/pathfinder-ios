@@ -31,8 +31,17 @@ public class Route {
 
   - Returns:  An array of CLLocationCoordinate2D objects representing the route.
   */
-  public func asCoordinates() -> [CLLocationCoordinate2D] {
+  public func coordinates() -> [CLLocationCoordinate2D] {
     return actions.map({action in action.location})
+  }
+
+  /**
+  Get's the commodities in the route. This is helpful for display extra information that is stored with the commodity and for determining pairs to draw on a map.
+   
+  - Returns:  The commodities that are picked up and dropped off on the route.
+  */
+  public func commodities() -> [Commodity] {
+    return actions.map { (action: RouteAction) -> Commodity? in action.commodity }.flatMap { $0 }
   }
 
   class func parse(message: NSDictionary) -> Route? {

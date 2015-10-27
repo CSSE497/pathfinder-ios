@@ -10,7 +10,7 @@ import UIKit
 import Pathfinder
 
 class ViewController: UIViewController {
-  let pathfinderAppId: String = "abc"
+  let pathfinderAppId: String = "9c4166bb-9535-49e1-8844-1904a0b1f45b"
   let userCredentials: String = "abc"
 
   var cluster: Cluster!
@@ -61,7 +61,7 @@ extension ViewController: GMSMapViewDelegate {
     mapView.camera = GMSCameraPosition.cameraWithTarget(myLocation.coordinate, zoom: 10.0)
     mapView.settings.myLocationButton = true
   }
-  
+
 }
 
 // MARK: - ClusterDelegate

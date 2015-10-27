@@ -14,10 +14,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
+  let googleAPIKey = ""
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    GMSServices.provideAPIKey("AIzaSyCxkw1-mYOy6nsSTdyQ6CIjOjIRP33iIxY")
+    GMSServices.provideAPIKey(googleAPIKey)
+    let gitkitClient = GITClient.sharedInstance()
+    gitkitClient.apiKey = googleAPIKey
+    gitkitClient.widgetURL = "http://localhost:4567/gitkit"
+    gitkitClient.providers = [ kGITProviderGoogle ]
+    GIDSignIn.sharedInstance().clientID = "555706514291-iu7csa2ki6h9637to5djudn2j5v6netr.apps.googleusercontent.com"
     return true
+  }
+
+  func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+    print("AppDelegate attempting to open url \(url)")
+    return GITClient.handleOpenURL(url, sourceApplication: sourceApplication, annotation: annotation)
   }
 
   func applicationWillTerminate(application: UIApplication) {
