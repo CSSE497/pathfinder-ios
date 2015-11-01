@@ -116,7 +116,7 @@ class TransportResponse {
 
   class func parse(message: NSDictionary) -> TransportResponse? {
     if let update = message["updated"] as? NSDictionary {
-      if update["model"] as? String == "Transport" {
+      if update["model"] as? String == "Vehicle" {
         let value = update["value"] as! NSDictionary
         let id = value["id"] as! Int
         let lat = value["latitude"] as! Double
@@ -125,7 +125,7 @@ class TransportResponse {
       }
     }
     if let update = message["created"] as? NSDictionary {
-      if update["model"] as? String == "Transport" {
+      if update["model"] as? String == "Vehicle" {
         let value = update["value"] as! NSDictionary
         let id = value["id"] as! Int
         let lat = value["latitude"] as! Double

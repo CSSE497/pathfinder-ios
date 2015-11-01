@@ -135,7 +135,7 @@ class ClusterResponse {
       if model["model"] as? String == "Cluster" {
         if let value: NSDictionary = model["value"] as? NSDictionary {
           let clusterId = value["id"] as! Int
-          let transports = (value["transports"] as! NSArray).map() { (anyObj: AnyObject) -> Transport in
+          let transports = (value["vehicles"] as! NSArray).map() { (anyObj: AnyObject) -> Transport in
             let transportDict = anyObj as! NSDictionary
             let id = transportDict["id"] as! Int
             let capacities = ["chimney":transportDict["capacity"] as! Int]

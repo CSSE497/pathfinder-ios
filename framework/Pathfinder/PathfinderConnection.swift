@@ -66,7 +66,7 @@ class PathfinderConnection {
     transportFns.append(callback)
     writeData([
       "create": [
-        "model": "Transport",
+        "model": "Vehicle",
         "value": [
           "latitude": transport.location!.latitude,
           "longitude": transport.location!.longitude,
@@ -81,7 +81,7 @@ class PathfinderConnection {
     transportFns.append(callback)
     writeData([
       "update": [
-        "model": "Transport",
+        "model": "Vehicle",
         "id": transport.id!,
         "value": [
           "latitude": transport.location!.latitude,
@@ -95,7 +95,7 @@ class PathfinderConnection {
     transportRouteSubscribers[transport.id!] = transport
     writeData([
       "routeSubscribe": [
-        "model": "Transport",
+        "model": "Vehicle",
         "id": transport.id!
       ]
     ])
