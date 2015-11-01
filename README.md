@@ -37,15 +37,37 @@ If your application wants to display data regarding all (or some subset of) comm
 1. Obtain a cluster reference from the pathfinder object.
 
     ```swift
-    pathfinderRef.defaultCluster { (cluster: Cluster) -> Void in
-        self.cluster = cluster
-    }
+    let cluster = pathfinderRef.defaultCluster()
     ```
 
 2. Set your ViewController to be the cluster's delegate via the ClusterDelegate protocol.
 
     ```swift
-    self.cluster.delegate = self
+    cluster.delegate = self
+    ```
+
+3. Connect your cluster to Pathfinder.
+
+    ```swift
+    cluster.connect()
+    ```
+
+4. Implement the `ClusterDelegate` protocol.
+
+    ```swift
+    extension ViewController: ClusterDelegate {
+        func connected(cluster: Cluster) {
+            cluster.vehicles().foreach { (v: Vehicle) -> Void in draw(v) }
+            cluster.commodities().foreach { (c: Commodity) -> Void in draw(c) }
+        }
+
+        func clusterWasRouted(routes: [Route]) {
+            clearOldRoutes()
+            routes.foreach { (r: Route) -> Void in draw(r) }
+        }
+
+        ...
+    }
     ```
 
 Your ClusterDelegate will be notified whenever new commodities or vehicles appear, when vehicles move, when commodities are picked up, dropped off or cancelled and when routes are generated.
@@ -66,15 +88,30 @@ If your application logically represents a vehicle driver, you will want to do t
 2. Obtain a Vehicle reference for your application.
 
     ```swift
-    pathfinder.connectDeviceAsVehicle(cluster: self.cluster, parameterCapacities: parameters) { (v: Vehicle) -> Void in
-        self.vehicle = v
-    }
+    let vehicle = pathfinder.defaultCluster().createVehicle(parameters)
     ```
 
 3. Set your ViewController to be the vehicle's delegate via the VehicleDelegate protocol.
 
     ```swift
-    self.vehicle.delegate = self
+    vehicle.delegate = self
+    ```
+
+4. Connect your vehicle to Pathfinder
+
+    ```swift
+    vehicle.connect()
+    ```
+
+5. Implement the `VehicleDelegate` protocol
+
+    ```swift
+    extension ViewController: VehicleDelegate {
+        func wasRouted(vehicle: Vehicle, route: Route) {
+            drawRouteOnMyMap(route.coordinates())
+            drawCommoditiesOnMyMap(route.commodities())
+        }
+    }
     ```
 
 Your VehicleDelegate will be notified whenever the vehicle is assigned a new route, its location updates or it goes offline.
@@ -94,15 +131,32 @@ If your application requests commodities, you will want to do the following:
 2. Initiate the request and obtain a commodity reference from the top-level Pathfinder object.
 
     ```swift
-    pathfinder.requestCommodityTransit(cluster: self.cluster, start: startCoordinates, destination: endCoordinates, parameters: parameters) { (c: Commodity) -> Void in
-        self.commodity = c
-    }
+    let commodity = pathfinder.defaultCluster().createCommodity(
+        start: startCoordinates, destination: endCoordinates, parameters: parameters)
     ```
 
 3. Set your ViewController to be the commodity's delegate via the CommodityDelegate protocol.
 
     ```swift
-    self.commodity.delegate = self
+        commodity.delegate = self
+    ```
+
+4. Implement the `CommodityDelegate` protocol.
+
+    ```swift
+    extension ViewController: CommodityDelegate {
+        func connected(commodity: Commodity) {
+            draw(commodity)
+        }
+
+        func wasRouted(commodity: Commodity, byVehicle: Vehicle, onRoute: Route) {
+            byVehicle.delegate = self
+            byVehicle.connect()
+            draw(onRoute)
+        }
+
+        ...
+    }
     ```
 
 Your CommodityDelegate will be notified whenever the commodity is assigned to a route or its pickup/dropoff/cancel status changes.

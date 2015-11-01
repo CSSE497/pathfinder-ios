@@ -1,0 +1,10 @@
+framework module Pathfinder {
+  umbrella header "Pathfinder.h"
+
+  export *
+  module * { export * }
+}
+
+module Pathfinder.Swift {
+    header "Pathfinder-Swift.h"
+}

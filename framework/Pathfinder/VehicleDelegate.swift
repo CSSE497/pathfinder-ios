@@ -19,6 +19,13 @@ The standard use cases are two-fold:
 public protocol VehicleDelegate {
 
   /**
+   The connection to the vehicle has been established.
+
+   - Parameter vehicle:  The vehicle that was connected.
+   */
+  func connected(vehicle: Vehicle)
+
+  /**
   The vehicle performed a pickup or dropoff action.
 
   - Parameter action:   The action that was performed, including the related commodity.
