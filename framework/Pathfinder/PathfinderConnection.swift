@@ -14,14 +14,14 @@ class PathfinderConnection {
   typealias ApplicationFn = (ApplicationResponse) -> Void
   typealias ClusterFn = (ClusterResponse) -> Void
   typealias CommodityFn = (CommodityResponse) -> Void
-  typealias VehicleFn = (VehicleResponse) -> Void
+  typealias TransportFn = (TransportResponse) -> Void
 
   var applicationFns: [ApplicationFn]
   var clusterFns: [ClusterFn]
   var commodityFns: [CommodityFn]
-  var vehicleFns: [VehicleFn]
+  var transportFns: [TransportFn]
 
-  var vehicleRouteSubscribers: [Int:Vehicle]
+  var transportRouteSubscribers: [Int:Transport]
 
   let pathfinderSocketUrl = "ws://104.197.63.127:9000/socket"
   let pathfinderSocket: WebSocket
@@ -39,9 +39,9 @@ class PathfinderConnection {
     self.applicationFns = [ApplicationFn]()
     self.clusterFns = [ClusterFn]()
     self.commodityFns = [CommodityFn]()
-    self.vehicleFns = [VehicleFn]()
+    self.transportFns = [TransportFn]()
 
-    self.vehicleRouteSubscribers = [Int:Vehicle]()
+    self.transportRouteSubscribers = [Int:Transport]()
 
     pathfinderSocket.delegate = self
     pathfinderSocket.connect()
@@ -62,41 +62,41 @@ class PathfinderConnection {
     ])
   }
 
-  func create(vehicle: Vehicle, callback: VehicleFn) {
-    vehicleFns.append(callback)
+  func create(transport: Transport, callback: TransportFn) {
+    transportFns.append(callback)
     writeData([
       "create": [
         "model": "Vehicle",
         "value": [
-          "latitude": vehicle.location!.latitude,
-          "longitude": vehicle.location!.longitude,
-          "capacity": vehicle.capacities.first!.1,
-          "clusterId": vehicle.cluster.id!
+          "latitude": transport.location!.latitude,
+          "longitude": transport.location!.longitude,
+          "capacity": transport.capacities.first!.1,
+          "clusterId": transport.cluster.id!
         ]
       ]
     ])
   }
 
-  func update(vehicle: Vehicle, callback: VehicleFn) {
-    vehicleFns.append(callback)
+  func update(transport: Transport, callback: TransportFn) {
+    transportFns.append(callback)
     writeData([
       "update": [
         "model": "Vehicle",
-        "id": vehicle.id!,
+        "id": transport.id!,
         "value": [
-          "latitude": vehicle.location!.latitude,
-          "longitude": vehicle.location!.longitude
+          "latitude": transport.location!.latitude,
+          "longitude": transport.location!.longitude
         ]
       ]
     ])
   }
 
-  func subscribe(vehicle: Vehicle) {
-    vehicleRouteSubscribers[vehicle.id!] = vehicle
+  func subscribe(transport: Transport) {
+    transportRouteSubscribers[transport.id!] = transport
     writeData([
       "routeSubscribe": [
         "model": "Vehicle",
-        "id": vehicle.id!
+        "id": transport.id!
       ]
     ])
   }
@@ -122,14 +122,14 @@ class PathfinderConnection {
       applicationFns.removeFirst()(applicationResponse)
     } else if let clusterResponse: ClusterResponse = ClusterResponse.parse(message) {
       clusterFns.removeFirst()(clusterResponse)
-    } else if let vehicleResponse: VehicleResponse = VehicleResponse.parse(message) {
-      vehicleFns.removeFirst()(vehicleResponse)
+    } else if let transportResponse: TransportResponse = TransportResponse.parse(message) {
+      transportFns.removeFirst()(transportResponse)
     } else if let commodityResponse: CommodityResponse = CommodityResponse.parse(message) {
       commodityFns.removeFirst()(commodityResponse)
     } else if let routedResponse = RoutedResponse.parse(message) {
-      let vehicle = vehicleRouteSubscribers[routedResponse.route.vehicle.id!]
-      vehicle?.route = routedResponse.route
-      vehicle?.delegate?.wasRouted(routedResponse.route, vehicle: vehicle!)
+      let transport = transportRouteSubscribers[routedResponse.route.transport.id!]
+      transport?.route = routedResponse.route
+      transport?.delegate?.wasRouted(routedResponse.route, transport: transport!)
     } else {
       print("PathfinderConnection received unparseable message: \(message)")
     }

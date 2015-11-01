@@ -12,7 +12,7 @@ import CoreLocation
 /**
 Receives notifications of updates to a Commodity within the context of the specific application.
 
-The standard use cases are to notify the requesting user that a vehicle has been dispatched to transport them or to observe the state of a commodity in transit from a third part perspective. Note that the vehicle is responsible for notifying the service that it has picked up or dropped off a commodity, not the commodity itself.
+The standard use cases are to notify the requesting user that a transport has been dispatched to transport them or to observe the state of a commodity in transit from a third part perspective. Note that the transport is responsible for notifying the service that it has picked up or dropped off a commodity, not the commodity itself.
 */
 public protocol CommodityDelegate {
 
@@ -28,9 +28,9 @@ public protocol CommodityDelegate {
   
   - Parameter location:   The location where the commodity was picked up.
   - Parameter commodity:  The commodity that was picked up.
-  - Parameter byVehicle:  The vehicle that is now transporting the commodity.
+  - Parameter byTransport:  The transport that is now transporting the commodity.
   */
-  func wasPickedUpAt(location: CLLocationCoordinate2D, commodity: Commodity, byVehicle: Vehicle)
+  func wasPickedUpAt(location: CLLocationCoordinate2D, commodity: Commodity, byTransport: Transport)
 
   /**
   A commodity was dropped off at its destination.
@@ -48,11 +48,11 @@ public protocol CommodityDelegate {
   func wasCancelled(commodity: Commodity)
 
   /**
-  A route was generated for a vehicle that includes this commodity.
+  A route was generated for a transport that includes this commodity.
   
   - Parameter commodity:  The commodity that will be transported.
-  - Parameter vehicle:    The vehicle that will transport the commodity.
-  - Paramter onRoute:     The route which contains the other commodities that will be picked up by the vehicle.
+  - Parameter transport:    The transport that will transport the commodity.
+  - Paramter onRoute:     The route which contains the other commodities that will be picked up by the transport.
   */
-  func wasRouted(commodity: Commodity, byVehicle: Vehicle, onRoute: Route)
+  func wasRouted(commodity: Commodity, byTransport: Transport, onRoute: Route)
 }
