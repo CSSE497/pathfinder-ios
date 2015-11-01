@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Vehicle Class Reference</title>
+    <title>Transport Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -9,8 +9,8 @@
     <script src="../js/jazzy.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/Vehicle" class="dashAnchor"></a>
-    <a title="Vehicle Class Reference"></a>
+    <a name="//apple_ref/swift/Class/Transport" class="dashAnchor"></a>
+    <a title="Transport Class Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html"> Docs</a> (100% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html"> Reference</a>
         <img id="carat" src="../img/carat.png" />
-        Vehicle Class Reference
+        Transport Class Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -46,7 +46,7 @@
                 <a href="../Classes/RouteAction.html">RouteAction</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/Vehicle.html">Vehicle</a>
+                <a href="../Classes/Transport.html">Transport</a>
               </li>
             </ul>
           </li>
@@ -54,7 +54,7 @@
           <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Extensions/Vehicle.html">Vehicle</a>
+                <a href="../Extensions/Transport.html">Transport</a>
               </li>
             </ul>
           </li>
@@ -68,7 +68,7 @@
                 <a href="../Protocols/CommodityDelegate.html">CommodityDelegate</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/VehicleDelegate.html">VehicleDelegate</a>
+                <a href="../Protocols/TransportDelegate.html">TransportDelegate</a>
               </li>
             </ul>
           </li>
@@ -77,21 +77,16 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Vehicle</h1>
+            <h1>Transport</h1>
               <div class="declaration">
                 <div class="Swift">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Vehicle</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Transport</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                 </div>
               </div>
-            <p>A registered vehicle that can be routed to transport commodities.</p>
+            <p>A registered transport that can be routed to transport commodities.</p>
 
-<p>This class should never be instantiated directly because it represents the state of the data from the Pathfinder backend. Instead, connect your device as a vehicle.</p>
-
-<pre class="highlight plaintext"><code>pathfinder.connectDeviceAsVehicle(cluster: myDefaultCluster, parameterCapacities: myCapacities) { (vehicle: Vehicle) -&gt; Void in
-self.vehicle = vehicle
-}
-</code></pre>
+<p>This class should never be instantiated directly because it represents the state of the data from the Pathfinder backend. Instead, connect your device as a transport.</p>
 
           </section>
           <section class="section task-group-section">
@@ -100,9 +95,9 @@ self.vehicle = vehicle
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC10Pathfinder7Vehicle8delegateGSqPS_15VehicleDelegate__"></a>
+                    <a name="/s:vC10Pathfinder9Transport8delegateGSqPS_17TransportDelegate__"></a>
                     <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC10Pathfinder7Vehicle8delegateGSqPS_15VehicleDelegate__">delegate</a>
+                    <a class="token" href="#/s:vC10Pathfinder9Transport8delegateGSqPS_17TransportDelegate__">delegate</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -117,7 +112,7 @@ self.vehicle = vehicle
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt">VehicleDelegate</span><span class="p">?</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt">TransportDelegate</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -127,9 +122,9 @@ self.vehicle = vehicle
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC10Pathfinder7Vehicle5routeGSqCS_5Route_"></a>
+                    <a name="/s:vC10Pathfinder9Transport5routeGSqCS_5Route_"></a>
                     <a name="//apple_ref/swift/Property/route" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC10Pathfinder7Vehicle5routeGSqCS_5Route_">route</a>
+                    <a class="token" href="#/s:vC10Pathfinder9Transport5routeGSqCS_5Route_">route</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -137,7 +132,7 @@ self.vehicle = vehicle
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The route to which the vehicle is currently assigned, if there is one.</p>
+                        <p>The route to which the transport is currently assigned, if there is one.</p>
 
                       </div>
                       <div class="declaration">
@@ -154,9 +149,9 @@ self.vehicle = vehicle
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC10Pathfinder7Vehicle10capacitiesGVSs10DictionarySSSi_"></a>
+                    <a name="/s:vC10Pathfinder9Transport10capacitiesGVSs10DictionarySSSi_"></a>
                     <a name="//apple_ref/swift/Property/capacities" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC10Pathfinder7Vehicle10capacitiesGVSs10DictionarySSSi_">capacities</a>
+                    <a class="token" href="#/s:vC10Pathfinder9Transport10capacitiesGVSs10DictionarySSSi_">capacities</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -181,9 +176,9 @@ self.vehicle = vehicle
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC10Pathfinder7Vehicle6onlineSb"></a>
+                    <a name="/s:vC10Pathfinder9Transport6onlineSb"></a>
                     <a name="//apple_ref/swift/Property/online" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC10Pathfinder7Vehicle6onlineSb">online</a>
+                    <a class="token" href="#/s:vC10Pathfinder9Transport6onlineSb">online</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -191,7 +186,7 @@ self.vehicle = vehicle
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The current state of the vehicles online/offline status.</p>
+                        <p>The current state of the transports online/offline status.</p>
 
                       </div>
                       <div class="declaration">
@@ -208,9 +203,9 @@ self.vehicle = vehicle
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC10Pathfinder7Vehicle2idGSqSi_"></a>
+                    <a name="/s:vC10Pathfinder9Transport2idGSqSi_"></a>
                     <a name="//apple_ref/swift/Property/id" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC10Pathfinder7Vehicle2idGSqSi_">id</a>
+                    <a class="token" href="#/s:vC10Pathfinder9Transport2idGSqSi_">id</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -218,7 +213,7 @@ self.vehicle = vehicle
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The unique id of the vehicle, as generated by Pathfinder.</p>
+                        <p>The unique id of the transport, as generated by Pathfinder.</p>
 
                       </div>
                       <div class="declaration">
@@ -235,9 +230,36 @@ self.vehicle = vehicle
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC10Pathfinder7Vehicle7connectFS0_FT_T_"></a>
+                    <a name="/s:FC10Pathfinder9Transport7connectFS0_FT_T_"></a>
                     <a name="//apple_ref/swift/Method/connect()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC10Pathfinder7Vehicle7connectFS0_FT_T_">connect()</a>
+                    <a class="token" href="#/s:FC10Pathfinder9Transport7connectFS0_FT_T_">connect()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Connects the local transport instance to the Pathfinder backend. Location updates will be send periodically to aid in routing calculations.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">connect</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC10Pathfinder9Transport9subscribeFS0_FT_T_"></a>
+                    <a name="//apple_ref/swift/Method/subscribe()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10Pathfinder9Transport9subscribeFS0_FT_T_">subscribe()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -252,7 +274,7 @@ self.vehicle = vehicle
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Vehicle</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Transport</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                         </div>
                       </div>
@@ -262,9 +284,9 @@ self.vehicle = vehicle
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC10Pathfinder7Vehicle15nextRouteActionFS0_FT_GSqCS_11RouteAction_"></a>
+                    <a name="/s:FC10Pathfinder9Transport15nextRouteActionFS0_FT_GSqCS_11RouteAction_"></a>
                     <a name="//apple_ref/swift/Method/nextRouteAction()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC10Pathfinder7Vehicle15nextRouteActionFS0_FT_GSqCS_11RouteAction_">nextRouteAction()</a>
+                    <a class="token" href="#/s:FC10Pathfinder9Transport15nextRouteActionFS0_FT_GSqCS_11RouteAction_">nextRouteAction()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -272,7 +294,7 @@ self.vehicle = vehicle
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Retrieve the next action that the driver of the vehicle will need to undertake. Currently, this is only pickups and dropoffs of commodities. If you want the entire queue of upcoming events, see the route field.</p>
+                        <p>Retrieve the next action that the driver of the transport will need to undertake. Currently, this is only pickups and dropoffs of commodities. If you want the entire queue of upcoming events, see the route field.</p>
 
                       </div>
                       <div class="declaration">
@@ -289,9 +311,9 @@ self.vehicle = vehicle
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC10Pathfinder7Vehicle23completeNextRouteActionFS0_FT_T_"></a>
+                    <a name="/s:FC10Pathfinder9Transport23completeNextRouteActionFS0_FT_T_"></a>
                     <a name="//apple_ref/swift/Method/completeNextRouteAction()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC10Pathfinder7Vehicle23completeNextRouteActionFS0_FT_T_">completeNextRouteAction()</a>
+                    <a class="token" href="#/s:FC10Pathfinder9Transport23completeNextRouteActionFS0_FT_T_">completeNextRouteAction()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -299,7 +321,7 @@ self.vehicle = vehicle
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Indicates that a vehicle has successfully completed one route action. It is the vehicles responsibility to indicate that they have picked up and dropped off their commodities. This method must be called, preferrably as the result of a UI interaction, when the driver acknowledges that they have picked up or dropped off a commodity on their route.</p>
+                        <p>Indicates that a transport has successfully completed one route action. It is the transports responsibility to indicate that they have picked up and dropped off their commodities. This method must be called, preferrably as the result of a UI interaction, when the driver acknowledges that they have picked up or dropped off a commodity on their route.</p>
 
                       </div>
                       <div class="declaration">
@@ -316,9 +338,9 @@ self.vehicle = vehicle
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC10Pathfinder7Vehicle9goOfflineFS0_FT_Sb"></a>
+                    <a name="/s:FC10Pathfinder9Transport9goOfflineFS0_FT_Sb"></a>
                     <a name="//apple_ref/swift/Method/goOffline()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC10Pathfinder7Vehicle9goOfflineFS0_FT_Sb">goOffline()</a>
+                    <a class="token" href="#/s:FC10Pathfinder9Transport9goOfflineFS0_FT_Sb">goOffline()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -326,7 +348,7 @@ self.vehicle = vehicle
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Removes the vehicle from the set of active vehicles that can be routed. If the vehicle is on route to pick up commodities, all of those commodities will be rerouted with a new vehicle. If the vehicle is currently transporting passengers, it cannot go offline.</p>
+                        <p>Removes the transport from the set of active transports that can be routed. If the transport is on route to pick up commodities, all of those commodities will be rerouted with a new transport. If the transport is currently transporting passengers, it cannot go offline.</p>
 
                       </div>
                       <div class="declaration">
@@ -339,7 +361,7 @@ self.vehicle = vehicle
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>True if the vehicle is successfully turned offline.</p>
+                        <p>True if the transport is successfully turned offline.</p>
 
                       </div>
                     </section>
@@ -350,7 +372,7 @@ self.vehicle = vehicle
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="https://github.com/csse497/pathfinder" target="_blank" rel="external">Adam Michael</a>. All rights reserved. (Last updated: 2015-10-27)</p>
+          <p>&copy; 2015 <a class="link" href="https://github.com/csse497/pathfinder" target="_blank" rel="external">Adam Michael</a>. All rights reserved. (Last updated: 2015-11-01)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.3.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

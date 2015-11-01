@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Vehicle Extension Reference</title>
+    <title>Transport Extension Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -9,8 +9,8 @@
     <script src="../js/jazzy.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Extension/Vehicle" class="dashAnchor"></a>
-    <a title="Vehicle Extension Reference"></a>
+    <a name="//apple_ref/swift/Extension/Transport" class="dashAnchor"></a>
+    <a title="Transport Extension Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html"> Docs</a> (100% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html"> Reference</a>
         <img id="carat" src="../img/carat.png" />
-        Vehicle Extension Reference
+        Transport Extension Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -46,7 +46,7 @@
                 <a href="../Classes/RouteAction.html">RouteAction</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/Vehicle.html">Vehicle</a>
+                <a href="../Classes/Transport.html">Transport</a>
               </li>
             </ul>
           </li>
@@ -54,7 +54,7 @@
           <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Extensions/Vehicle.html">Vehicle</a>
+                <a href="../Extensions/Transport.html">Transport</a>
               </li>
             </ul>
           </li>
@@ -68,7 +68,7 @@
                 <a href="../Protocols/CommodityDelegate.html">CommodityDelegate</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/VehicleDelegate.html">VehicleDelegate</a>
+                <a href="../Protocols/TransportDelegate.html">TransportDelegate</a>
               </li>
             </ul>
           </li>
@@ -77,21 +77,16 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Vehicle</h1>
+            <h1>Transport</h1>
               <div class="declaration">
                 <div class="Swift">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Vehicle</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Transport</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                 </div>
               </div>
-            <p>A registered vehicle that can be routed to transport commodities.</p>
+            <p>A registered transport that can be routed to transport commodities.</p>
 
-<p>This class should never be instantiated directly because it represents the state of the data from the Pathfinder backend. Instead, connect your device as a vehicle.</p>
-
-<pre class="highlight plaintext"><code>pathfinder.connectDeviceAsVehicle(cluster: myDefaultCluster, parameterCapacities: myCapacities) { (vehicle: Vehicle) -&gt; Void in
-self.vehicle = vehicle
-}
-</code></pre>
+<p>This class should never be instantiated directly because it represents the state of the data from the Pathfinder backend. Instead, connect your device as a transport.</p>
 
           </section>
           <section class="section task-group-section">
@@ -100,9 +95,9 @@ self.vehicle = vehicle
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC10Pathfinder7Vehicle15locationManagerFS0_FTCSo17CLLocationManager28didChangeAuthorizationStatusOSC21CLAuthorizationStatus_T_"></a>
+                    <a name="/s:FC10Pathfinder9Transport15locationManagerFS0_FTCSo17CLLocationManager28didChangeAuthorizationStatusOSC21CLAuthorizationStatus_T_"></a>
                     <a name="//apple_ref/swift/Method/locationManager(_:didChangeAuthorizationStatus:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC10Pathfinder7Vehicle15locationManagerFS0_FTCSo17CLLocationManager28didChangeAuthorizationStatusOSC21CLAuthorizationStatus_T_">locationManager(_:didChangeAuthorizationStatus:)</a>
+                    <a class="token" href="#/s:FC10Pathfinder9Transport15locationManagerFS0_FTCSo17CLLocationManager28didChangeAuthorizationStatusOSC21CLAuthorizationStatus_T_">locationManager(_:didChangeAuthorizationStatus:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -117,7 +112,7 @@ self.vehicle = vehicle
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Vehicle</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Transport</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                         </div>
                       </div>
@@ -127,9 +122,9 @@ self.vehicle = vehicle
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC10Pathfinder7Vehicle15locationManagerFS0_FTCSo17CLLocationManager18didUpdateLocationsGSaCSo10CLLocation__T_"></a>
+                    <a name="/s:FC10Pathfinder9Transport15locationManagerFS0_FTCSo17CLLocationManager18didUpdateLocationsGSaCSo10CLLocation__T_"></a>
                     <a name="//apple_ref/swift/Method/locationManager(_:didUpdateLocations:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC10Pathfinder7Vehicle15locationManagerFS0_FTCSo17CLLocationManager18didUpdateLocationsGSaCSo10CLLocation__T_">locationManager(_:didUpdateLocations:)</a>
+                    <a class="token" href="#/s:FC10Pathfinder9Transport15locationManagerFS0_FTCSo17CLLocationManager18didUpdateLocationsGSaCSo10CLLocation__T_">locationManager(_:didUpdateLocations:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -144,7 +139,7 @@ self.vehicle = vehicle
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Vehicle</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Transport</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                         </div>
                       </div>
@@ -156,7 +151,7 @@ self.vehicle = vehicle
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="https://github.com/csse497/pathfinder" target="_blank" rel="external">Adam Michael</a>. All rights reserved. (Last updated: 2015-10-27)</p>
+          <p>&copy; 2015 <a class="link" href="https://github.com/csse497/pathfinder" target="_blank" rel="external">Adam Michael</a>. All rights reserved. (Last updated: 2015-11-01)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.3.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

@@ -46,7 +46,7 @@
                 <a href="../Classes/RouteAction.html">RouteAction</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/Vehicle.html">Vehicle</a>
+                <a href="../Classes/Transport.html">Transport</a>
               </li>
             </ul>
           </li>
@@ -54,7 +54,7 @@
           <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Extensions/Vehicle.html">Vehicle</a>
+                <a href="../Extensions/Transport.html">Transport</a>
               </li>
             </ul>
           </li>
@@ -68,7 +68,7 @@
                 <a href="../Protocols/CommodityDelegate.html">CommodityDelegate</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/VehicleDelegate.html">VehicleDelegate</a>
+                <a href="../Protocols/TransportDelegate.html">TransportDelegate</a>
               </li>
             </ul>
           </li>
@@ -89,10 +89,10 @@
 <p>This is the starting point for all interactions with Pathfinder. The typical use case of this library is:</p>
 
 <ol>
-<li>Retrieve a Cluster, either by id or the default cluster of the application. All vehicles, commodities and routes within specific clusters. Additional clusters can be configured via the Pathfinder web interface.</li>
-<li>Register as a vehicle or create a commodity within that cluster.</li>
-<li>Create a delegate object for the newly created vehicle or commodity.</li>
-<li>Respond to the CommodityDelegate or VehicleDelegate protocol methods by displaying them on a MapView and executing the appropriate business logic.</li>
+<li>Retrieve a Cluster, either by id or the default cluster of the application. All transports, commodities and routes within specific clusters. Additional clusters can be configured via the Pathfinder web interface.</li>
+<li>Register as a transport or create a commodity within that cluster.</li>
+<li>Create a delegate object for the newly created transport or commodity.</li>
+<li>Respond to the CommodityDelegate or TransportDelegate protocol methods by displaying them on a MapView and executing the appropriate business logic.</li>
 </ol>
 
           </section>
@@ -112,7 +112,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This is the starting point for all interactions with Pathfinder. Once you have constructed a Pathfinder instance, you can begin to interact with vehicles and commodities.</p>
+                        <p>This is the starting point for all interactions with Pathfinder. Once you have constructed a Pathfinder instance, you can begin to interact with transports and commodities.</p>
 
                       </div>
                       <div class="declaration">
@@ -172,7 +172,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Retrieves the top-level cluster for the application, including references to all vehicles and commodities within it. The resulting object can be used to watch for events including vehicle and commodity updates and route assignments.</p>
+                        <p>Retrieves the top-level cluster for the application, including references to all transports and commodities within it. The resulting object can be used to watch for events including transport and commodity updates and route assignments.</p>
 
                       </div>
                       <div class="declaration">
@@ -219,7 +219,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Retrieves a previously created cluster by id number for the application, including references to all vehicles and commodities within it. The resuling object can be used to watch for events including vehicle and commodity updates and route assignments. This method will only need to be used if your application requires Pathfinder subclusters.</p>
+                        <p>Retrieves a previously created cluster by id number for the application, including references to all transports and commodities within it. The resuling object can be used to watch for events including transport and commodity updates and route assignments. This method will only need to be used if your application requires Pathfinder subclusters.</p>
 
 <ul>
 <li>Paremeter id:        The id of the cluster to retrieve.</li>
@@ -262,7 +262,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="https://github.com/csse497/pathfinder" target="_blank" rel="external">Adam Michael</a>. All rights reserved. (Last updated: 2015-10-27)</p>
+          <p>&copy; 2015 <a class="link" href="https://github.com/csse497/pathfinder" target="_blank" rel="external">Adam Michael</a>. All rights reserved. (Last updated: 2015-11-01)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.3.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

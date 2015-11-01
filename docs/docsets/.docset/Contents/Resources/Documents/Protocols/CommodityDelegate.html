@@ -46,7 +46,7 @@
                 <a href="../Classes/RouteAction.html">RouteAction</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/Vehicle.html">Vehicle</a>
+                <a href="../Classes/Transport.html">Transport</a>
               </li>
             </ul>
           </li>
@@ -54,7 +54,7 @@
           <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Extensions/Vehicle.html">Vehicle</a>
+                <a href="../Extensions/Transport.html">Transport</a>
               </li>
             </ul>
           </li>
@@ -68,7 +68,7 @@
                 <a href="../Protocols/CommodityDelegate.html">CommodityDelegate</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/VehicleDelegate.html">VehicleDelegate</a>
+                <a href="../Protocols/TransportDelegate.html">TransportDelegate</a>
               </li>
             </ul>
           </li>
@@ -86,7 +86,7 @@
               </div>
             <p>Receives notifications of updates to a Commodity within the context of the specific application.</p>
 
-<p>The standard use cases are to notify the requesting user that a vehicle has been dispatched to transport them or to observe the state of a commodity in transit from a third part perspective. Note that the vehicle is responsible for notifying the service that it has picked up or dropped off a commodity, not the commodity itself.</p>
+<p>The standard use cases are to notify the requesting user that a transport has been dispatched to transport them or to observe the state of a commodity in transit from a third part perspective. Note that the transport is responsible for notifying the service that it has picked up or dropped off a commodity, not the commodity itself.</p>
 
           </section>
           <section class="section task-group-section">
@@ -142,9 +142,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP10Pathfinder17CommodityDelegate13wasPickedUpAtuRq_S0__Fq_FTVSC22CLLocationCoordinate2D9commodityCS_9Commodity9byVehicleCS_7Vehicle_T_"></a>
-                    <a name="//apple_ref/swift/Method/wasPickedUpAt(_:commodity:byVehicle:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP10Pathfinder17CommodityDelegate13wasPickedUpAtuRq_S0__Fq_FTVSC22CLLocationCoordinate2D9commodityCS_9Commodity9byVehicleCS_7Vehicle_T_">wasPickedUpAt(_:commodity:byVehicle:)</a>
+                    <a name="/s:FP10Pathfinder17CommodityDelegate13wasPickedUpAtuRq_S0__Fq_FTVSC22CLLocationCoordinate2D9commodityCS_9Commodity11byTransportCS_9Transport_T_"></a>
+                    <a name="//apple_ref/swift/Method/wasPickedUpAt(_:commodity:byTransport:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP10Pathfinder17CommodityDelegate13wasPickedUpAtuRq_S0__Fq_FTVSC22CLLocationCoordinate2D9commodityCS_9Commodity11byTransportCS_9Transport_T_">wasPickedUpAt(_:commodity:byTransport:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -159,7 +159,7 @@
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">wasPickedUpAt</span><span class="p">(</span><span class="nv">location</span><span class="p">:</span> <span class="kt">CLLocationCoordinate2D</span><span class="p">,</span> <span class="nv">commodity</span><span class="p">:</span> <span class="kt">Commodity</span><span class="p">,</span> <span class="nv">byVehicle</span><span class="p">:</span> <span class="kt">Vehicle</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">wasPickedUpAt</span><span class="p">(</span><span class="nv">location</span><span class="p">:</span> <span class="kt">CLLocationCoordinate2D</span><span class="p">,</span> <span class="nv">commodity</span><span class="p">:</span> <span class="kt">Commodity</span><span class="p">,</span> <span class="nv">byTransport</span><span class="p">:</span> <span class="kt">Transport</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -196,12 +196,12 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>byVehicle</em>
+                                <em>byTransport</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The vehicle that is now transporting the commodity.</p>
+                                  <p>The transport that is now transporting the commodity.</p>
 
                                 </div>
                               </td>
@@ -322,9 +322,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP10Pathfinder17CommodityDelegate9wasRouteduRq_S0__Fq_FTCS_9Commodity9byVehicleCS_7Vehicle7onRouteCS_5Route_T_"></a>
-                    <a name="//apple_ref/swift/Method/wasRouted(_:byVehicle:onRoute:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP10Pathfinder17CommodityDelegate9wasRouteduRq_S0__Fq_FTCS_9Commodity9byVehicleCS_7Vehicle7onRouteCS_5Route_T_">wasRouted(_:byVehicle:onRoute:)</a>
+                    <a name="/s:FP10Pathfinder17CommodityDelegate9wasRouteduRq_S0__Fq_FTCS_9Commodity11byTransportCS_9Transport7onRouteCS_5Route_T_"></a>
+                    <a name="//apple_ref/swift/Method/wasRouted(_:byTransport:onRoute:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP10Pathfinder17CommodityDelegate9wasRouteduRq_S0__Fq_FTCS_9Commodity11byTransportCS_9Transport7onRouteCS_5Route_T_">wasRouted(_:byTransport:onRoute:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -332,10 +332,10 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A route was generated for a vehicle that includes this commodity.</p>
+                        <p>A route was generated for a transport that includes this commodity.</p>
 
 <ul>
-<li>Paramter onRoute:     The route which contains the other commodities that will be picked up by the vehicle.</li>
+<li>Paramter onRoute:     The route which contains the other commodities that will be picked up by the transport.</li>
 </ul>
 
                       </div>
@@ -343,7 +343,7 @@
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">wasRouted</span><span class="p">(</span><span class="nv">commodity</span><span class="p">:</span> <span class="kt">Commodity</span><span class="p">,</span> <span class="nv">byVehicle</span><span class="p">:</span> <span class="kt">Vehicle</span><span class="p">,</span> <span class="nv">onRoute</span><span class="p">:</span> <span class="kt">Route</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">wasRouted</span><span class="p">(</span><span class="nv">commodity</span><span class="p">:</span> <span class="kt">Commodity</span><span class="p">,</span> <span class="nv">byTransport</span><span class="p">:</span> <span class="kt">Transport</span><span class="p">,</span> <span class="nv">onRoute</span><span class="p">:</span> <span class="kt">Route</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -367,12 +367,12 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>vehicle</em>
+                                <em>transport</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The vehicle that will transport the commodity.</p>
+                                  <p>The transport that will transport the commodity.</p>
 
                                 </div>
                               </td>
@@ -388,7 +388,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="https://github.com/csse497/pathfinder" target="_blank" rel="external">Adam Michael</a>. All rights reserved. (Last updated: 2015-10-27)</p>
+          <p>&copy; 2015 <a class="link" href="https://github.com/csse497/pathfinder" target="_blank" rel="external">Adam Michael</a>. All rights reserved. (Last updated: 2015-11-01)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.3.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

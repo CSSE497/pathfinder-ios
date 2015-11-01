@@ -46,7 +46,7 @@
                 <a href="../Classes/RouteAction.html">RouteAction</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/Vehicle.html">Vehicle</a>
+                <a href="../Classes/Transport.html">Transport</a>
               </li>
             </ul>
           </li>
@@ -54,7 +54,7 @@
           <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Extensions/Vehicle.html">Vehicle</a>
+                <a href="../Extensions/Transport.html">Transport</a>
               </li>
             </ul>
           </li>
@@ -68,7 +68,7 @@
                 <a href="../Protocols/CommodityDelegate.html">CommodityDelegate</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/VehicleDelegate.html">VehicleDelegate</a>
+                <a href="../Protocols/TransportDelegate.html">TransportDelegate</a>
               </li>
             </ul>
           </li>
@@ -84,7 +84,7 @@
 
                 </div>
               </div>
-            <p>A container in which vehicles are routed to transport commodities. Every registered Pathfinder application is created one default cluster. Additional sub-clusters can be created by the developer through the Pathfinder web interface.</p>
+            <p>A container in which transports are routed to transport commodities. Every registered Pathfinder application is created one default cluster. Additional sub-clusters can be created by the developer through the Pathfinder web interface.</p>
 
 <p>This class should not be instantiated directly since it represents the state of the Pathfinder backend service. Instead, use the factory methods in the Pathfinder class. The typical use case of creating a Cluster object is to set a delegate for it which will receive all of the updates defined in <code>ClusterDelegate</code>.</p>
 
@@ -149,9 +149,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC10Pathfinder7Cluster8vehiclesGSaCS_7Vehicle_"></a>
-                    <a name="//apple_ref/swift/Property/vehicles" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC10Pathfinder7Cluster8vehiclesGSaCS_7Vehicle_">vehicles</a>
+                    <a name="/s:vC10Pathfinder7Cluster10transportsGSaCS_9Transport_"></a>
+                    <a name="//apple_ref/swift/Property/transports" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC10Pathfinder7Cluster10transportsGSaCS_9Transport_">transports</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -159,14 +159,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The vehicles that are currently online within the cluster.</p>
+                        <p>The transports that are currently online within the cluster.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">vehicles</span><span class="p">:</span> <span class="p">[</span><span class="kt">Vehicle</span><span class="p">]</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">transports</span><span class="p">:</span> <span class="p">[</span><span class="kt">Transport</span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
@@ -267,7 +267,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>/ Attempts to authenticate and retrieve a reference to the requested cluster. If the connection succeeds, the corresponding method on the delegate will be executed. This method should only be utilized if you wish to receive updates on all commodities, vehicles and routes for the entire cluster.</p>
+                        <p>/ Attempts to authenticate and retrieve a reference to the requested cluster. If the connection succeeds, the corresponding method on the delegate will be executed. This method should only be utilized if you wish to receive updates on all commodities, transports and routes for the entire cluster.</p>
 
                       </div>
                       <div class="declaration">
@@ -284,9 +284,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC10Pathfinder7Cluster13createVehicleFS0_FGVSs10DictionarySSSi_CS_7Vehicle"></a>
-                    <a name="//apple_ref/swift/Method/createVehicle(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC10Pathfinder7Cluster13createVehicleFS0_FGVSs10DictionarySSSi_CS_7Vehicle">createVehicle(_:)</a>
+                    <a name="/s:FC10Pathfinder7Cluster15createTransportFS0_FGVSs10DictionarySSSi_CS_9Transport"></a>
+                    <a name="//apple_ref/swift/Method/createTransport(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10Pathfinder7Cluster15createTransportFS0_FGVSs10DictionarySSSi_CS_9Transport">createTransport(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -294,14 +294,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Registers the current device as a vehicle with the Pathfinder service or uses the user&rsquo;s authentication to determine if an existing vehicle record exists and retrieves it. This will NOT set the vehicle to the online state. No routes will be generated for the vehicle until it is set to online. If the connection is authenticated and succeeds, the corresponding method on the delegate will be executed.</p>
+                        <p>Registers the current device as a transport with the Pathfinder service or uses the user&rsquo;s authentication to determine if an existing transport record exists and retrieves it. This will NOT set the transport to the online state. No routes will be generated for the transport until it is set to online. If the connection is authenticated and succeeds, the corresponding method on the delegate will be executed.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">createVehicle</span><span class="p">(</span><span class="nv">parameterCapacities</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span><span class="kt">Int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Vehicle</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">createTransport</span><span class="p">(</span><span class="nv">parameterCapacities</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span><span class="kt">Int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Transport</span></code></pre>
 
                         </div>
                       </div>
@@ -317,7 +317,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The limiting constraints of the vehicle of the parameters of your application&rsquo;s routing calculations. The set of parameters needs to be defined and prioritized via the Pathfinder web interface in advance. All vehicles will be routed while keeping their sum occupant parameters to be less than or equal to their limiting constraints.</p>
+                                  <p>The limiting constraints of the transport of the parameters of your application&rsquo;s routing calculations. The set of parameters needs to be defined and prioritized via the Pathfinder web interface in advance. All transports will be routed while keeping their sum occupant parameters to be less than or equal to their limiting constraints.</p>
 
                                 </div>
                               </td>
@@ -330,7 +330,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>This function will be called exactly once with the registered Vehicle object. The Vehicle object can be used to set the vehicle as online or offline, to receive route assignments and send updates regarding pickups and dropoffs.</p>
+                                  <p>This function will be called exactly once with the registered Transport object. The Transport object can be used to set the transport as online or offline, to receive route assignments and send updates regarding pickups and dropoffs.</p>
 
                                 </div>
                               </td>
@@ -354,7 +354,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Requests transportation for a physical entity from one geographical location to another. This will immediately route a vehicle to pick up the commodity if one is available that can hold the commodities parameters within the vehicles capacity. If the connection is authenticated and succeeds, the corresponding method on the delegate of the returned commodity will be executed.</p>
+                        <p>Requests transportation for a physical entity from one geographical location to another. This will immediately route a transport to pick up the commodity if one is available that can hold the commodities parameters within the transports capacity. If the connection is authenticated and succeeds, the corresponding method on the delegate of the returned commodity will be executed.</p>
 
                       </div>
                       <div class="declaration">
@@ -432,7 +432,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="https://github.com/csse497/pathfinder" target="_blank" rel="external">Adam Michael</a>. All rights reserved. (Last updated: 2015-10-27)</p>
+          <p>&copy; 2015 <a class="link" href="https://github.com/csse497/pathfinder" target="_blank" rel="external">Adam Michael</a>. All rights reserved. (Last updated: 2015-11-01)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.3.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

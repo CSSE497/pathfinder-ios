@@ -45,7 +45,7 @@
                 <a href="Classes/RouteAction.html">RouteAction</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/Vehicle.html">Vehicle</a>
+                <a href="Classes/Transport.html">Transport</a>
               </li>
             </ul>
           </li>
@@ -53,7 +53,7 @@
           <a href="Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Extensions/Vehicle.html">Vehicle</a>
+                <a href="Extensions/Transport.html">Transport</a>
               </li>
             </ul>
           </li>
@@ -67,7 +67,7 @@
                 <a href="Protocols/CommodityDelegate.html">CommodityDelegate</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/VehicleDelegate.html">VehicleDelegate</a>
+                <a href="Protocols/TransportDelegate.html">TransportDelegate</a>
               </li>
             </ul>
           </li>
@@ -83,7 +83,7 @@
 
 <p>The Pathfinder iOS Client Library allows developers to easily integrate Pathfinder routing service in their iOS applications.</p>
 
-<p>Pathfinder provides routing as a service, removing the need for developers to implement their own routing logistics. This SDK allows for iOS applications to act as commodities that need transportation or vehicles that provide transportation. Additionally, there is support for viewing routes for sets of commodities and vehicles.</p>
+<p>Pathfinder provides routing as a service, removing the need for developers to implement their own routing logistics. This SDK allows for iOS applications to act as commodities that need transportation or transportation providers. Additionally, there is support for viewing routes for sets of commodities and transportation providers.</p>
 <a href='#getting_started' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='getting_started'>Getting started</h2>
 
 <p>Pathfinder is distributed through CocoaPods. To use Pathfinder in your application, add the following line to your Podfile:</p>
@@ -94,7 +94,7 @@
 <p>The Pathfinder iOS API documentation is located at <a href="https://csse497.github.io/pathfinder-ios/index.html">https://csse497.github.io/pathfinder-ios/index.html</a>.</p>
 <a href='#using_pathfinder' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='using_pathfinder'>Using Pathfinder</h2>
 
-<p>There are three primary ways for an application to interact with the Pathfinder service; as an observer, a vehicle driver or a commodity transportation requester. In each case you will need to provider an application identifier and a set of user credentials. The application identifier can be obtained from the Pathfinder web portal when you register your application. The user credentials identifier the end user of your application.</p>
+<p>There are three primary ways for an application to interact with the Pathfinder service; as an observer, a transportation provider or a commodity transportation requester. In each case you will need to provider an application identifier and a set of user credentials. The application identifier can be obtained from the Pathfinder web portal when you register your application. The user credentials identifier the end user of your application.</p>
 
 <p>All Pathfinder routes are calculated within <q>clusters</q>. A cluster is just a container that logically distinguishes your data. For instance, you may wish to provide two services from your application that are routed independently. Your user credentials must have access to the cluster you are attempting to connect to.</p>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">myAppId</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="err">'</span><span class="n">application</span> <span class="n">id</span> <span class="n">from</span> <span class="n">pathfinder</span> <span class="n">web</span> <span class="n">port</span><span class="err">'</span>
@@ -103,7 +103,7 @@
 </code></pre>
 <a href='#as_an_observer' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='as_an_observer'>As an observer</h3>
 
-<p>If your application wants to display data regarding all (or some subset of) commodities, vehicles and their routes for a cluster, you will want to do the following:</p>
+<p>If your application wants to display data regarding all (or some subset of) commodities, transportation providers and their routes for a cluster, you will want to do the following:</p>
 
 <ol>
 <li><p>Obtain a cluster reference from the pathfinder object.</p>
@@ -118,7 +118,7 @@
 <li><p>Implement the <code>ClusterDelegate</code> protocol.</p>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">ClusterDelegate</span> <span class="p">{</span>
     <span class="kd">func</span> <span class="nf">connected</span><span class="p">(</span><span class="nv">cluster</span><span class="p">:</span> <span class="kt">Cluster</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">cluster</span><span class="o">.</span><span class="nf">vehicles</span><span class="p">()</span><span class="o">.</span><span class="n">foreach</span> <span class="p">{</span> <span class="p">(</span><span class="nv">v</span><span class="p">:</span> <span class="kt">Vehicle</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span> <span class="nf">draw</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="p">}</span>
+        <span class="n">cluster</span><span class="o">.</span><span class="nf">transports</span><span class="p">()</span><span class="o">.</span><span class="n">foreach</span> <span class="p">{</span> <span class="p">(</span><span class="nv">t</span><span class="p">:</span> <span class="kt">Transport</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span> <span class="nf">draw</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">}</span>
         <span class="n">cluster</span><span class="o">.</span><span class="nf">commodities</span><span class="p">()</span><span class="o">.</span><span class="n">foreach</span> <span class="p">{</span> <span class="p">(</span><span class="nv">c</span><span class="p">:</span> <span class="kt">Commodity</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span> <span class="nf">draw</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="p">}</span>
     <span class="p">}</span>
 
@@ -132,30 +132,30 @@
 </code></pre></li>
 </ol>
 
-<p>Your ClusterDelegate will be notified whenever new commodities or vehicles appear, when vehicles move, when commodities are picked up, dropped off or cancelled and when routes are generated.</p>
-<a href='#as_a_vehicle_driver' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='as_a_vehicle_driver'>As a vehicle driver</h3>
+<p>Your ClusterDelegate will be notified whenever new commodities or transports appear, when transports move, when commodities are picked up, dropped off or cancelled and when routes are generated.</p>
+<a href='#as_a_transport' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='as_a_transport'>As a transport</h3>
 
-<p>If your application logically represents a vehicle driver, you will want to do the following:</p>
+<p>If your application logically represents a transportation provider, you will want to do the following:</p>
 
 <ol>
-<li><p>Determine your vehicle&rsquo;s paremeters. Physical vehicles can be constained by many factors: seats, child seats, bike racks, limits on money that can be transported together, cabbages that can&rsquo;t ride with goats that can&rsquo;t ride with wolfs. Whatever the limiting factors are for your vehicle, create a dictionary of String -&gt; Int that expresses them.</p>
+<li><p>Determine your transport&rsquo;s paremeters. Physical vehicles can be constained by many factors: seats, child seats, bike racks, limits on money that can be transported together, cabbages that can&rsquo;t ride with goats that can&rsquo;t ride with wolfs. Whatever the limiting factors are for your transport, create a dictionary of String -&gt; Int that expresses them.</p>
 <pre class="highlight swift"><code><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span><span class="kt">Int</span><span class="p">]()</span>
 <span class="n">parameters</span><span class="p">[</span><span class="err">'</span><span class="n">people</span><span class="err">'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">parameters</span><span class="p">[</span><span class="err">'</span><span class="n">goats</span><span class="err">'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">parameters</span><span class="p">[</span><span class="err">'</span><span class="n">pizzas</span><span class="err">'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">25</span>
 </code></pre></li>
-<li><p>Obtain a Vehicle reference for your application.</p>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">vehicle</span> <span class="o">=</span> <span class="n">pathfinder</span><span class="o">.</span><span class="nf">defaultCluster</span><span class="p">()</span><span class="o">.</span><span class="nf">createVehicle</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
+<li><p>Obtain a Transport reference for your application.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">transport</span> <span class="o">=</span> <span class="n">pathfinder</span><span class="o">.</span><span class="nf">defaultCluster</span><span class="p">()</span><span class="o">.</span><span class="nf">createTransport</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
 </code></pre></li>
-<li><p>Set your ViewController to be the vehicle&rsquo;s delegate via the VehicleDelegate protocol.</p>
-<pre class="highlight swift"><code><span class="n">vehicle</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+<li><p>Set your ViewController to be the transport&rsquo;s delegate via the TransportDelegate protocol.</p>
+<pre class="highlight swift"><code><span class="n">transport</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
 </code></pre></li>
-<li><p>Connect your vehicle to Pathfinder</p>
-<pre class="highlight swift"><code><span class="n">vehicle</span><span class="o">.</span><span class="nf">connect</span><span class="p">()</span>
+<li><p>Connect your transport to Pathfinder</p>
+<pre class="highlight swift"><code><span class="n">transport</span><span class="o">.</span><span class="nf">connect</span><span class="p">()</span>
 </code></pre></li>
-<li><p>Implement the <code>VehicleDelegate</code> protocol</p>
-<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">VehicleDelegate</span> <span class="p">{</span>
-    <span class="kd">func</span> <span class="nf">wasRouted</span><span class="p">(</span><span class="nv">vehicle</span><span class="p">:</span> <span class="kt">Vehicle</span><span class="p">,</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">Route</span><span class="p">)</span> <span class="p">{</span>
+<li><p>Implement the <code>TransportDelegate</code> protocol</p>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">TransportDelegate</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">wasRouted</span><span class="p">(</span><span class="nv">transport</span><span class="p">:</span> <span class="kt">Transport</span><span class="p">,</span> <span class="nv">route</span><span class="p">:</span> <span class="kt">Route</span><span class="p">)</span> <span class="p">{</span>
         <span class="nf">drawRouteOnMyMap</span><span class="p">(</span><span class="n">route</span><span class="o">.</span><span class="nf">coordinates</span><span class="p">())</span>
         <span class="nf">drawCommoditiesOnMyMap</span><span class="p">(</span><span class="n">route</span><span class="o">.</span><span class="nf">commodities</span><span class="p">())</span>
     <span class="p">}</span>
@@ -163,13 +163,13 @@
 </code></pre></li>
 </ol>
 
-<p>Your VehicleDelegate will be notified whenever the vehicle is assigned a new route, its location updates or it goes offline.</p>
+<p>Your TransportDelegate will be notified whenever the transport is assigned a new route, its location updates or it goes offline.</p>
 <a href='#as_a_commodity_transport_requester' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='as_a_commodity_transport_requester'>As a commodity transport requester</h3>
 
 <p>If your application requests commodities, you will want to do the following:</p>
 
 <ol>
-<li><p>Determine the physical parameters that your commodity takes up. These parameters should match the constaints that are placed on the vehicles in the same cluster. Any parameters that are not set will be assumed to be zero.</p>
+<li><p>Determine the physical parameters that your commodity takes up. These parameters should match the constaints that are placed on the transports in the same cluster. Any parameters that are not set will be assumed to be zero.</p>
 <pre class="highlight swift"><code><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span><span class="kt">Int</span><span class="p">]()</span>
 <span class="n">parameters</span><span class="p">[</span><span class="err">'</span><span class="n">people</span><span class="err">'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
 </code></pre></li>
@@ -186,9 +186,9 @@
         <span class="nf">draw</span><span class="p">(</span><span class="n">commodity</span><span class="p">)</span>
     <span class="p">}</span>
 
-    <span class="kd">func</span> <span class="nf">wasRouted</span><span class="p">(</span><span class="nv">commodity</span><span class="p">:</span> <span class="kt">Commodity</span><span class="p">,</span> <span class="nv">byVehicle</span><span class="p">:</span> <span class="kt">Vehicle</span><span class="p">,</span> <span class="nv">onRoute</span><span class="p">:</span> <span class="kt">Route</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">byVehicle</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
-        <span class="n">byVehicle</span><span class="o">.</span><span class="nf">connect</span><span class="p">()</span>
+    <span class="kd">func</span> <span class="nf">wasRouted</span><span class="p">(</span><span class="nv">commodity</span><span class="p">:</span> <span class="kt">Commodity</span><span class="p">,</span> <span class="nv">byTransport</span><span class="p">:</span> <span class="kt">Transport</span><span class="p">,</span> <span class="nv">onRoute</span><span class="p">:</span> <span class="kt">Route</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">byTransport</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+        <span class="n">byTransport</span><span class="o">.</span><span class="nf">connect</span><span class="p">()</span>
         <span class="nf">draw</span><span class="p">(</span><span class="n">onRoute</span><span class="p">)</span>
     <span class="p">}</span>
 
@@ -217,7 +217,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="https://github.com/csse497/pathfinder" target="_blank" rel="external">Adam Michael</a>. All rights reserved. (Last updated: 2015-10-27)</p>
+          <p>&copy; 2015 <a class="link" href="https://github.com/csse497/pathfinder" target="_blank" rel="external">Adam Michael</a>. All rights reserved. (Last updated: 2015-11-01)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.3.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
