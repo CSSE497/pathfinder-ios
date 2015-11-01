@@ -14,7 +14,7 @@ class ViewController: UIViewController {
   let pathfinderAppId = "9c4166bb-9535-49e1-8844-1904a0b1f45b"
   let userCredentials = "abc"
 
-  var vehicle: Vehicle!
+  var transport: Transport!
 
   let interfaceManager = GITInterfaceManager()
   var locationManager = CLLocationManager()
@@ -86,9 +86,9 @@ class ViewController: UIViewController {
 
   func afterSignIn() {
     // Set up Pathfinder
-    vehicle = Pathfinder(applicationIdentifier: pathfinderAppId, userCredentials: userCredentials).defaultCluster().createVehicle(["chimney": 3])
-    vehicle.delegate = self
-    vehicle.connect()
+    transport = Pathfinder(applicationIdentifier: pathfinderAppId, userCredentials: userCredentials).defaultCluster().createTransport(["chimney": 3])
+    transport.delegate = self
+    transport.connect()
 
     // Set up Google Maps
     mapView.delegate = self
@@ -110,7 +110,7 @@ extension ViewController: CLLocationManagerDelegate {
     print("ViewController is now authorized to view location.")
     if status == CLAuthorizationStatus.AuthorizedAlways || status == CLAuthorizationStatus.AuthorizedWhenInUse || status == CLAuthorizationStatus.Authorized {
       mapView.myLocationEnabled = true
-      vehicle.connect()
+      transport.connect()
     }
   }
 
@@ -134,15 +134,15 @@ extension ViewController: GMSMapViewDelegate {
   
 }
 
-// Mark: - VehicleDelegate
-extension ViewController: VehicleDelegate {
+// Mark: - TransportDelegate
+extension ViewController: TransportDelegate {
 
-  func connected(vehicle: Vehicle) {
-    print("Vehicle was connected")
+  func connected(transport: Transport) {
+    print("Transport was connected")
   }
 
-  func wasRouted(route: Route, vehicle: Vehicle) {
-    print("Vehicle delegate received updated route")
+  func wasRouted(route: Route, transport: Transport) {
+    print("Transport delegate received updated route")
     var locations = route.coordinates()
     if locations.count > 1 {
       let startLocation = locations.removeFirst()
@@ -159,16 +159,16 @@ extension ViewController: VehicleDelegate {
     }
   }
 
-  func performedRouteAction(action: RouteAction, vehicle: Vehicle) {
-    print("Vehicle delegate notified of performed route action: \(action)")
+  func performedRouteAction(action: RouteAction, transport: Transport) {
+    print("Transport delegate notified of performed route action: \(action)")
   }
 
-  func didComeOnline(vehicle: Vehicle) {
-    print("Vehicle delegate notified of online vehicle")
+  func didComeOnline(transport: Transport) {
+    print("Transport delegate notified of online transport")
   }
 
-  func didGoOffline(vehicle: Vehicle) {
-    print("Vehicle delegate notified of offline vehicle")
+  func didGoOffline(transport: Transport) {
+    print("Transport delegate notified of offline transport")
   }
 }
 
