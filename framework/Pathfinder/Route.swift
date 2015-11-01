@@ -10,19 +10,19 @@ import Foundation
 import CoreLocation
 
 /**
-A list of actions that a vehicle is tasked with. This class provides several view methods to convert the data to a convenient format for plotting or logging. The route is update in real-time by the Pathfinder service. To be notified of updates, you will need to implement one of ClusterDelegate, CommodityDelegate or VehicleDelegate.
+A list of actions that a transport is tasked with. This class provides several view methods to convert the data to a convenient format for plotting or logging. The route is update in real-time by the Pathfinder service. To be notified of updates, you will need to implement one of ClusterDelegate, CommodityDelegate or TransportDelegate.
 
-This class should never be instantiated directly because it represents the state of the data from the Pathfinder backend. Instead, routes can be obtained by querying Cluster, Vehicle or Commodity object properties or by instantiating a ClusterDelegate, CommodityDelegate or VehicleDelegate.
+This class should never be instantiated directly because it represents the state of the data from the Pathfinder backend. Instead, routes can be obtained by querying Cluster, Transport or Commodity object properties or by instantiating a ClusterDelegate, CommodityDelegate or TransportDelegate.
 */
 public class Route {
 
   /// The queue of actions that make up the route.
   public let actions: [RouteAction]
 
-  let vehicle: Vehicle
+  let transport: Transport
 
-  init(vehicle: Vehicle, actions: [RouteAction]) {
-    self.vehicle = vehicle
+  init(transport: Transport, actions: [RouteAction]) {
+    self.transport = transport
     self.actions = actions
   }
 
@@ -55,10 +55,10 @@ public class Route {
       let actions = actionArray.map { (actionObj: AnyObject) -> RouteAction in
         return RouteAction.parse(actionObj as! NSDictionary)!
       }
-      if let vehicleDict = message["vehicle"] as? NSDictionary {
-        if let vehicle = Vehicle.parse(vehicleDict) {
+      if let transportDict = message["transport"] as? NSDictionary {
+        if let transport = Transport.parse(transportDict) {
           print("Parsed route with \(actions.count) actions")
-          return Route(vehicle: vehicle, actions: actions)
+          return Route(transport: transport, actions: actions)
         }
       }
     }
@@ -69,7 +69,7 @@ public class Route {
 /// A data object containing a commodity, a location and a field indicating pickup or dropoff.
 public class RouteAction {
 
-  /// The possible actions that can be performed on commodities by vehicles.
+  /// The possible actions that can be performed on commodities by transports.
   public enum Action {
     case Start
     case Pickup

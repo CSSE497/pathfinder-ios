@@ -23,18 +23,18 @@ public protocol ClusterDelegate {
   func connected(cluster: Cluster)
 
   /**
-  A vehicle that was previously offline or did not exist is now online and ready to be routed in the cluster.
+  A transport that was previously offline or did not exist is now online and ready to be routed in the cluster.
 
-  - Parameter vehicle: The newly online vehicle.
+  - Parameter transport: The newly online transport.
   */
-  func vehicleDidComeOnline(vehicle: Vehicle)
+  func transportDidComeOnline(transport: Transport)
 
   /**
-  A vehicle that was previously online is now offline. If the vehicle was assigned a route, all commodities on that route will be reassigned.
+  A transport that was previously online is now offline. If the transport was assigned a route, all commodities on that route will be reassigned.
 
-  - Parameter vehicle: The newly offline vehicle.
+  - Parameter transport: The newly offline transport.
   */
-  func vehicleDidGoOffline(vehicle: Vehicle)
+  func transportDidGoOffline(transport: Transport)
 
   /**
   A new commodity requested transportation within the cluster.
@@ -44,7 +44,7 @@ public protocol ClusterDelegate {
   func commodityWasRequested(commodity: Commodity)
 
   /**
-  A commodity was picked up by a vehicle.
+  A commodity was picked up by a transport.
 
   - Parameter commodity: The commodity that is now in transit to its destination.
   */
@@ -65,7 +65,7 @@ public protocol ClusterDelegate {
   func commodityWasCancelled(c: Commodity)
 
   /**
-  The routing for the cluster was updated. Since every vehicle in a cluster has the potential to transport any vehicle in the same cluster, routes are calculated on a cluster level. When this method is called, all previously provided routes should be considered obsolete.
+  The routing for the cluster was updated. Since every transport in a cluster has the potential to transport any transport in the same cluster, routes are calculated on a cluster level. When this method is called, all previously provided routes should be considered obsolete.
 
   - Parameter routes: All of the routes for the cluster.
   */
