@@ -12,6 +12,12 @@
 		6652398B1BD330330010893A /* TransportDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6652398A1BD330330010893A /* TransportDelegate.swift */; };
 		6652398D1BD35C050010893A /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6652398C1BD35C050010893A /* Starscream.framework */; };
 		6652398F1BD3D1910010893A /* PathfinderConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6652398E1BD3D1910010893A /* PathfinderConnection.swift */; };
+		66ECFD1F1BE6E058004DA07A /* ApplicationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECFD1E1BE6E058004DA07A /* ApplicationResponse.swift */; };
+		66ECFD211BE6E115004DA07A /* ClusterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECFD201BE6E115004DA07A /* ClusterResponse.swift */; };
+		66ECFD231BE6E179004DA07A /* RoutedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECFD221BE6E179004DA07A /* RoutedResponse.swift */; };
+		66ECFD251BE6E1A4004DA07A /* CommodityResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECFD241BE6E1A4004DA07A /* CommodityResponse.swift */; };
+		66ECFD271BE6E1D5004DA07A /* RouteAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECFD261BE6E1D5004DA07A /* RouteAction.swift */; };
+		66ECFD291BE6E20A004DA07A /* TransportResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECFD281BE6E20A004DA07A /* TransportResponse.swift */; };
 		66FDFE881BD06D81003A9EC3 /* Pathfinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 66FDFE871BD06D81003A9EC3 /* Pathfinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		66FDFE8F1BD06D81003A9EC3 /* Pathfinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FDFE841BD06D81003A9EC3 /* Pathfinder.framework */; };
 		66FDFE941BD06D81003A9EC3 /* PathfinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FDFE931BD06D81003A9EC3 /* PathfinderTests.swift */; };
@@ -39,6 +45,12 @@
 		6652398A1BD330330010893A /* TransportDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportDelegate.swift; sourceTree = "<group>"; };
 		6652398C1BD35C050010893A /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = "Pods/../build/Debug-iphoneos/Starscream.framework"; sourceTree = "<group>"; };
 		6652398E1BD3D1910010893A /* PathfinderConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathfinderConnection.swift; sourceTree = "<group>"; };
+		66ECFD1E1BE6E058004DA07A /* ApplicationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationResponse.swift; sourceTree = "<group>"; };
+		66ECFD201BE6E115004DA07A /* ClusterResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClusterResponse.swift; sourceTree = "<group>"; };
+		66ECFD221BE6E179004DA07A /* RoutedResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutedResponse.swift; sourceTree = "<group>"; };
+		66ECFD241BE6E1A4004DA07A /* CommodityResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommodityResponse.swift; sourceTree = "<group>"; };
+		66ECFD261BE6E1D5004DA07A /* RouteAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteAction.swift; sourceTree = "<group>"; };
+		66ECFD281BE6E20A004DA07A /* TransportResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportResponse.swift; sourceTree = "<group>"; };
 		66FDFE841BD06D81003A9EC3 /* Pathfinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pathfinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66FDFE871BD06D81003A9EC3 /* Pathfinder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pathfinder.h; sourceTree = "<group>"; };
 		66FDFE891BD06D81003A9EC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -119,6 +131,12 @@
 				665239881BD31E1F0010893A /* Route.swift */,
 				6652398A1BD330330010893A /* TransportDelegate.swift */,
 				6652398E1BD3D1910010893A /* PathfinderConnection.swift */,
+				66ECFD1E1BE6E058004DA07A /* ApplicationResponse.swift */,
+				66ECFD201BE6E115004DA07A /* ClusterResponse.swift */,
+				66ECFD221BE6E179004DA07A /* RoutedResponse.swift */,
+				66ECFD241BE6E1A4004DA07A /* CommodityResponse.swift */,
+				66ECFD261BE6E1D5004DA07A /* RouteAction.swift */,
+				66ECFD281BE6E20A004DA07A /* TransportResponse.swift */,
 			);
 			path = Pathfinder;
 			sourceTree = "<group>";
@@ -286,12 +304,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				66FDFEE31BD08C8C003A9EC3 /* CommodityDelegate.swift in Sources */,
+				66ECFD251BE6E1A4004DA07A /* CommodityResponse.swift in Sources */,
+				66ECFD231BE6E179004DA07A /* RoutedResponse.swift in Sources */,
+				66ECFD271BE6E1D5004DA07A /* RouteAction.swift in Sources */,
 				66FDFED71BD07734003A9EC3 /* Pathfinder.swift in Sources */,
 				66FDFED51BD076DD003A9EC3 /* Transport.swift in Sources */,
+				66ECFD1F1BE6E058004DA07A /* ApplicationResponse.swift in Sources */,
 				6652398B1BD330330010893A /* TransportDelegate.swift in Sources */,
 				66FDFEE11BD08B11003A9EC3 /* ClusterDelegate.swift in Sources */,
 				6652398F1BD3D1910010893A /* PathfinderConnection.swift in Sources */,
 				66FDFEDF1BD0857B003A9EC3 /* Cluster.swift in Sources */,
+				66ECFD211BE6E115004DA07A /* ClusterResponse.swift in Sources */,
+				66ECFD291BE6E20A004DA07A /* TransportResponse.swift in Sources */,
 				665239891BD31E1F0010893A /* Route.swift in Sources */,
 				66FDFEDD1BD0843F003A9EC3 /* Commodity.swift in Sources */,
 			);

@@ -15,6 +15,8 @@ A container in which transports are routed to transport commodities. Every regis
 This class should not be instantiated directly since it represents the state of the Pathfinder backend service. Instead, use the factory methods in the Pathfinder class. The typical use case of creating a Cluster object is to set a delegate for it which will receive all of the updates defined in `ClusterDelegate`.
 */
 public class Cluster {
+  /// The path to the default cluster for an application.
+  public static let defaultPath = "/"
 
   /// The delegate that will receive notifications when any aspect of the cluster is updated.
   public var delegate: ClusterDelegate?
@@ -31,27 +33,11 @@ public class Cluster {
   /// All of the routes that are currently in progress for the cluster.
   public let routes: [Route]
 
+  /// The path to the cluster within the application.
+  public let path: String
+
   /// True if the connection to Pathfinder is active.
   public var connected: Bool
-
-  let conn: PathfinderConnection
-
-  init(conn: PathfinderConnection) {
-    self.transports = [Transport]()
-    self.commodities = [Commodity]()
-    self.routes = [Route]()
-    self.conn = conn
-    self.connected = false
-  }
-
-  init(conn: PathfinderConnection, id: Int) {
-    self.id = id
-    self.transports = [Transport]()
-    self.commodities = [Commodity]()
-    self.routes = [Route]()
-    self.conn = conn
-    self.connected = true
-  }
 
   //// Attempts to authenticate and retrieve a reference to the requested cluster. If the connection succeeds, the corresponding method on the delegate will be executed. This method should only be utilized if you wish to receive updates on all commodities, transports and routes for the entire cluster.
   public func connect() {
@@ -62,7 +48,6 @@ public class Cluster {
   Registers the current device as a transport with the Pathfinder service or uses the user's authentication to determine if an existing transport record exists and retrieves it. This will NOT set the transport to the online state. No routes will be generated for the transport until it is set to online. If the connection is authenticated and succeeds, the corresponding method on the delegate will be executed.
 
   - Parameter capacities:  The limiting constraints of the transport of the parameters of your application's routing calculations. The set of parameters needs to be defined and prioritized via the Pathfinder web interface in advance. All transports will be routed while keeping their sum occupant parameters to be less than or equal to their limiting constraints.
-  - Parameter callback:    This function will be called exactly once with the registered Transport object. The Transport object can be used to set the transport as online or offline, to receive route assignments and send updates regarding pickups and dropoffs.
   */
   public func createTransport(parameterCapacities: [String:Int]) -> Transport {
     return Transport(cluster: self, capacities: parameterCapacities)
@@ -74,15 +59,29 @@ public class Cluster {
    - Parameter start:        The starting location of the commodity.
    - Parameter destination:  The destination location of the commodity.
    - Parameter parameters:   The quantities the parameters of your application's routing calculations. The set of parameters needs to be defined and prioritized via the Pathfinder web interface in advance.
-   - Parameter callback:    This function will be called exactly once with the created Commodity object. The Commodity object can be used to receive updates on status, routes and cancel the request if needed.
    */
   public func createCommodity(start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, parameters: [String:Int]) -> Commodity {
     return Commodity(cluster: self, start: start, destination: destination, parameters: parameters)
   }
 
+  let conn: PathfinderConnection
+
+  convenience init(conn: PathfinderConnection) {
+    self.init(conn: conn, path: Cluster.defaultPath)
+  }
+
+  init(conn: PathfinderConnection, path: String) {
+    self.path = path
+    self.transports = [Transport]()
+    self.commodities = [Commodity]()
+    self.routes = [Route]()
+    self.conn = conn
+    self.connected = false
+  }
+
   func connect(callback: (cluster: Cluster) -> Void) {
     if !connected {
-      if id != nil {
+      if path != Cluster.defaultPath {
         conn.getClusterById(id!) { (resp: ClusterResponse) -> Void in
           self.connected = true
           self.id = resp.id
@@ -104,62 +103,5 @@ public class Cluster {
         }
       }
     }
-  }
-}
-
-class ApplicationResponse {
-  let defaultId: Int
-  let clusterIds: [Int]
-
-  class func parse(message: NSDictionary) -> ApplicationResponse? {
-    if let value: NSDictionary = message["applicationCluster"] as? NSDictionary {
-      let clusterId = value["clusterId"] as! Int
-      return ApplicationResponse(defaultId: clusterId, clusterIds: [Int]())
-    }
-    return nil
-  }
-
-  init(defaultId: Int, clusterIds: [Int]) {
-    self.defaultId = defaultId
-    self.clusterIds = clusterIds
-  }
-}
-
-class ClusterResponse {
-  let id: Int
-  let transports: [Transport]
-  let commodities: [Commodity]
-
-  class func parse(message: NSDictionary) -> ClusterResponse? {
-    if let model: NSDictionary = message["model"] as? NSDictionary {
-      if model["model"] as? String == "Cluster" {
-        if let value: NSDictionary = model["value"] as? NSDictionary {
-          let clusterId = value["id"] as! Int
-          let transports = (value["vehicles"] as! NSArray).map() { (anyObj: AnyObject) -> Transport in
-            let transportDict = anyObj as! NSDictionary
-            let id = transportDict["id"] as! Int
-            let capacities = ["chimney":transportDict["capacity"] as! Int]
-            let location = CLLocationCoordinate2D(latitude: transportDict["latitude"] as! Double, longitude: transportDict["longitude"] as! Double)
-            return Transport(clusterId: clusterId, id: id, capacities: capacities, location: location)
-          }
-          let commodities = (value["commodities"] as! NSArray).map() { (anyObj: AnyObject) -> Commodity in
-            let commodityDict = anyObj as! NSDictionary
-            let id = commodityDict["id"] as! Int
-            let start = CLLocationCoordinate2D(latitude: commodityDict["startLatitude"] as! Double, longitude: commodityDict["startLongitude"] as! Double)
-            let destination = CLLocationCoordinate2D(latitude: commodityDict["endLatitude"] as! Double, longitude: commodityDict["endLongitude"] as! Double)
-            let parameters = ["chimney":commodityDict["param"] as! Int]
-            return Commodity(clusterId: clusterId, id: id, start: start, destination: destination, parameters: parameters)
-          }
-          return ClusterResponse(id: clusterId, transports: transports, commodities: commodities)
-        }
-      }
-    }
-    return nil
-  }
-
-  init(id: Int, transports: [Transport], commodities: [Commodity]) {
-    self.id = id
-    self.transports = transports
-    self.commodities = commodities
   }
 }

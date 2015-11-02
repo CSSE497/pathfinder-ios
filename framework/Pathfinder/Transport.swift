@@ -68,7 +68,7 @@ public class Transport: NSObject {
   }
 
   public func subscribe() {
-
+    self.cluster.conn.subscribe(self)
   }
 
   /**
@@ -109,40 +109,6 @@ public class Transport: NSObject {
   }
 }
 
-class TransportResponse {
-  let id: Int
-  let location: CLLocationCoordinate2D
-  let capacity: Int
-
-  class func parse(message: NSDictionary) -> TransportResponse? {
-    if let update = message["updated"] as? NSDictionary {
-      if update["model"] as? String == "Vehicle" {
-        let value = update["value"] as! NSDictionary
-        let id = value["id"] as! Int
-        let lat = value["latitude"] as! Double
-        let lng = value["longitude"] as! Double
-        return TransportResponse(id: id, location: CLLocationCoordinate2D(latitude: lat, longitude: lng), capacity: 3)
-      }
-    }
-    if let update = message["created"] as? NSDictionary {
-      if update["model"] as? String == "Vehicle" {
-        let value = update["value"] as! NSDictionary
-        let id = value["id"] as! Int
-        let lat = value["latitude"] as! Double
-        let lng = value["longitude"] as! Double
-        return TransportResponse(id: id, location: CLLocationCoordinate2D(latitude: lat, longitude: lng), capacity: 3)
-      }
-    }
-    return nil
-  }
-
-  init(id: Int, location: CLLocationCoordinate2D, capacity: Int) {
-    self.id = id
-    self.location = location
-    self.capacity = capacity
-  }
-}
-
 extension Transport: CLLocationManagerDelegate {
 
   public func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -151,7 +117,6 @@ extension Transport: CLLocationManagerDelegate {
       self.cluster.connect() { (cluster: Cluster) -> Void in
         self.cluster.conn.create(self) { (resp: TransportResponse) -> Void in
           self.id = resp.id
-          self.cluster.conn.subscribe(self)
         }
       }
     }
