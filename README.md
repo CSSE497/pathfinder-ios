@@ -1,6 +1,11 @@
 # Pathfinder iOS Client Library
 
 [![Build Status](https://travis-ci.org/CSSE497/pathfinder-ios.svg)](https://travis-ci.org/CSSE497/pathfinder-ios)
+[![CocoaPods Version](https://img.shields.io/cocoapods/v/thepathfinder.svg?style=flat)][cocoadocs]
+[![License](https://img.shields.io/cocoapods/l/thepathfinder.svg?style=flat)](LICENSE)
+[![Platform](https://img.shields.io/cocoapods/p/thepathfinder.svg?style=flat)](cocoadocs)
+[cocoadocs]: http://cocoadocs.org/docsets/thepathfinder
+
 
 <img align="right" src="https://raw.githubusercontent.com/CSSE497/pathfinder-webclient/dev/app/assets/images/logo-small.png"/>
 
@@ -10,7 +15,7 @@ Pathfinder provides routing as a service, removing the need for developers to im
 
 To register your application to use Pathfinder, visit our website at [http://thepathfinder.xyz](http://thepathfinder.xyz).
 
-To get up to speed on integrating Pathfinder in your iOS application, checkout the API documentation at [https://csse497.github.io/pathfinder-ios/index.html](https://csse497.github.io/pathfinder-ios/index.html).
+To get up to speed on integrating Pathfinder in your iOS application, checkout the API docs at [http://cocoadocs.org/docsets/thepathfinder](http://cocoadocs.org/docsets/thepathfinder).
 
 ## Getting started
 
