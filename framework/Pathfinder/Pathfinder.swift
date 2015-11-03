@@ -22,11 +22,16 @@ This is the starting point for all interactions with Pathfinder. The typical use
 5. Respond to the CommodityDelegate or TransportDelegate protocol methods by displaying them on a MapView and executing the appropriate business logic.
 */
 public class Pathfinder {
+
+  // MARK: - Instance Variables -
+
   /// The application id that was assigned by the Pathfinder web portal when you registered your application.
   public let applicationIdentifier: String
 
   let userCredentials: String
   let conn: PathfinderConnection
+
+  // MARK: - Initializers -
 
   /**
   This is the starting point for all interactions with Pathfinder. Once you have constructed a Pathfinder instance, you can begin to interact with transports and commodities.
@@ -40,13 +45,12 @@ public class Pathfinder {
     self.conn = PathfinderConnection(applicationIdentifier: applicationIdentifier)
   }
 
+  // MARK: - Methods -
+
   /**
   The top-level cluster for the application, including references to all transports, commodities and subclusters within it. The resulting object can be used to watch for events including transport and commodity updates and route assignments.
    
-  The attributes of the cluster will not be instantianted until you call #connect().
-
-
-
+  The attributes of the cluster will not be instantianted until you call Cluster#connect().
   */
   public func cluster() -> Cluster {
     return Cluster(conn: conn)

@@ -17,8 +17,6 @@ To register your application to use Pathfinder, visit our website at [http://the
 
 To get up to speed on integrating Pathfinder in your iOS application, checkout the API docs at [http://cocoadocs.org/docsets/thepathfinder](http://cocoadocs.org/docsets/thepathfinder).
 
-## Getting started
-
 Pathfinder is distributed through CocoaPods. To use Pathfinder in your application, add the following line to your Podfile:
 
 ```
@@ -96,7 +94,7 @@ If your application logically represents a transportation provider, you will wan
 2. Obtain a Transport reference for your application.
 
     ```swift
-    let transport = pathfinder.defaultCluster().createTransport(parameters)
+    let transport = pathfinder.cluster().createTransport(parameters)
     ```
 
 3. Set your ViewController to be the transport's delegate via the TransportDelegate protocol.
@@ -139,7 +137,7 @@ If your application requests commodities, you will want to do the following:
 2. Initiate the request and obtain a commodity reference from the top-level Pathfinder object.
 
     ```swift
-    let commodity = pathfinder.defaultCluster().createCommodity(
+    let commodity = pathfinder.cluster().createCommodity(
         start: startCoordinates, destination: endCoordinates, parameters: parameters)
     ```
 

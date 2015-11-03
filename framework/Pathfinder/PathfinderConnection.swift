@@ -70,7 +70,7 @@ class PathfinderConnection {
         "value": [
           "latitude": transport.location!.latitude,
           "longitude": transport.location!.longitude,
-          "capacity": transport.capacities.first!.1,
+          "capacity": transport.capacities!.first!.1,
           "clusterId": transport.cluster.id!
         ]
       ]
@@ -83,11 +83,11 @@ class PathfinderConnection {
       "create": [
         "model": "Commodity",
         "value": [
-          "startLatitude": commodity.start.latitude,
-          "startLongitude": commodity.start.longitude,
-          "endLatitude": commodity.destination.latitude,
-          "endLongitude": commodity.destination.longitude,
-          "param": commodity.parameters.first!.1,
+          "startLatitude": commodity.start!.latitude,
+          "startLongitude": commodity.start!.longitude,
+          "endLatitude": commodity.destination!.latitude,
+          "endLongitude": commodity.destination!.longitude,
+          "param": commodity.parameters!.first!.1,
           "clusterId": commodity.cluster.id!
         ]
       ]

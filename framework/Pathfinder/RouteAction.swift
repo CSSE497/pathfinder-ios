@@ -12,12 +12,16 @@ import CoreLocation
 /// A data object containing a commodity, a location and a field indicating pickup or dropoff.
 public class RouteAction {
 
+  // MARK: - Enums -
+
   /// The possible actions that can be performed on commodities by transports.
   public enum Action {
     case Start
     case Pickup
     case Dropoff
   }
+
+  // MARK: - Instance Variables -
 
   /// Whether the action is a pickup or dropoff.
   public let action: Action

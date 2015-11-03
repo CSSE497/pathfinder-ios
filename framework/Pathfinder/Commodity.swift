@@ -13,24 +13,28 @@ import CoreLocation
 A commodity that has requested transportation via your application.
 
 This class should never be instantiated directly because it represents the state of the data from the Pathfinder backend. Instead, request commodity transportation via the helper method in the Pathfinder class.
+ 
+A typical use case looks like this:
 
-```
+```swift
 let clusterToRouteIn = self.cluster
 let start = CLLocationCoordinate2D(latitude: startLat, longitude: startLng)
 let end = CLLocationCoordinate2D(latitude: endLat, longitude: endLng)
 let parameters = [String:Int]()
 parameters["people"] = 2
 parameters["sheep"] = 0
-pathfinder.requestCommodityTransit(cluster: clusterToRouteIn, start: start, destination: end, parameters: parameters) { (c:Commodity) -> Void in
-  c.delegate = self
-  self.drawCommodityOnMap(c)
-}
+let commodity = pathfinder.cluster("/USA/West/Seattle").createCommodity(start, destination: end, parameters: parameters)
+commodity.connect()
+commodity.request()
 ```
 
 The primary purpose of creating a commodity is to set its delegate. The delegate will receive updates on the status of the commodity as defined in `CommodityDelegate`.
 */
 public class Commodity {
 
+  // MARK: - Enums -
+
+  /// All commodities exist in one of five states: inactive, waiting, picked up, dropped off or cancelled.
   public enum Status: CustomStringConvertible {
     case Inactive
     case Waiting
@@ -49,6 +53,8 @@ public class Commodity {
     }
   }
 
+  // MARK: - Instance Variables
+
   /// The delegate that will receive notifications when any aspect of the commodity is updated.
   public var delegate: CommodityDelegate?
 
@@ -56,13 +62,13 @@ public class Commodity {
   public var id: Int?
 
   /// The starting location of the commodity's journey.
-  public let start: CLLocationCoordinate2D
+  public var start: CLLocationCoordinate2D?
 
   /// The destination location of the commodity's journey.
-  public let destination: CLLocationCoordinate2D
+  public var destination: CLLocationCoordinate2D?
 
   /// The parameters that constrain the number of commodities that can be transported by one transport.
-  public let parameters: [String:Int]
+  public var parameters: [String:Int]?
 
   /// The route that is assigned to pick up the commodity, if there is one.
   public var route: Route?
@@ -71,6 +77,52 @@ public class Commodity {
   public var status: Status = Status.Inactive
 
   var cluster: Cluster!
+
+  // MARK: - Methods -
+
+  /// Requests transportation for the current commodity.
+  public func request() {
+    cluster!.connect() { (cluster: Cluster) -> Void in
+      self.cluster.conn.create(self) { (resp: CommodityResponse) -> Void in
+        self.id = resp.id
+      }
+    }
+  }
+
+  /// Validates and authenticates the Pathfinder connection to the backend data for this instance. If the connection is successful, the corresponding method on the delegate is called. Upon completion, all instance variables will be updated with the data from the Pathfinder service.
+  public func connect() {
+  }
+
+  /**
+  Subscribes to push notifications for all updates to the commodity. The corresponding method on the delegate will be called for the following events:
+   
+  * Commodity was assigned to a route.
+  * Commodity was picked up, dropped off or the request was cancelled.
+  */
+  public func subscribe() {
+    self.cluster.conn.subscribe(self)
+  }
+
+  /// Stops the Pathfinder service from sending update notifications.
+  public func unsubscribe() {
+
+  }
+
+  /**
+  Updates the commodity's status. This can be used to cancel the transportation request or to indicate that the commodity was picked up or dropped off by the vehicle. Commodities are created with status `Inactive`.
+   
+  - Parameter status:  The new status of the vehicle.
+  */
+  public func update(status: Status) {
+    self.cluster.conn.update(self) { (resp: CommodityResponse) -> Void in
+      
+    }
+  }
+
+  init(cluster: Cluster, id: Int) {
+    self.cluster = cluster
+    self.id = id
+  }
 
   init(id: Int, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, parameters: [String:Int]) {
     self.id = id
@@ -99,30 +151,6 @@ public class Commodity {
     self.start = start
     self.destination = destination
     self.parameters = parameters
-  }
-
-  /// Requests transportation for the current commodity.
-  public func request() {
-    cluster!.connect() { (cluster: Cluster) -> Void in
-      self.cluster.conn.create(self) { (resp: CommodityResponse) -> Void in
-        self.id = resp.id
-      }
-    }
-  }
-
-  public func subscribe() {
-    self.cluster.conn.subscribe(self)
-  }
-
-  /**
-  Updates the commodity's status. This can be used to cancel the transportation request or to indicate that the commodity was picked up or dropped off by the vehicle. Commodities are created with status `Inactive`.
-   
-  - Parameter status:  The new status of the vehicle.
-  */
-  public func update(status: Status) {
-    self.cluster.conn.update(self) { (resp: CommodityResponse) -> Void in
-      
-    }
   }
 
   class func parse(message: NSDictionary) -> Commodity? {

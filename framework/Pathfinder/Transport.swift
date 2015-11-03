@@ -26,6 +26,8 @@ transport.connect()
 */
 public class Transport: NSObject {
 
+  // MARK: - Instance Variables -
+
   /// The delegate that will receive notifications when any aspect of the cluster is updated.
   public var delegate: TransportDelegate?
 
@@ -33,7 +35,7 @@ public class Transport: NSObject {
   public var route: Route?
 
   /// The limiting capacities of each parameter that cannot be surpassed at any point of a route.
-  public let capacities: [String:Int]
+  public var capacities: [String:Int]?
 
   /// The current state of the transports online/offline status.
   public var online: Bool = false
@@ -44,6 +46,11 @@ public class Transport: NSObject {
   var cluster: Cluster!
   var locationManager: CLLocationManager?
   var location: CLLocationCoordinate2D?
+
+  init(cluster: Cluster, id: Int) {
+    self.cluster = cluster
+    self.id = id
+  }
 
   init(id: Int, capacities: [String:Int], location: CLLocationCoordinate2D) {
     self.id = id
@@ -68,6 +75,8 @@ public class Transport: NSObject {
     self.location = location
   }
 
+  // MARK: - Methods -
+
   /// Connects the local transport instance to the Pathfinder backend. Location updates will be send periodically to aid in routing calculations.
   public func connect() {
     locationManager = CLLocationManager()
@@ -77,8 +86,21 @@ public class Transport: NSObject {
     locationManager?.startUpdatingLocation()
   }
 
+  /**
+  Subscribes to updates for the model. On each update to the transport in the Pathfinder service, a push notification will be sent and the corresponding method on the delegate will be called. Updates will be send on the following events:
+   
+  * The vehicle moved.
+  * The vehicle was assigned a new route.
+  * The vehicle picked up or dropped off a commodity.
+  * The vehicle was removed or went offline.
+  */
   public func subscribe() {
     self.cluster.conn.subscribe(self)
+  }
+
+  /// Stops the Pathfinder service from sending update notifications.
+  public func unsubscribe() {
+
   }
 
   /**
@@ -90,7 +112,7 @@ public class Transport: NSObject {
     return nil
   }
 
-  ///Indicates that a transport has successfully completed one route action. It is the transports responsibility to indicate that they have picked up and dropped off their commodities. This method must be called, preferrably as the result of a UI interaction, when the driver acknowledges that they have picked up or dropped off a commodity on their route.
+  /// Indicates that a transport has successfully completed one route action. It is the transports responsibility to indicate that they have picked up and dropped off their commodities. This method must be called, preferrably as the result of a UI interaction, when the driver acknowledges that they have picked up or dropped off a commodity on their route.
   public func completeNextRouteAction() {
 
   }

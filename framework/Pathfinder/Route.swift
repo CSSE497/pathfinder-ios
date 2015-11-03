@@ -16,15 +16,20 @@ This class should never be instantiated directly because it represents the state
 */
 public class Route {
 
-  /// The queue of actions that make up the route.
+  // MARK: - Instance Variables
+
+  /// The queue of RouteActions that make up the route.
   public let actions: [RouteAction]
 
-  let transport: Transport
+  /// The transport instance that is assigned to the route.
+  public let transport: Transport
 
   init(transport: Transport, actions: [RouteAction]) {
     self.transport = transport
     self.actions = actions
   }
+
+  // MARK: - Methods -
 
   /**
   Converts the array of RouteAction to an array of CLLocationCoordinate2D.
