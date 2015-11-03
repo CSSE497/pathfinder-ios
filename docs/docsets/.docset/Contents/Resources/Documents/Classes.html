@@ -86,6 +86,38 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:C10Pathfinder11RouteAction"></a>
+                    <a name="//apple_ref/swift/Class/RouteAction" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C10Pathfinder11RouteAction">RouteAction</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A data object containing a commodity, a location and a field indicating pickup or dropoff.</p>
+
+                        <a href="Classes/RouteAction.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">RouteAction</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:C10Pathfinder10Pathfinder"></a>
                     <a name="//apple_ref/swift/Class/Pathfinder" class="dashAnchor"></a>
                     <a class="token" href="#/s:C10Pathfinder10Pathfinder">Pathfinder</a>
@@ -96,14 +128,17 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A connection to the Pathfinder service, specific to one authenticated user belonging to a single application.</p>
+                        <p><img src="https://raw.githubusercontent.com/CSSE497/pathfinder-webclient/dev/app/assets/images/path.png" alt="Pathfinder logo"></p>
+
+<p>A connection to the Pathfinder service, specific to one authenticated user belonging to a single application.</p>
 
 <p>This is the starting point for all interactions with Pathfinder. The typical use case of this library is:</p>
 
 <ol>
 <li>Retrieve a Cluster, either by id or the default cluster of the application. All transports, commodities and routes within specific clusters. Additional clusters can be configured via the Pathfinder web interface.</li>
-<li>Register as a transport or create a commodity within that cluster.</li>
+<li>Register the device as a transport by creating a new transport instance or requesting transportation by create a commodity.</li>
 <li>Create a delegate object for the newly created transport or commodity.</li>
+<li>Subscribe to the transport, commodity or any other transports or commodities to receive status and location updates.</li>
 <li>Respond to the CommodityDelegate or TransportDelegate protocol methods by displaying them on a MapView and executing the appropriate business logic.</li>
 </ol>
 
@@ -222,34 +257,6 @@
                     </section>
                   </div>
                 </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:C10Pathfinder11RouteAction"></a>
-                    <a name="//apple_ref/swift/Class/RouteAction" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C10Pathfinder11RouteAction">RouteAction</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A data object containing a commodity, a location and a field indicating pickup or dropoff.</p>
-
-                        <a href="Classes/RouteAction.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="Swift">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">RouteAction</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
               </ul>
             </div>
             <div class="task-group">
@@ -303,7 +310,7 @@ pathfinder.requestCommodityTransit(cluster: clusterToRouteIn, start: start, dest
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="https://github.com/csse497/pathfinder" target="_blank" rel="external">Adam Michael</a>. All rights reserved. (Last updated: 2015-11-01)</p>
+          <p>&copy; 2015 <a class="link" href="https://github.com/csse497/pathfinder" target="_blank" rel="external">Adam Michael</a>. All rights reserved. (Last updated: 2015-11-02)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.3.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

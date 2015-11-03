@@ -84,14 +84,17 @@
 
                 </div>
               </div>
-            <p>A connection to the Pathfinder service, specific to one authenticated user belonging to a single application.</p>
+            <p><img src="https://raw.githubusercontent.com/CSSE497/pathfinder-webclient/dev/app/assets/images/path.png" alt="Pathfinder logo"></p>
+
+<p>A connection to the Pathfinder service, specific to one authenticated user belonging to a single application.</p>
 
 <p>This is the starting point for all interactions with Pathfinder. The typical use case of this library is:</p>
 
 <ol>
 <li>Retrieve a Cluster, either by id or the default cluster of the application. All transports, commodities and routes within specific clusters. Additional clusters can be configured via the Pathfinder web interface.</li>
-<li>Register as a transport or create a commodity within that cluster.</li>
+<li>Register the device as a transport by creating a new transport instance or requesting transportation by create a commodity.</li>
 <li>Create a delegate object for the newly created transport or commodity.</li>
+<li>Subscribe to the transport, commodity or any other transports or commodities to receive status and location updates.</li>
 <li>Respond to the CommodityDelegate or TransportDelegate protocol methods by displaying them on a MapView and executing the appropriate business logic.</li>
 </ol>
 
@@ -99,6 +102,33 @@
           <section class="section task-group-section">
             <div class="task-group">
               <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC10Pathfinder10Pathfinder21applicationIdentifierSS"></a>
+                    <a name="//apple_ref/swift/Property/applicationIdentifier" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC10Pathfinder10Pathfinder21applicationIdentifierSS">applicationIdentifier</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The application id that was assigned by the Pathfinder web portal when you registered your application.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">applicationIdentifier</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -148,7 +178,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The credentials that identify and authenticate the user on behalf of whom the connection is opened. The form of these credentials are yet to be determined.</p>
+                                  <p>The user&rsquo;s id token/authentication token as distributed by the Pathfinder authentication mechanism.</p>
 
                                 </div>
                               </td>
@@ -162,9 +192,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC10Pathfinder10Pathfinder14defaultClusterFS0_FT_CS_7Cluster"></a>
-                    <a name="//apple_ref/swift/Method/defaultCluster()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC10Pathfinder10Pathfinder14defaultClusterFS0_FT_CS_7Cluster">defaultCluster()</a>
+                    <a name="/s:FC10Pathfinder10Pathfinder7clusterFS0_FT_CS_7Cluster"></a>
+                    <a name="//apple_ref/swift/Method/cluster()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10Pathfinder10Pathfinder7clusterFS0_FT_CS_7Cluster">cluster()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -172,36 +202,18 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Retrieves the top-level cluster for the application, including references to all transports and commodities within it. The resulting object can be used to watch for events including transport and commodity updates and route assignments.</p>
+                        <p>The top-level cluster for the application, including references to all transports, commodities and subclusters within it. The resulting object can be used to watch for events including transport and commodity updates and route assignments.</p>
+
+<p>The attributes of the cluster will not be instantianted until you call #connect().</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">defaultCluster</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Cluster</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">cluster</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Cluster</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>callback</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>This function will be called exactly once with the populated Cluster object once it is retrieved.</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -209,9 +221,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC10Pathfinder10Pathfinder11clusterByIdFS0_FSiCS_7Cluster"></a>
-                    <a name="//apple_ref/swift/Method/clusterById(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC10Pathfinder10Pathfinder11clusterByIdFS0_FSiCS_7Cluster">clusterById(_:)</a>
+                    <a name="/s:FC10Pathfinder10Pathfinder7clusterFS0_FSSCS_7Cluster"></a>
+                    <a name="//apple_ref/swift/Method/cluster(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10Pathfinder10Pathfinder7clusterFS0_FSSCS_7Cluster">cluster(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -219,10 +231,10 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Retrieves a previously created cluster by id number for the application, including references to all transports and commodities within it. The resuling object can be used to watch for events including transport and commodity updates and route assignments. This method will only need to be used if your application requires Pathfinder subclusters.</p>
+                        <p>Retrieves a cluster by path, including references to all transports and commodities within it. The resulting object can be used to watch for events including transport and commodity updates and route assignments. This method will only need to be used if your application requires Pathfinder subclusters.</p>
 
 <ul>
-<li>Paremeter id:        The id of the cluster to retrieve.</li>
+<li>Paremeter path:  The path of the application subcluster.</li>
 </ul>
 
                       </div>
@@ -230,29 +242,9 @@
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">clusterById</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Cluster</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">cluster</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Cluster</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>callback</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>This function will be called exactly once with the populated Cluster object once it is retrieved.</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -262,7 +254,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="https://github.com/csse497/pathfinder" target="_blank" rel="external">Adam Michael</a>. All rights reserved. (Last updated: 2015-11-01)</p>
+          <p>&copy; 2015 <a class="link" href="https://github.com/csse497/pathfinder" target="_blank" rel="external">Adam Michael</a>. All rights reserved. (Last updated: 2015-11-02)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.3.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

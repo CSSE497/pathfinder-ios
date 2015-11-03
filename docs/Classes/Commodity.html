@@ -109,6 +109,34 @@ pathfinder.requestCommodityTransit(cluster: clusterToRouteIn, start: start, dest
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:OC10Pathfinder9Commodity6Status"></a>
+                    <a name="//apple_ref/swift/Enum/Status" class="dashAnchor"></a>
+                    <a class="token" href="#/s:OC10Pathfinder9Commodity6Status">Status</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="../Classes/Commodity/Status.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Commodity</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:vC10Pathfinder9Commodity8delegateGSqPS_17CommodityDelegate__"></a>
                     <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
                     <a class="token" href="#/s:vC10Pathfinder9Commodity8delegateGSqPS_17CommodityDelegate__">delegate</a>
@@ -271,9 +299,63 @@ pathfinder.requestCommodityTransit(cluster: clusterToRouteIn, start: start, dest
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC10Pathfinder9Commodity7connectFS0_FT_T_"></a>
-                    <a name="//apple_ref/swift/Method/connect()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC10Pathfinder9Commodity7connectFS0_FT_T_">connect()</a>
+                    <a name="/s:vC10Pathfinder9Commodity6statusOS0_6Status"></a>
+                    <a name="//apple_ref/swift/Property/status" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC10Pathfinder9Commodity6statusOS0_6Status">status</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The current status of the commodity. All commodities are inactive upon creation.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">status</span><span class="p">:</span> <span class="kt">Status</span> <span class="o">=</span> <span class="kt">Status</span><span class="o">.</span><span class="kt">Inactive</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC10Pathfinder9Commodity7requestFS0_FT_T_"></a>
+                    <a name="//apple_ref/swift/Method/request()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10Pathfinder9Commodity7requestFS0_FT_T_">request()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Requests transportation for the current commodity.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">request</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC10Pathfinder9Commodity9subscribeFS0_FT_T_"></a>
+                    <a name="//apple_ref/swift/Method/subscribe()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10Pathfinder9Commodity9subscribeFS0_FT_T_">subscribe()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -298,9 +380,9 @@ pathfinder.requestCommodityTransit(cluster: clusterToRouteIn, start: start, dest
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC10Pathfinder9Commodity6cancelFS0_FFT7successSb_T_T_"></a>
-                    <a name="//apple_ref/swift/Method/cancel(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC10Pathfinder9Commodity6cancelFS0_FFT7successSb_T_T_">cancel(_:)</a>
+                    <a name="/s:FC10Pathfinder9Commodity6updateFS0_FOS0_6StatusT_"></a>
+                    <a name="//apple_ref/swift/Method/update(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10Pathfinder9Commodity6updateFS0_FOS0_6StatusT_">update(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -308,14 +390,14 @@ pathfinder.requestCommodityTransit(cluster: clusterToRouteIn, start: start, dest
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Cancels the commodity request. The transport on route to pickup the commodity will be notified that the request was cancelled.</p>
+                        <p>Updates the commodity&rsquo;s status. This can be used to cancel the transportation request or to indicate that the commodity was picked up or dropped off by the vehicle. Commodities are created with status <code>Inactive</code>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">cancel</span><span class="p">(</span><span class="nv">callback</span><span class="p">:</span> <span class="p">(</span><span class="nv">success</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">update</span><span class="p">(</span><span class="nv">status</span><span class="p">:</span> <span class="kt">Status</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -326,12 +408,12 @@ pathfinder.requestCommodityTransit(cluster: clusterToRouteIn, start: start, dest
                             <tr>
                               <td>
                                 <code>
-                                <em>callback</em>
+                                <em>status</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>This function will be called once Pathfinder has verified that the commodity transit request was successfully cancelled.</p>
+                                  <p>The new status of the vehicle.</p>
 
                                 </div>
                               </td>
@@ -347,7 +429,7 @@ pathfinder.requestCommodityTransit(cluster: clusterToRouteIn, start: start, dest
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="https://github.com/csse497/pathfinder" target="_blank" rel="external">Adam Michael</a>. All rights reserved. (Last updated: 2015-11-01)</p>
+          <p>&copy; 2015 <a class="link" href="https://github.com/csse497/pathfinder" target="_blank" rel="external">Adam Michael</a>. All rights reserved. (Last updated: 2015-11-02)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.3.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

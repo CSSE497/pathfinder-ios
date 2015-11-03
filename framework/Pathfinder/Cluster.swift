@@ -39,7 +39,7 @@ public class Cluster {
   /// True if the connection to Pathfinder is active.
   public var connected: Bool
 
-  //// Attempts to authenticate and retrieve a reference to the requested cluster. If the connection succeeds, the corresponding method on the delegate will be executed. This method should only be utilized if you wish to receive updates on all commodities, transports and routes for the entire cluster.
+  /// Attempts to authenticate and retrieve a reference to the requested cluster. If the connection succeeds, the corresponding method on the delegate will be executed. This method should only be utilized if you wish to receive updates on all commodities, transports and routes for the entire cluster.
   public func connect() {
     connect { _ in }
   }
