@@ -2,9 +2,7 @@
 
 [![Build Status](https://travis-ci.org/CSSE497/pathfinder-ios.svg)](https://travis-ci.org/CSSE497/pathfinder-ios)
 
-<div style="float: right; z-index: 9999;">
-<img src="https://raw.githubusercontent.com/CSSE497/pathfinder-webclient/dev/app/assets/images/logo-small.png"/>
-</div>
+<img align="right" src="https://raw.githubusercontent.com/CSSE497/pathfinder-webclient/dev/app/assets/images/logo-small.png"/>
 
 The Pathfinder iOS Client Library allows developers to easily integrate Pathfinder routing service in their iOS applications.
 
