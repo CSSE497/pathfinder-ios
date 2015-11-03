@@ -17,7 +17,7 @@ To get up to speed on integrating Pathfinder in your iOS application, checkout t
 Pathfinder is distributed through CocoaPods. To use Pathfinder in your application, add the following line to your Podfile:
 
 ```
-pod "Pathfinder"
+pod "thepathfinder"
 ```
 
 
