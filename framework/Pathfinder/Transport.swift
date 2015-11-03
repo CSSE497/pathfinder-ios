@@ -111,6 +111,7 @@ public class Transport: NSObject {
 
 extension Transport: CLLocationManagerDelegate {
 
+  /// :nodoc:
   public func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
     print("LocationManager authorization status changed: \(status)")
     if status == CLAuthorizationStatus.AuthorizedAlways {
@@ -122,6 +123,7 @@ extension Transport: CLLocationManagerDelegate {
     }
   }
 
+  /// :nodoc:
   public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     print("Transport location updated to \(locations[0].coordinate)")
     location = locations[0].coordinate
