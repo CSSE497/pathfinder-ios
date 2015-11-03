@@ -15,8 +15,15 @@ A container in which transports are routed to transport commodities. Every regis
 This class should not be instantiated directly since it represents the state of the Pathfinder backend service. Instead, use the factory methods in the Pathfinder class. The typical use case of creating a Cluster object is to set a delegate for it which will receive all of the updates defined in `ClusterDelegate`.
 */
 public class Cluster {
+
   /// The path to the default cluster for an application.
   public static let defaultPath = "/"
+
+  /// The path to the cluster within the application.
+  public let path: String
+
+  /// All of the routes that are currently in progress for the cluster.
+  public let routes: [Route]
 
   /// The delegate that will receive notifications when any aspect of the cluster is updated.
   public var delegate: ClusterDelegate?
@@ -29,12 +36,6 @@ public class Cluster {
 
   /// The commodities that are currently waiting on transit or are in transit within the cluster.
   public var commodities: [Commodity]
-
-  /// All of the routes that are currently in progress for the cluster.
-  public let routes: [Route]
-
-  /// The path to the cluster within the application.
-  public let path: String
 
   /// True if the connection to Pathfinder is active.
   public var connected: Bool
