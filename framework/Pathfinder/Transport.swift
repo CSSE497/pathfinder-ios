@@ -13,6 +13,16 @@ import CoreLocation
 A registered transport that can be routed to transport commodities.
 
 This class should never be instantiated directly because it represents the state of the data from the Pathfinder backend. Instead, connect your device as a transport.
+
+The standard use case involves creating a new vehicle within a known cluster. This can be accomplished as follows:
+
+```
+let pathfinder = Pathfinder(pathfinderAppId, userCreds)
+let params = ["passenger": 3, "suitecase": 4]
+let transport = pathfinder.cluster("/USA/West/Seattle").createTransport(params)
+transport.delegate = self
+transport.connect()
+```
 */
 public class Transport: NSObject {
 
@@ -111,6 +121,7 @@ public class Transport: NSObject {
 
 extension Transport: CLLocationManagerDelegate {
 
+  /// :nodoc:
   public func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
     print("LocationManager authorization status changed: \(status)")
     if status == CLAuthorizationStatus.AuthorizedAlways {
@@ -122,6 +133,7 @@ extension Transport: CLLocationManagerDelegate {
     }
   }
 
+  /// :nodoc:
   public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     print("Transport location updated to \(locations[0].coordinate)")
     location = locations[0].coordinate
