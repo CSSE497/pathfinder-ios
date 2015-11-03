@@ -2,9 +2,17 @@
 
 [![Build Status](https://travis-ci.org/CSSE497/pathfinder-ios.svg)](https://travis-ci.org/CSSE497/pathfinder-ios)
 
+<div style="float: right; z-index: 9999;">
+<img src="https://raw.githubusercontent.com/CSSE497/pathfinder-webclient/dev/app/assets/images/logo-small.png"/>
+</div>
+
 The Pathfinder iOS Client Library allows developers to easily integrate Pathfinder routing service in their iOS applications.
 
 Pathfinder provides routing as a service, removing the need for developers to implement their own routing logistics. This SDK allows for iOS applications to act as commodities that need transportation or transportation providers. Additionally, there is support for viewing routes for sets of commodities and transportation providers.
+
+To register your application to use Pathfinder, visit our website at [http://thepathfinder.xyz](http://thepathfinder.xyz).
+
+To get up to speed on integrating Pathfinder in your iOS application, checkout the API documentation at [https://csse497.github.io/pathfinder-ios/index.html](https://csse497.github.io/pathfinder-ios/index.html).
 
 ## Getting started
 
@@ -14,9 +22,6 @@ Pathfinder is distributed through CocoaPods. To use Pathfinder in your applicati
 pod "Pathfinder"
 ```
 
-## Documentation
-
-The Pathfinder iOS API documentation is located at [https://csse497.github.io/pathfinder-ios/index.html](https://csse497.github.io/pathfinder-ios/index.html).
 
 ## Using Pathfinder
 
@@ -34,10 +39,10 @@ let pathfinderRef = Pathfinder(applicationIdentifier: myAppId, userCredentials: 
 
 If your application wants to display data regarding all (or some subset of) commodities, transportation providers and their routes for a cluster, you will want to do the following:
 
-1. Obtain a cluster reference from the pathfinder object.
+1. Obtain a cluster reference from the pathfinder object. The path specifies your cluster in the hierarchial sub-cluster tree. If no path is passed in, a reference to the top-level default cluster for the application is created.
 
     ```swift
-    let cluster = pathfinderRef.defaultCluster()
+    let cluster = pathfinderRef.cluster(path: "/USA/East/Boston")
     ```
 
 2. Set your ViewController to be the cluster's delegate via the ClusterDelegate protocol.

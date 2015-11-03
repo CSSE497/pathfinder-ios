@@ -77,6 +77,23 @@ class PathfinderConnection {
     ])
   }
 
+  func create(commodity: Commodity, callback: CommodityFn) {
+    commodityFns.append(callback)
+    writeData([
+      "create": [
+        "model": "Commodity",
+        "value": [
+          "startLatitude": commodity.start.latitude,
+          "startLongitude": commodity.start.longitude,
+          "endLatitude": commodity.destination.latitude,
+          "endLongitude": commodity.destination.longitude,
+          "param": commodity.parameters.first!.1,
+          "clusterId": commodity.cluster.id!
+        ]
+      ]
+    ])
+  }
+
   func update(transport: Transport, callback: TransportFn) {
     transportFns.append(callback)
     writeData([
@@ -91,12 +108,34 @@ class PathfinderConnection {
     ])
   }
 
+  func update(commodity: Commodity, callback: CommodityFn) {
+    commodityFns.append(callback)
+    writeData([
+      "update": [
+        "model": "Commodity",
+        "id": commodity.id!,
+        "value": [
+          "status": commodity.status.description
+        ]
+      ]
+    ])
+  }
+
   func subscribe(transport: Transport) {
     transportRouteSubscribers[transport.id!] = transport
     writeData([
       "routeSubscribe": [
         "model": "Vehicle",
         "id": transport.id!
+      ]
+    ])
+  }
+
+  func subscribe(commodity: Commodity) {
+    writeData([
+      "subscribe": [
+        "model": "Commodity",
+        "id": commodity.id!
       ]
     ])
   }

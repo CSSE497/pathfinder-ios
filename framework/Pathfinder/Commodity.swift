@@ -31,6 +31,24 @@ The primary purpose of creating a commodity is to set its delegate. The delegate
 */
 public class Commodity {
 
+  public enum Status: CustomStringConvertible {
+    case Inactive
+    case Waiting
+    case PickedUp
+    case DroppedOff
+    case Cancelled
+
+    public var description: String {
+      switch self {
+      case .Inactive: return "Inactive"
+      case .Waiting: return "Waiting"
+      case .PickedUp: return "PickedUp"
+      case .DroppedOff: return "DroppedOff"
+      case .Cancelled: return "Cancelled"
+      }
+    }
+  }
+
   /// The delegate that will receive notifications when any aspect of the commodity is updated.
   public var delegate: CommodityDelegate?
 
@@ -49,7 +67,10 @@ public class Commodity {
   /// The route that is assigned to pick up the commodity, if there is one.
   public var route: Route?
 
-  var cluster: Cluster?
+  /// The current status of the commodity. All commodities are inactive upon creation.
+  public var status: Status = Status.Inactive
+
+  var cluster: Cluster!
 
   init(id: Int, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, parameters: [String:Int]) {
     self.id = id
@@ -80,21 +101,28 @@ public class Commodity {
     self.parameters = parameters
   }
 
-  public func connect() {
-    if cluster != nil {
-      cluster!.connect() { (cluster: Cluster) -> Void in
-
+  /// Requests transportation for the current commodity.
+  public func request() {
+    cluster!.connect() { (cluster: Cluster) -> Void in
+      self.cluster.conn.create(self) { (resp: CommodityResponse) -> Void in
+        self.id = resp.id
       }
     }
   }
 
-  /**
-  Cancels the commodity request. The transport on route to pickup the commodity will be notified that the request was cancelled.
-  
-  - Parameter callback:  This function will be called once Pathfinder has verified that the commodity transit request was successfully cancelled.
-  */
-  public func cancel(callback: (success: Bool) -> Void) {
+  public func subscribe() {
+    self.cluster.conn.subscribe(self)
+  }
 
+  /**
+  Updates the commodity's status. This can be used to cancel the transportation request or to indicate that the commodity was picked up or dropped off by the vehicle. Commodities are created with status `Inactive`.
+   
+  - Parameter status:  The new status of the vehicle.
+  */
+  public func update(status: Status) {
+    self.cluster.conn.update(self) { (resp: CommodityResponse) -> Void in
+      
+    }
   }
 
   class func parse(message: NSDictionary) -> Commodity? {
@@ -115,45 +143,5 @@ public class Commodity {
       }
     }
     return nil
-  }
-}
-
-class CommodityResponse {
-  let id: Int
-  let start: CLLocationCoordinate2D
-  let destination: CLLocationCoordinate2D
-  let param: Int
-
-  class func parse(message: NSDictionary) -> CommodityResponse? {
-    if let content = message["created"] as? NSDictionary {
-      return parseContent(content)
-    } else if let content = message["updated"] as? NSDictionary {
-      return parseContent(content)
-    } else if let content = message["model"] as? NSDictionary {
-      return parseContent(content)
-    }
-    return nil
-  }
-
-  private class func parseContent(content: NSDictionary) -> CommodityResponse? {
-    if content["model"] as? String == "Commodity" {
-      if let value = content["value"] as? NSDictionary {
-        let id = value["id"] as! Int
-        let startLat = value["startLatitude"] as! Double
-        let startLng = value["startLongitude"] as! Double
-        let endLat = value["endLatitude"] as! Double
-        let endLng = value["endLongitude"] as! Double
-        let param = value["param"] as! Int
-        return CommodityResponse(id: id, start: CLLocationCoordinate2D(latitude: startLat, longitude: startLng), destination: CLLocationCoordinate2D(latitude: endLat, longitude: endLng), param: param)
-      }
-    }
-    return nil
-  }
-
-  init(id: Int, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, param: Int) {
-    self.id = id
-    self.start = start
-    self.destination = destination
-    self.param = param
   }
 }
