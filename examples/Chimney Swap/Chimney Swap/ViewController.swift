@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Pathfinder
+import thepathfinder
 
 class ViewController: UIViewController {
   let directionsUrlBase = "https://maps.googleapis.com/maps/api/directions/json?"
@@ -86,7 +86,7 @@ class ViewController: UIViewController {
 
   func afterSignIn() {
     // Set up Pathfinder
-    transport = Pathfinder(applicationIdentifier: pathfinderAppId, userCredentials: userCredentials).defaultCluster().createTransport(["chimney": 3])
+    transport = Pathfinder(applicationIdentifier: pathfinderAppId, userCredentials: userCredentials).cluster().createTransport(["chimney": 3])
     transport.delegate = self
     transport.connect()
 
@@ -139,6 +139,7 @@ extension ViewController: TransportDelegate {
 
   func connected(transport: Transport) {
     print("Transport was connected")
+    transport.subscribe()
   }
 
   func wasRouted(route: Route, transport: Transport) {
@@ -153,8 +154,8 @@ extension ViewController: TransportDelegate {
       print("Drawing the following commodities to the map: \(route.commodities())")
       route.commodities().forEach { (commodity: Commodity) -> Void in
         let color = randomColor()
-        markers?.append(drawMarker(commodity.start, color: color))
-        markers?.append(drawMarker(commodity.destination, color: color))
+        markers?.append(drawMarker(commodity.start!, color: color))
+        markers?.append(drawMarker(commodity.destination!, color: color))
       }
     }
   }

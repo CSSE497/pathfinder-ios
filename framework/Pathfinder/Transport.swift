@@ -150,6 +150,7 @@ extension Transport: CLLocationManagerDelegate {
       self.cluster.connect() { (cluster: Cluster) -> Void in
         self.cluster.conn.create(self) { (resp: TransportResponse) -> Void in
           self.id = resp.id
+          self.delegate?.connected(self)
         }
       }
     }
