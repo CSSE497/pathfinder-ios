@@ -16,7 +16,7 @@ This class should never be instantiated directly because it represents the state
 
 The standard use case involves creating a new vehicle within a known cluster. This can be accomplished as follows:
 
-```
+```swift
 let pathfinder = Pathfinder(pathfinderAppId, userCreds)
 let params = ["passenger": 3, "suitecase": 4]
 let transport = pathfinder.cluster("/USA/West/Seattle").createTransport(params)
