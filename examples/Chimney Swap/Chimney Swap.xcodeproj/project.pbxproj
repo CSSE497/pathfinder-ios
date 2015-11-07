@@ -13,6 +13,15 @@
 		664722511BDDDBC500E067A7 /* Chimney_Swap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6647224F1BDDDBC500E067A7 /* Chimney_Swap.xcdatamodeld */; };
 		664722531BDDDBC600E067A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 664722521BDDDBC600E067A7 /* Assets.xcassets */; };
 		664722561BDDDBC600E067A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 664722541BDDDBC600E067A7 /* LaunchScreen.storyboard */; };
+		665018581BED76D9002230B6 /* logo80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = 665018551BED76D9002230B6 /* logo80x80.png */; };
+		665018591BED76D9002230B6 /* logo152x152.png in Resources */ = {isa = PBXBuildFile; fileRef = 665018561BED76D9002230B6 /* logo152x152.png */; };
+		6650185A1BED76D9002230B6 /* logo180x180.png in Resources */ = {isa = PBXBuildFile; fileRef = 665018571BED76D9002230B6 /* logo180x180.png */; };
+		6650185C1BED77C6002230B6 /* logo120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 6650185B1BED77C6002230B6 /* logo120x120.png */; };
+		665018601BED7882002230B6 /* logo58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = 6650185F1BED7882002230B6 /* logo58x58.png */; };
+		665018621BED7897002230B6 /* logo87x87.png in Resources */ = {isa = PBXBuildFile; fileRef = 665018611BED7897002230B6 /* logo87x87.png */; };
+		665018641BED78A7002230B6 /* logo40x40.png in Resources */ = {isa = PBXBuildFile; fileRef = 665018631BED78A7002230B6 /* logo40x40.png */; };
+		665018671BED78DA002230B6 /* logo29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 665018651BED78DA002230B6 /* logo29x29.png */; };
+		665018681BED78DA002230B6 /* logo76x76.png in Resources */ = {isa = PBXBuildFile; fileRef = 665018661BED78DA002230B6 /* logo76x76.png */; };
 		9B38EE4EA5DA679923B39439 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B6D2C9C1D9664B5FC481760 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +37,15 @@
 		664722551BDDDBC600E067A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		664722571BDDDBC600E067A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6647225D1BDDDD4700E067A7 /* Chimney Swap-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Chimney Swap-Bridging-Header.h"; sourceTree = "<group>"; };
+		665018551BED76D9002230B6 /* logo80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo80x80.png; path = Resources/logo80x80.png; sourceTree = "<group>"; };
+		665018561BED76D9002230B6 /* logo152x152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo152x152.png; path = Resources/logo152x152.png; sourceTree = "<group>"; };
+		665018571BED76D9002230B6 /* logo180x180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo180x180.png; path = Resources/logo180x180.png; sourceTree = "<group>"; };
+		6650185B1BED77C6002230B6 /* logo120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo120x120.png; path = Resources/logo120x120.png; sourceTree = "<group>"; };
+		6650185F1BED7882002230B6 /* logo58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo58x58.png; path = Resources/logo58x58.png; sourceTree = "<group>"; };
+		665018611BED7897002230B6 /* logo87x87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo87x87.png; path = Resources/logo87x87.png; sourceTree = "<group>"; };
+		665018631BED78A7002230B6 /* logo40x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo40x40.png; path = Resources/logo40x40.png; sourceTree = "<group>"; };
+		665018651BED78DA002230B6 /* logo29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo29x29.png; path = Resources/logo29x29.png; sourceTree = "<group>"; };
+		665018661BED78DA002230B6 /* logo76x76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo76x76.png; path = Resources/logo76x76.png; sourceTree = "<group>"; };
 		ABDCB064EF1DA1E96C8F4715 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,6 +90,7 @@
 		664722471BDDDBC500E067A7 /* Chimney Swap */ = {
 			isa = PBXGroup;
 			children = (
+				665018541BED7538002230B6 /* Resources */,
 				664722481BDDDBC500E067A7 /* AppDelegate.swift */,
 				6647224A1BDDDBC500E067A7 /* ViewController.swift */,
 				6647224C1BDDDBC500E067A7 /* Main.storyboard */,
@@ -82,6 +101,22 @@
 				6647225D1BDDDD4700E067A7 /* Chimney Swap-Bridging-Header.h */,
 			);
 			path = "Chimney Swap";
+			sourceTree = "<group>";
+		};
+		665018541BED7538002230B6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				665018551BED76D9002230B6 /* logo80x80.png */,
+				665018561BED76D9002230B6 /* logo152x152.png */,
+				665018571BED76D9002230B6 /* logo180x180.png */,
+				6650185B1BED77C6002230B6 /* logo120x120.png */,
+				6650185F1BED7882002230B6 /* logo58x58.png */,
+				665018611BED7897002230B6 /* logo87x87.png */,
+				665018631BED78A7002230B6 /* logo40x40.png */,
+				665018651BED78DA002230B6 /* logo29x29.png */,
+				665018661BED78DA002230B6 /* logo76x76.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		C46270401E869A45EDB4BE48 /* Pods */ = {
@@ -155,8 +190,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				665018671BED78DA002230B6 /* logo29x29.png in Resources */,
 				664722561BDDDBC600E067A7 /* LaunchScreen.storyboard in Resources */,
+				665018621BED7897002230B6 /* logo87x87.png in Resources */,
+				665018681BED78DA002230B6 /* logo76x76.png in Resources */,
+				665018591BED76D9002230B6 /* logo152x152.png in Resources */,
+				665018581BED76D9002230B6 /* logo80x80.png in Resources */,
+				665018601BED7882002230B6 /* logo58x58.png in Resources */,
+				665018641BED78A7002230B6 /* logo40x40.png in Resources */,
+				6650185A1BED76D9002230B6 /* logo180x180.png in Resources */,
 				664722531BDDDBC600E067A7 /* Assets.xcassets in Resources */,
+				6650185C1BED77C6002230B6 /* logo120x120.png in Resources */,
 				6647224E1BDDDBC500E067A7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
