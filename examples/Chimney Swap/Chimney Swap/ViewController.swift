@@ -46,7 +46,7 @@ class ViewController: UIViewController {
     if !waypoints.isEmpty {
       directionsUrl += "&waypoints=optimize:true" + waypoints.map { (c: CLLocationCoordinate2D) -> String in "|\(c.latitude),\(c.longitude)" }.joinWithSeparator("")
     }
-    let directionsNSUrl = NSURL(string: directionsUrl.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
+    let directionsNSUrl = NSURL(string: directionsUrl.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)
     print("Requesting directions from \(directionsNSUrl)")
     dispatch_async(dispatch_get_main_queue()) {
       let directionsData = NSData(contentsOfURL: directionsNSUrl!)
@@ -108,7 +108,7 @@ extension ViewController: CLLocationManagerDelegate {
 
   func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
     print("ViewController is now authorized to view location.")
-    if status == CLAuthorizationStatus.AuthorizedAlways || status == CLAuthorizationStatus.AuthorizedWhenInUse || status == CLAuthorizationStatus.Authorized {
+    if status == CLAuthorizationStatus.AuthorizedAlways || status == CLAuthorizationStatus.AuthorizedWhenInUse {
       mapView.myLocationEnabled = true
       transport.connect()
     }

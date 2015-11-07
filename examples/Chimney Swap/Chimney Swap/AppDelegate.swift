@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     gitkitClient.widgetURL = "http://localhost:4567/gitkit"
     gitkitClient.providers = [ kGITProviderGoogle ]
     GIDSignIn.sharedInstance().clientID = "555706514291-iu7csa2ki6h9637to5djudn2j5v6netr.apps.googleusercontent.com"
+    sleep(2)
     return true
   }
 
