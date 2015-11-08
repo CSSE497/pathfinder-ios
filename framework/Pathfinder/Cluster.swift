@@ -79,8 +79,8 @@ public class Cluster {
 
   - Parameter capacities:  The limiting constraints of the transport of the parameters of your application's routing calculations. The set of parameters needs to be defined and prioritized via the Pathfinder web interface in advance. All transports will be routed while keeping their sum occupant parameters to be less than or equal to their limiting constraints.
   */
-  public func createTransport(parameterCapacities: [String:Int]) -> Transport {
-    return Transport(cluster: self, capacities: parameterCapacities)
+  public func createTransport(status: Transport.Status, parameterCapacities: [String:Int]) -> Transport {
+    return Transport(cluster: self, capacities: parameterCapacities, status: status)
   }
 
   /**

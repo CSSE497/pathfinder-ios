@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6616826E1BEFA24B00DD1DCC /* TransportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6616826D1BEFA24B00DD1DCC /* TransportViewController.swift */; };
+		661682701BEFA35300DD1DCC /* TransportLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6616826F1BEFA35300DD1DCC /* TransportLoginViewController.swift */; };
+		661682721BEFA50E00DD1DCC /* CustomerLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661682711BEFA50E00DD1DCC /* CustomerLoginViewController.swift */; };
+		661682781BEFAF8800DD1DCC /* employee.png in Resources */ = {isa = PBXBuildFile; fileRef = 661682771BEFAF8800DD1DCC /* employee.png */; };
+		6616827A1BEFAFE800DD1DCC /* customer.png in Resources */ = {isa = PBXBuildFile; fileRef = 661682791BEFAFE800DD1DCC /* customer.png */; };
+		6616827C1BEFB6DA00DD1DCC /* customer3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6616827B1BEFB6DA00DD1DCC /* customer3.png */; };
 		664722491BDDDBC500E067A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664722481BDDDBC500E067A7 /* AppDelegate.swift */; };
 		6647224B1BDDDBC500E067A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6647224A1BDDDBC500E067A7 /* ViewController.swift */; };
 		6647224E1BDDDBC500E067A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6647224C1BDDDBC500E067A7 /* Main.storyboard */; };
@@ -29,6 +35,12 @@
 /* Begin PBXFileReference section */
 		5A4275474BB65616C7B1BC24 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		5B6D2C9C1D9664B5FC481760 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6616826D1BEFA24B00DD1DCC /* TransportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportViewController.swift; sourceTree = "<group>"; };
+		6616826F1BEFA35300DD1DCC /* TransportLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportLoginViewController.swift; sourceTree = "<group>"; };
+		661682711BEFA50E00DD1DCC /* CustomerLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerLoginViewController.swift; sourceTree = "<group>"; };
+		661682771BEFAF8800DD1DCC /* employee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = employee.png; path = Resources/employee.png; sourceTree = "<group>"; };
+		661682791BEFAFE800DD1DCC /* customer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = customer.png; path = Resources/customer.png; sourceTree = "<group>"; };
+		6616827B1BEFB6DA00DD1DCC /* customer3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = customer3.png; path = Resources/customer3.png; sourceTree = "<group>"; };
 		664722451BDDDBC500E067A7 /* Chimney Swap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chimney Swap.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		664722481BDDDBC500E067A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6647224A1BDDDBC500E067A7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +113,9 @@
 				664722571BDDDBC600E067A7 /* Info.plist */,
 				6647224F1BDDDBC500E067A7 /* Chimney_Swap.xcdatamodeld */,
 				6647225D1BDDDD4700E067A7 /* Chimney Swap-Bridging-Header.h */,
+				6616826D1BEFA24B00DD1DCC /* TransportViewController.swift */,
+				6616826F1BEFA35300DD1DCC /* TransportLoginViewController.swift */,
+				661682711BEFA50E00DD1DCC /* CustomerLoginViewController.swift */,
 			);
 			path = "Chimney Swap";
 			sourceTree = "<group>";
@@ -108,6 +123,9 @@
 		665018541BED7538002230B6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				661682791BEFAFE800DD1DCC /* customer.png */,
+				6616827B1BEFB6DA00DD1DCC /* customer3.png */,
+				661682771BEFAF8800DD1DCC /* employee.png */,
 				665018551BED76D9002230B6 /* logo80x80.png */,
 				665018561BED76D9002230B6 /* logo152x152.png */,
 				665018571BED76D9002230B6 /* logo180x180.png */,
@@ -198,8 +216,11 @@
 				665018681BED78DA002230B6 /* logo76x76.png in Resources */,
 				665018591BED76D9002230B6 /* logo152x152.png in Resources */,
 				665018581BED76D9002230B6 /* logo80x80.png in Resources */,
+				6616827C1BEFB6DA00DD1DCC /* customer3.png in Resources */,
 				665018601BED7882002230B6 /* logo58x58.png in Resources */,
 				6650186C1BED8272002230B6 /* Launch Screen.storyboard in Resources */,
+				661682781BEFAF8800DD1DCC /* employee.png in Resources */,
+				6616827A1BEFAFE800DD1DCC /* customer.png in Resources */,
 				665018641BED78A7002230B6 /* logo40x40.png in Resources */,
 				6650185A1BED76D9002230B6 /* logo180x180.png in Resources */,
 				6650186E1BED82BF002230B6 /* launch_screen.png in Resources */,
@@ -264,9 +285,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6616826E1BEFA24B00DD1DCC /* TransportViewController.swift in Sources */,
 				664722511BDDDBC500E067A7 /* Chimney_Swap.xcdatamodeld in Sources */,
+				661682721BEFA50E00DD1DCC /* CustomerLoginViewController.swift in Sources */,
 				6647224B1BDDDBC500E067A7 /* ViewController.swift in Sources */,
 				664722491BDDDBC500E067A7 /* AppDelegate.swift in Sources */,
+				661682701BEFA35300DD1DCC /* TransportLoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

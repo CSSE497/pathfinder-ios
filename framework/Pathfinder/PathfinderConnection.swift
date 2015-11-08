@@ -102,7 +102,8 @@ class PathfinderConnection {
         "id": transport.id!,
         "value": [
           "latitude": transport.location!.latitude,
-          "longitude": transport.location!.longitude
+          "longitude": transport.location!.longitude,
+          "status": transport.status.description
         ]
       ]
     ])

@@ -1,20 +1,18 @@
 //
-//  ViewController.swift
+//  TransportViewController.swift
 //  Chimney Swap
 //
-//  Created by Adam Michael on 10/25/15.
+//  Created by Adam Michael on 11/8/15.
 //  Copyright © 2015 Pathfinder. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import thepathfinder
 
-class ViewController: UIViewController {
+class TransportViewController: UIViewController {
   let directionsUrlBase = "https://maps.googleapis.com/maps/api/directions/json?"
   let pathfinderAppId = "9c4166bb-9535-49e1-8844-1904a0b1f45b"
   let userCredentials = "abc"
-
-
 
   var transport: Transport!
 
@@ -26,17 +24,17 @@ class ViewController: UIViewController {
 
   var didFindMyLocation = false
 
-  @IBOutlet weak var mapView: GMSMapView!
+  var mapView: GMSMapView!
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
     // Set up Google Identity Toolkit
-    //GITClient.sharedInstance().delegate = self
-    //let signIn = GIDSignIn.sharedInstance()
-    //signIn.scopes = [ "https://www.googleapis.com/auth/plus.login" ]
-    //signIn.delegate = self
-    //signIn.signIn()
+    GITClient.sharedInstance().delegate = self
+    let signIn = GIDSignIn.sharedInstance()
+    signIn.scopes = [ "https://www.googleapis.com/auth/plus.login" ]
+    signIn.delegate = self
+    signIn.signIn()
   }
 
   override func didReceiveMemoryWarning() {
@@ -107,7 +105,7 @@ class ViewController: UIViewController {
 }
 
 // MARK: - CLLocationManagerDelegate
-extension ViewController: CLLocationManagerDelegate {
+extension TransportViewController: CLLocationManagerDelegate {
 
   func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
     print("ViewController is now authorized to view location.")
@@ -120,11 +118,11 @@ extension ViewController: CLLocationManagerDelegate {
   func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     print("ViewController received updated location")
   }
-  
+
 }
 
 // MARK: - GMSMapViewDelegate
-extension ViewController: GMSMapViewDelegate {
+extension TransportViewController: GMSMapViewDelegate {
 
   override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
     if !didFindMyLocation {
@@ -134,11 +132,11 @@ extension ViewController: GMSMapViewDelegate {
       didFindMyLocation = true
     }
   }
-  
+
 }
 
 // Mark: - TransportDelegate
-extension ViewController: TransportDelegate {
+extension TransportViewController: TransportDelegate {
 
   func connected(transport: Transport) {
     print("Transport was connected")
@@ -177,7 +175,7 @@ extension ViewController: TransportDelegate {
 }
 
 // MARK: - GIDSignInDelegate
-extension ViewController: GIDSignInDelegate {
+extension TransportViewController: GIDSignInDelegate {
 
   func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
     print("GID did sign in for user \(user) with authentication \(user.authentication)")
@@ -186,7 +184,7 @@ extension ViewController: GIDSignInDelegate {
 }
 
 // MARK: - GITClientDelegate
-extension ViewController: GITClientDelegate {
+extension TransportViewController: GITClientDelegate {
 
   func client(client: GITClient!, didFinishSignInWithToken token: String!, account: GITAccount!, error: NSError!) {
     print("GIT finished sign in and returned token \(token) for account \(account) with error \(error)")

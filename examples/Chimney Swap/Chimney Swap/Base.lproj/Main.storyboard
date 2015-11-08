@@ -1,10 +1,164 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15C31f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15C31f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dt5-NO-Icf">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
+        <!--Employee-->
+        <scene sceneID="GjB-tJ-D0H">
+            <objects>
+                <viewController id="nAX-uE-z1R" customClass="TransportLoginViewController" customModule="Chimney_Swap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vWl-pF-4qZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="7Vy-0M-IIT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1gI-OP-oVy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo152x152.png" translatesAutoresizingMaskIntoConstraints="NO" id="V3s-kQ-mu0">
+                                <rect key="frame" x="131" y="102" width="152" height="152"/>
+                                <animations/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="For Chimney Swap employees only." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mc-cU-cxD">
+                                <rect key="frame" x="72" y="304" width="270" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8lD-gX-CHR">
+                                <rect key="frame" x="139" y="496" width="136" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Sign In with Google"/>
+                                <connections>
+                                    <segue destination="tTP-Qb-vn1" kind="show" id="Tqc-jA-XxJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Employee" image="employee.png" id="eMm-4V-STj"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H75-3d-A63" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2603" y="896"/>
+        </scene>
+        <!--Customer-->
+        <scene sceneID="l50-Kn-Agn">
+            <objects>
+                <viewController id="uRB-Bv-F1x" customClass="CustomerLoginViewController" customModule="Chimney_Swap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LaS-Cl-A9Z"/>
+                        <viewControllerLayoutGuide type="bottom" id="CtB-FH-DQK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DWv-Pd-Qcl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="launch_screen.png" translatesAutoresizingMaskIntoConstraints="NO" id="VZT-eh-LcV">
+                                <rect key="frame" x="96" y="101" width="222" height="157"/>
+                                <animations/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Free registration, no annual fee." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jpz-Hg-JgJ">
+                                <rect key="frame" x="86" y="307" width="242" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What are you waiting for?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wc9-9E-lue">
+                                <rect key="frame" x="110" y="336" width="195" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mBM-wj-bcO">
+                                <rect key="frame" x="139" y="498" width="136" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Sign In with Google"/>
+                                <connections>
+                                    <action selector="signInCustomer" destination="uRB-Bv-F1x" eventType="touchUpInside" id="asC-Vv-WH7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Customer" image="customer.png" selectedImage="logo40x40.png" id="1t6-vt-L9c"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <segue destination="6SM-ce-R2U" kind="show" identifier="signIn" id="GSk-Qn-8bW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F2d-yz-Y0v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2603" y="73"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="3IN-n9-bIm">
+            <objects>
+                <viewController id="6SM-ce-R2U" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pr8-0s-pmc"/>
+                        <viewControllerLayoutGuide type="bottom" id="qks-r4-D6L"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rHR-4F-rXS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0FN-Zk-HSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2066" y="73"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="kwk-X3-Prw">
+            <objects>
+                <tabBarController id="dt5-NO-Icf" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="IWU-z8-Qxm"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="33K-FR-gh6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="uRB-Bv-F1x" kind="relationship" relationship="viewControllers" id="IPD-j2-YJX"/>
+                        <segue destination="nAX-uE-z1R" kind="relationship" relationship="viewControllers" id="vcN-s9-WMJ"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HYk-sI-xzQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3373" y="610"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="uY5-Je-bQw">
+            <objects>
+                <viewController id="tTP-Qb-vn1" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1eS-Jg-YVP"/>
+                        <viewControllerLayoutGuide type="bottom" id="7XW-je-gDF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1RZ-XT-xjh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KRh-E8-TCt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2066" y="896"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -14,17 +168,26 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GMSMapView">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="mapView" destination="8bC-Xf-vdC" id="AmU-8i-Ezh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-1554" y="896"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="customer.png" width="40" height="40"/>
+        <image name="employee.png" width="40" height="40"/>
+        <image name="launch_screen.png" width="222" height="157"/>
+        <image name="logo152x152.png" width="152" height="152"/>
+        <image name="logo40x40.png" width="40" height="40"/>
+    </resources>
 </document>
