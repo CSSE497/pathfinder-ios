@@ -23,17 +23,17 @@ PODS:
   - GoogleSymbolUtilities (1.0.0)
   - GoogleUtilities (1.0.1):
     - GoogleSymbolUtilities (~> 1.0)
-  - Pathfinder (0.1):
+  - Starscream (1.0.2)
+  - thepathfinder (0.0.2):
     - Starscream
-  - Starscream (1.0.1)
 
 DEPENDENCIES:
   - GoogleIdentityToolkit (~> 1.1.0)
   - GoogleMaps
-  - Pathfinder (from `../../`)
+  - thepathfinder (from `../../`)
 
 EXTERNAL SOURCES:
-  Pathfinder:
+  thepathfinder:
     :path: ../../
 
 SPEC CHECKSUMS:
@@ -46,7 +46,7 @@ SPEC CHECKSUMS:
   GoogleSignIn: bfeffe8bbb5f5b377d9cc0d36e97e5f4758cfec4
   GoogleSymbolUtilities: a7b0feed1fe667c8d5e647177938d0ecd62d6948
   GoogleUtilities: e3475cd4d45134221d2f3f3626095a1c49b62041
-  Pathfinder: c8d79c6977edae56b6d15eef700a34607a9cdeff
-  Starscream: 7b731637cd167ed5a059331f52c0254b1aa69095
+  Starscream: 40e2c4c1c770d811f24116b8b7dbeb4542c56767
+  thepathfinder: 55b92c7fa59e9aebe9360220c5258ffb45fb681d
 
 COCOAPODS: 0.39.0

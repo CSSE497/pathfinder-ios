@@ -5,4 +5,4 @@ use_frameworks!
 
 pod 'GoogleIdentityToolkit', '~> 1.1.0'
 pod 'GoogleMaps'
-pod 'Pathfinder', :path => '../../'
+pod 'thepathfinder', :path => '../../'

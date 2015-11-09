@@ -102,7 +102,8 @@ class PathfinderConnection {
         "id": transport.id!,
         "value": [
           "latitude": transport.location!.latitude,
-          "longitude": transport.location!.longitude
+          "longitude": transport.location!.longitude,
+          "status": transport.status.description
         ]
       ]
     ])
@@ -158,19 +159,24 @@ class PathfinderConnection {
 
   func handle(message message: NSDictionary) {
     if let applicationResponse: ApplicationResponse = ApplicationResponse.parse(message) {
+      print("PathfinderConnection handling ApplicationResponse")
       applicationFns.removeFirst()(applicationResponse)
     } else if let clusterResponse: ClusterResponse = ClusterResponse.parse(message) {
+      print("PathfinderConnection handling ClusterResponse")
       clusterFns.removeFirst()(clusterResponse)
     } else if let transportResponse: TransportResponse = TransportResponse.parse(message) {
+      print("PathfinderConnection handling TransportResponse")
       transportFns.removeFirst()(transportResponse)
     } else if let commodityResponse: CommodityResponse = CommodityResponse.parse(message) {
+      print("PathfinderConnection handling CommodityResponse")
       commodityFns.removeFirst()(commodityResponse)
     } else if let routedResponse = RoutedResponse.parse(message) {
+      print("PathfinderConnection handling RoutedResponse")
       let transport = transportRouteSubscribers[routedResponse.route.transport.id!]
       transport?.route = routedResponse.route
       transport?.delegate?.wasRouted(routedResponse.route, transport: transport!)
     } else {
-      print("PathfinderConnection received unparseable message: \(message)")
+      print("PathfinderConnection handling unparseable message: \(message)")
     }
   }
 }

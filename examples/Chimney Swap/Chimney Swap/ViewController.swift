@@ -7,12 +7,14 @@
 //
 
 import UIKit
-import Pathfinder
+import thepathfinder
 
 class ViewController: UIViewController {
   let directionsUrlBase = "https://maps.googleapis.com/maps/api/directions/json?"
   let pathfinderAppId = "9c4166bb-9535-49e1-8844-1904a0b1f45b"
   let userCredentials = "abc"
+
+
 
   var transport: Transport!
 
@@ -30,11 +32,11 @@ class ViewController: UIViewController {
     super.viewDidLoad()
 
     // Set up Google Identity Toolkit
-    GITClient.sharedInstance().delegate = self
-    let signIn = GIDSignIn.sharedInstance()
-    signIn.scopes = [ "https://www.googleapis.com/auth/plus.login" ]
-    signIn.delegate = self
-    signIn.signIn()
+    //GITClient.sharedInstance().delegate = self
+    //let signIn = GIDSignIn.sharedInstance()
+    //signIn.scopes = [ "https://www.googleapis.com/auth/plus.login" ]
+    //signIn.delegate = self
+    //signIn.signIn()
   }
 
   override func didReceiveMemoryWarning() {
@@ -46,7 +48,7 @@ class ViewController: UIViewController {
     if !waypoints.isEmpty {
       directionsUrl += "&waypoints=optimize:true" + waypoints.map { (c: CLLocationCoordinate2D) -> String in "|\(c.latitude),\(c.longitude)" }.joinWithSeparator("")
     }
-    let directionsNSUrl = NSURL(string: directionsUrl.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
+    let directionsNSUrl = NSURL(string: directionsUrl.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)
     print("Requesting directions from \(directionsNSUrl)")
     dispatch_async(dispatch_get_main_queue()) {
       let directionsData = NSData(contentsOfURL: directionsNSUrl!)
@@ -84,9 +86,10 @@ class ViewController: UIViewController {
     return UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
   }
 
-  func afterSignIn() {
-    // Set up Pathfinder
-    transport = Pathfinder(applicationIdentifier: pathfinderAppId, userCredentials: userCredentials).defaultCluster().createTransport(["chimney": 3])
+  func setUp() {
+    // Set up Pathfinder. Subscribe to the transport after the connection is confirmed.
+    let cluster = Pathfinder(applicationIdentifier: pathfinderAppId, userCredentials: userCredentials).cluster()
+    transport = cluster.createTransport(Transport.Status.Online, parameterCapacities: ["chimney": 3])
     transport.delegate = self
     transport.connect()
 
@@ -108,7 +111,7 @@ extension ViewController: CLLocationManagerDelegate {
 
   func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
     print("ViewController is now authorized to view location.")
-    if status == CLAuthorizationStatus.AuthorizedAlways || status == CLAuthorizationStatus.AuthorizedWhenInUse || status == CLAuthorizationStatus.Authorized {
+    if status == CLAuthorizationStatus.AuthorizedAlways || status == CLAuthorizationStatus.AuthorizedWhenInUse {
       mapView.myLocationEnabled = true
       transport.connect()
     }
@@ -139,6 +142,7 @@ extension ViewController: TransportDelegate {
 
   func connected(transport: Transport) {
     print("Transport was connected")
+    transport.subscribe()
   }
 
   func wasRouted(route: Route, transport: Transport) {
@@ -153,8 +157,8 @@ extension ViewController: TransportDelegate {
       print("Drawing the following commodities to the map: \(route.commodities())")
       route.commodities().forEach { (commodity: Commodity) -> Void in
         let color = randomColor()
-        markers?.append(drawMarker(commodity.start, color: color))
-        markers?.append(drawMarker(commodity.destination, color: color))
+        markers?.append(drawMarker(commodity.start!, color: color))
+        markers?.append(drawMarker(commodity.destination!, color: color))
       }
     }
   }
@@ -177,7 +181,7 @@ extension ViewController: GIDSignInDelegate {
 
   func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
     print("GID did sign in for user \(user) with authentication \(user.authentication)")
-    afterSignIn()
+    setUp()
   }
 }
 
@@ -186,6 +190,6 @@ extension ViewController: GITClientDelegate {
 
   func client(client: GITClient!, didFinishSignInWithToken token: String!, account: GITAccount!, error: NSError!) {
     print("GIT finished sign in and returned token \(token) for account \(account) with error \(error)")
-    afterSignIn()
+    setUp()
   }
 }
