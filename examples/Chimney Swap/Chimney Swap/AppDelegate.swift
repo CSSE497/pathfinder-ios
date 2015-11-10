@@ -14,15 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-  let googleAPIKey = "AIzaSyCxkw1-mYOy6nsSTdyQ6CIjOjIRP33iIxY"
-
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    GMSServices.provideAPIKey(googleAPIKey)
+    GMSServices.provideAPIKey(Constants.Google.apiKey)
     let gitkitClient = GITClient.sharedInstance()
-    gitkitClient.apiKey = googleAPIKey
-    gitkitClient.widgetURL = "http://localhost:4567/gitkit"
+    gitkitClient.apiKey = Constants.Google.apiKey
+    gitkitClient.widgetURL = Constants.Google.widgetUrl
     gitkitClient.providers = [ kGITProviderGoogle ]
-    GIDSignIn.sharedInstance().clientID = "555706514291-iu7csa2ki6h9637to5djudn2j5v6netr.apps.googleusercontent.com"
+    GIDSignIn.sharedInstance().clientID = Constants.Google.clientId
     return true
   }
 

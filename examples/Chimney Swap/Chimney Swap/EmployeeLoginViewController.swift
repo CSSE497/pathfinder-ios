@@ -1,5 +1,5 @@
 //
-//  CustomerLoginViewController.swift
+//  EmployeeLoginViewController.swift
 //  Chimney Swap
 //
 //  Created by Adam Michael on 11/8/15.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-class CustomerLoginViewController : UIViewController {
+class EmployeeLoginViewController : UIViewController {
 
-  @IBAction func signInCustomer() {
+  @IBAction func signInEmployee() {
     let interfaceManager = GITInterfaceManager()
     interfaceManager.delegate = self
     GITClient.sharedInstance().delegate = self
@@ -18,13 +18,13 @@ class CustomerLoginViewController : UIViewController {
   }
 }
 
-extension CustomerLoginViewController : GITInterfaceManagerDelegate, GITClientDelegate {
+extension EmployeeLoginViewController : GITInterfaceManagerDelegate, GITClientDelegate {
 
   func client(client: GITClient!, didFinishSignInWithToken token: String!, account: GITAccount!, error: NSError!) {
     print("GIT finished sign in and returned token \(token) for account \(account) with error \(error)")
     let userDefaults = NSUserDefaults.standardUserDefaults()
-    userDefaults.setObject(token, forKey: "customerToken")
+    userDefaults.setObject(token, forKey: "employeeToken")
     userDefaults.synchronize()
-    performSegueWithIdentifier("signInCustomer", sender: self)
+    self.performSegueWithIdentifier("signInEmployee", sender: self)
   }
 }

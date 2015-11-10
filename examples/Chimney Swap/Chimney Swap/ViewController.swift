@@ -10,11 +10,7 @@ import UIKit
 import thepathfinder
 
 class ViewController: UIViewController {
-  let directionsUrlBase = "https://maps.googleapis.com/maps/api/directions/json?"
-  let pathfinderAppId = "9c4166bb-9535-49e1-8844-1904a0b1f45b"
   let userCredentials = "abc"
-
-
 
   var transport: Transport!
 
@@ -44,7 +40,7 @@ class ViewController: UIViewController {
   }
 
   func getDirections(start: CLLocationCoordinate2D, end: CLLocationCoordinate2D, waypoints: [CLLocationCoordinate2D]) {
-    var directionsUrl = "\(directionsUrlBase)origin=\(start.latitude),\(start.longitude)&destination=\(end.latitude),\(end.longitude)"
+    var directionsUrl = "\(Constants.Google.directionsUrl)origin=\(start.latitude),\(start.longitude)&destination=\(end.latitude),\(end.longitude)"
     if !waypoints.isEmpty {
       directionsUrl += "&waypoints=optimize:true" + waypoints.map { (c: CLLocationCoordinate2D) -> String in "|\(c.latitude),\(c.longitude)" }.joinWithSeparator("")
     }
@@ -88,7 +84,7 @@ class ViewController: UIViewController {
 
   func setUp() {
     // Set up Pathfinder. Subscribe to the transport after the connection is confirmed.
-    let cluster = Pathfinder(applicationIdentifier: pathfinderAppId, userCredentials: userCredentials).cluster()
+    let cluster = Pathfinder(applicationIdentifier: Constants.Pathfinder.applicationId, userCredentials: userCredentials).cluster()
     transport = cluster.createTransport(Transport.Status.Online, parameterCapacities: ["chimney": 3])
     transport.delegate = self
     transport.connect()

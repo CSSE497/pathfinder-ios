@@ -40,7 +40,7 @@ class SwapChimneyViewController : UIViewController {
     let lat = location!.latitude
     let lng = location!.longitude
     Chimney(description: description, location: CLLocationCoordinate2D(latitude: lat, longitude: lng), image: image).post()
-    dismissViewControllerAnimated(true, completion: nil)
+    self.navigationController?.popViewControllerAnimated(true)
   }
 
 }

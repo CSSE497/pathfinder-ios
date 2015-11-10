@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
-        <!--Transport Login View Controller-->
+        <!--Employee Login View Controller-->
         <scene sceneID="GjB-tJ-D0H">
             <objects>
-                <viewController id="nAX-uE-z1R" customClass="TransportLoginViewController" customModule="Chimney_Swap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nAX-uE-z1R" customClass="EmployeeLoginViewController" customModule="Chimney_Swap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vWl-pF-4qZ"/>
                         <viewControllerLayoutGuide type="bottom" id="7Vy-0M-IIT"/>
@@ -33,7 +33,7 @@
                                 <animations/>
                                 <state key="normal" title="Sign In with Google"/>
                                 <connections>
-                                    <segue destination="tTP-Qb-vn1" kind="show" id="Tqc-jA-XxJ"/>
+                                    <action selector="signInEmployee" destination="nAX-uE-z1R" eventType="touchUpInside" id="leB-dr-9Js"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -41,10 +41,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="qli-cN-PT6"/>
+                    <connections>
+                        <segue destination="tTP-Qb-vn1" kind="show" identifier="signInEmployee" id="xbJ-90-Mam"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H75-3d-A63" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1977" y="896"/>
+            <point key="canvasLocation" x="-1977" y="1326"/>
         </scene>
         <!--Customer Login View Controller-->
         <scene sceneID="l50-Kn-Agn">
@@ -91,7 +94,7 @@
                     <navigationItem key="navigationItem" id="DpY-84-faO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <segue destination="Ci0-dS-5xY" kind="show" identifier="signIn" id="gW5-3O-Tlf"/>
+                        <segue destination="Ci0-dS-5xY" kind="show" identifier="signInCustomer" id="gW5-3O-Tlf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F2d-yz-Y0v" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -141,11 +144,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="736" height="44"/>
                             </variation>
                         </stackView>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Dmo-o7-zNG">
+                        <button key="tableFooterView" opaque="NO" contentMode="bottom" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Dmo-o7-zNG">
                             <rect key="frame" x="0.0" y="180" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
-                            <state key="normal" title="Add Chimney for Trade"/>
+                            <state key="normal" title="Add Chimney for Swap"/>
                             <connections>
                                 <segue destination="8Cc-ow-lvx" kind="show" id="q3n-bm-OqH"/>
                             </connections>
@@ -154,7 +157,7 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="6jV-ua-os8" style="IBUITableViewCellStyleDefault" id="ruY-Tm-efH">
                                 <rect key="frame" x="0.0" y="136" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ruY-Tm-efH" id="T0m-OV-Ifm">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" semanticContentAttribute="forceLeftToRight" tableViewCell="ruY-Tm-efH" id="T0m-OV-Ifm">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -180,7 +183,9 @@
                     <navigationItem key="navigationItem" id="PA6-C3-2gn"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="footer" destination="Dmo-o7-zNG" id="wyz-ie-vuj"/>
                         <outlet property="tableView" destination="gqZ-7X-rbc" id="18t-2R-uJh"/>
+                        <segue destination="iCW-U6-een" kind="show" identifier="acceptSwap" id="FnS-Zt-Vkk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dvQ-rp-XC5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -240,7 +245,7 @@
                                 <animations/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ql-Hu-EWw">
-                                <rect key="frame" x="119" y="639" width="177" height="40"/>
+                                <rect key="frame" x="119" y="647" width="177" height="40"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Swap Your Chimney"/>
@@ -260,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NYX-QM-QRC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-928" y="73"/>
+            <point key="canvasLocation" x="-738" y="483"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="kwk-X3-Prw">
@@ -281,7 +286,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HYk-sI-xzQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3373" y="610"/>
+            <point key="canvasLocation" x="-3435" y="680"/>
         </scene>
         <!--Employee-->
         <scene sceneID="uY5-Je-bQw">
@@ -302,7 +307,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KRh-E8-TCt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1440" y="896"/>
+            <point key="canvasLocation" x="-1440" y="1326"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -325,7 +330,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-928" y="896"/>
+            <point key="canvasLocation" x="-738" y="1326"/>
         </scene>
         <!--Customer-->
         <scene sceneID="WID-tS-ITu">
@@ -365,7 +370,103 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wyo-mF-dI5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2603" y="896"/>
+            <point key="canvasLocation" x="-2603" y="1326"/>
+        </scene>
+        <!--Accept Swap View Controller-->
+        <scene sceneID="t9N-ox-TlL">
+            <objects>
+                <viewController storyboardIdentifier="AcceptSwapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iCW-U6-een" customClass="AcceptSwapViewController" customModule="Chimney_Swap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="khj-16-1uj"/>
+                        <viewControllerLayoutGuide type="bottom" id="EtI-eV-bjw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cXv-Vf-zag">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swap Your Chimney" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EE0-13-3HL">
+                                <rect key="frame" x="20" y="72" width="306" height="59"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJK-o3-IrZ">
+                                <rect key="frame" x="20" y="139" width="374" height="70"/>
+                                <animations/>
+                                <string key="text">You are swapping with the chimney shown below. Enter a description of your chimney. Your current location will be used for pickup and delivery. Expect delivery in 7-9 weeks.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3FX-qb-kar">
+                                <rect key="frame" x="21" y="217" width="180" height="27"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Describe your chimney" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QZz-zb-ZJD">
+                                <rect key="frame" x="21" y="251" width="374" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U34-Np-xJC">
+                                <rect key="frame" x="214" y="473" width="191" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Add Image"/>
+                                <connections>
+                                    <action selector="imageChooser" destination="iCW-U6-een" eventType="touchUpInside" id="RAX-vH-A1h"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XfZ-c7-QT2">
+                                <rect key="frame" x="214" y="328" width="180" height="320"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YP4-SL-tEm">
+                                <rect key="frame" x="20" y="328" width="180" height="320"/>
+                                <animations/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your New Chimney" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivk-Sv-Y9t">
+                                <rect key="frame" x="20" y="293" width="180" height="27"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Old Chimney" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBm-sY-w48">
+                                <rect key="frame" x="214" y="293" width="180" height="27"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYh-4i-DwG">
+                                <rect key="frame" x="119" y="649" width="177" height="40"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Swap Your Chimney"/>
+                                <connections>
+                                    <action selector="performSwap" destination="iCW-U6-een" eventType="touchUpInside" id="a8t-G8-qYk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="descriptionText" destination="QZz-zb-ZJD" id="zJ9-CB-LaL"/>
+                        <outlet property="imageView" destination="XfZ-c7-QT2" id="Ndd-Lc-uzL"/>
+                        <outlet property="swapButton" destination="SYh-4i-DwG" id="PWN-3R-u20"/>
+                        <outlet property="tradeImageView" destination="YP4-SL-tEm" id="qkM-YZ-us2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gzq-Pt-a7S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-738" y="-337"/>
         </scene>
     </scenes>
     <resources>

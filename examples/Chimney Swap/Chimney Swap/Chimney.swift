@@ -10,7 +10,7 @@ import Foundation
 
 class Chimney {
 
-  static let baseUrl = "http://chimneyswap.thepathfinder.xyz/"
+  static let baseUrl = "http://chimneyswap.xyz/"
   static let postUrl = baseUrl + "chimney"
 
   let description: String
@@ -70,9 +70,12 @@ class Chimney {
   class func parse(jsonResponse: NSDictionary) -> Chimney? {
     print("Attempting to parse as Chimney: \(jsonResponse)")
     let description = jsonResponse["name"] as! String
-    let position = jsonResponse["position"] as! NSDictionary
-    let lat = position["lat"] as! Double
-    let lng = position["lng"] as! Double
+    var lat: Double = 0
+    var lng: Double = 0
+    if let position = jsonResponse["position"] as? NSDictionary {
+      lat = position["lat"] as! Double
+      lng = position["lng"] as! Double
+    }
     let imagePath = jsonResponse["image"] as! String
     let imageData = NSData(contentsOfURL: NSURL(string: baseUrl + imagePath)!)
     return Chimney(description: description, location: CLLocationCoordinate2D(latitude: lat, longitude: lng), image: UIImage(data: imageData!)!)
