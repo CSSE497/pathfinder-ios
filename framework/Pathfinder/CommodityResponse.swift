@@ -14,6 +14,7 @@ class CommodityResponse {
   let start: CLLocationCoordinate2D
   let destination: CLLocationCoordinate2D
   let param: Int
+  let status: Commodity.Status
 
   class func parse(message: NSDictionary) -> CommodityResponse? {
     if let content = message["created"] as? NSDictionary {
@@ -34,17 +35,19 @@ class CommodityResponse {
         let startLng = value["startLongitude"] as! Double
         let endLat = value["endLatitude"] as! Double
         let endLng = value["endLongitude"] as! Double
+        let status = Commodity.Status(rawValue: value["status"] as! String)!
         let param = value["param"] as! Int
-        return CommodityResponse(id: id, start: CLLocationCoordinate2D(latitude: startLat, longitude: startLng), destination: CLLocationCoordinate2D(latitude: endLat, longitude: endLng), param: param)
+        return CommodityResponse(id: id, start: CLLocationCoordinate2D(latitude: startLat, longitude: startLng), destination: CLLocationCoordinate2D(latitude: endLat, longitude: endLng), status: status, param: param)
       }
     }
     return nil
   }
 
-  init(id: Int, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, param: Int) {
+  init(id: Int, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, status: Commodity.Status, param: Int) {
     self.id = id
     self.start = start
     self.destination = destination
+    self.status = status
     self.param = param
   }
 }

@@ -26,6 +26,8 @@ transport.connect()
 */
 public class Transport: NSObject {
 
+  let locationUpdateTimerInterval: Double = 4
+
   // MARK: - Enums -
 
   /// All transports exist in one of two states, online or offline. On creation, vehicles are placed into the offline state. Vehicles that are offline will not receive routes.
@@ -87,7 +89,7 @@ public class Transport: NSObject {
 
   /// Stops the Pathfinder service from sending update notifications.
   public func unsubscribe() {
-
+    self.cluster.conn.unsubscribe(self)
   }
 
   /**
@@ -96,12 +98,40 @@ public class Transport: NSObject {
   - seealso: route
   */
   public func nextRouteAction() -> RouteAction? {
-    return route?.actions.first
+    if route?.actions.count > 1 {
+      return route?.actions[1]
+    } else {
+      return nil
+    }
   }
 
   /// Indicates that a transport has successfully completed one route action. It is the transports responsibility to indicate that they have picked up and dropped off their commodities. This method must be called, preferrably as the result of a UI interaction, when the driver acknowledges that they have picked up or dropped off a commodity on their route.
   public func completeNextRouteAction() {
+    let routeAction = nextRouteAction()
+    let commodity = routeAction!.commodity!
+    switch routeAction!.action {
+    case RouteAction.Action.Pickup:
+      commodity.status = Commodity.Status.PickedUp
+    case RouteAction.Action.Dropoff:
+      commodity.status = Commodity.Status.DroppedOff
+    default:
+      break
+    }
+    cluster.conn.update(commodity) { (CommodityResponse) -> Void in
+      print("Commodity status updated")
+    }
+  }
 
+  /**
+  Adds the transport to the set of active transports that can be routed. If commodities are waiting to be picked up, the transport will be routed immediately.
+
+  When the vehicle is successfully set to online, the corresponding method on its delegate will be called.
+  */
+  public func goOnline() {
+    status = .Online
+    cluster.conn.update(self) { (TransportResponse) -> Void in
+      self.delegate?.didGoOnline(self)
+    }
   }
 
   /**
@@ -112,7 +142,7 @@ public class Transport: NSObject {
   public func goOffline() {
     status = .Offline
     cluster.conn.update(self) { (TransportResponse) -> Void in
-
+      self.delegate?.didGoOffline(self)
     }
   }
 
@@ -162,6 +192,12 @@ public class Transport: NSObject {
     }
     return nil
   }
+
+  func sendLocationUpdate() {
+    if id != nil && status == .Online && location != nil {
+      cluster.conn.update(self) { _ in }
+    }
+  }
 }
 
 extension Transport: CLLocationManagerDelegate {
@@ -169,6 +205,7 @@ extension Transport: CLLocationManagerDelegate {
   /// :nodoc:
   public func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
     print("LocationManager authorization status changed: \(status)")
+    NSTimer.scheduledTimerWithTimeInterval(locationUpdateTimerInterval, target: self, selector: "sendLocationUpdate", userInfo: nil, repeats: true)
     if status == CLAuthorizationStatus.AuthorizedAlways {
       self.cluster.connect() { (cluster: Cluster) -> Void in
         self.cluster.conn.create(self) { (resp: TransportResponse) -> Void in
@@ -183,8 +220,5 @@ extension Transport: CLLocationManagerDelegate {
   public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     print("Transport location updated to \(locations[0].coordinate)")
     location = locations[0].coordinate
-    if id != nil {
-      cluster.conn.update(self) { _ in }
-    }
   }
 }

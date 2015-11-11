@@ -46,7 +46,7 @@ public protocol TransportDelegate {
 
   - Parameter transport:  The transport that came online.
   */
-  func didComeOnline(transport: Transport)
+  func didGoOnline(transport: Transport)
 
   /**
   The transport was previously online but now it is offline.

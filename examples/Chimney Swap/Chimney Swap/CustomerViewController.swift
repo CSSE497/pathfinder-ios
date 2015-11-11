@@ -59,9 +59,7 @@ extension CustomerViewController : UITableViewDelegate {
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     print("User selected row at index path \(indexPath)")
     let vc = storyboard?.instantiateViewControllerWithIdentifier("AcceptSwapViewController") as? AcceptSwapViewController
-    vc?.tradeDescription = chimneys[indexPath.row].description
-    vc?.tradeImage = chimneys[indexPath.row].image
-    vc?.tradeLocation = chimneys[indexPath.row].location
+    vc?.tradeChimney = chimneys[indexPath.row]
     navigationController?.pushViewController(vc!, animated: true)
   }
 }

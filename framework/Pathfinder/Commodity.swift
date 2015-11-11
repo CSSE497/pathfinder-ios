@@ -35,12 +35,12 @@ public class Commodity {
   // MARK: - Enums -
 
   /// All commodities exist in one of five states: inactive, waiting, picked up, dropped off or cancelled.
-  public enum Status: CustomStringConvertible {
-    case Inactive
-    case Waiting
-    case PickedUp
-    case DroppedOff
-    case Cancelled
+  public enum Status : String, CustomStringConvertible {
+    case Inactive = "Inactive"
+    case Waiting = "Waiting"
+    case PickedUp = "PickedUp"
+    case DroppedOff = "DroppedOff"
+    case Cancelled = "Cancelled"
 
     public var description: String {
       switch self {
@@ -80,8 +80,9 @@ public class Commodity {
 
   // MARK: - Methods -
 
-  /// Requests transportation for the current commodity.
+  /// Requests transportation for the current commodity. The status is updated to Status.Waiting.
   public func request() {
+    status = .Waiting
     cluster!.connect() { (cluster: Cluster) -> Void in
       self.cluster.conn.create(self) { (resp: CommodityResponse) -> Void in
         self.id = resp.id
@@ -160,10 +161,15 @@ public class Commodity {
           if let endLng = message["endLongitude"] as? Double {
             if let id = message["id"] as? Int {
               if let param = message["param"] as? Int {
-                let start = CLLocationCoordinate2D(latitude: startLat, longitude: startLng)
-                let end = CLLocationCoordinate2D(latitude: endLat, longitude: endLng)
-                let parameters = ["chimney":param]
-                return Commodity(id: id, start: start, destination: end, parameters: parameters)
+                if let statusStr = message["status"] as? String {
+                  let status = Commodity.Status(rawValue: statusStr)!
+                  let start = CLLocationCoordinate2D(latitude: startLat, longitude: startLng)
+                  let end = CLLocationCoordinate2D(latitude: endLat, longitude: endLng)
+                  let parameters = ["chimney":param]
+                  let commodity = Commodity(id: id, start: start, destination: end, parameters: parameters)
+                  commodity.status = status
+                  return commodity
+                }
               }
             }
           }

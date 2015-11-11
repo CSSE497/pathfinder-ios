@@ -15,10 +15,18 @@ public class RouteAction {
   // MARK: - Enums -
 
   /// The possible actions that can be performed on commodities by transports.
-  public enum Action {
+  public enum Action : CustomStringConvertible {
     case Start
     case Pickup
     case Dropoff
+
+    public var description: String {
+      switch self {
+      case .Start: return "Start"
+      case .Pickup: return "Pickup"
+      case .Dropoff: return "Dropoff"
+      }
+    }
   }
 
   // MARK: - Instance Variables -
@@ -53,11 +61,17 @@ public class RouteAction {
         return RouteAction(action: Action.Start, location: location)
       } else if actionString == "pickup" {
         if let commodity = Commodity.parse(message["commodity"] as! NSDictionary) {
-          return RouteAction(action: Action.Pickup, commodity: commodity, location: location)
+          print("Parsed commodity with status \(commodity.status)")
+          if commodity.status == Commodity.Status.Waiting {
+            return RouteAction(action: Action.Pickup, commodity: commodity, location: location)
+          }
         }
       } else if actionString == "dropoff" {
         if let commodity = Commodity.parse(message["commodity"] as! NSDictionary) {
-          return RouteAction(action: Action.Dropoff, commodity: commodity, location: location)
+          print("Parsed commodity with status \(commodity.status)")
+          if commodity.status == Commodity.Status.Waiting || commodity.status == Commodity.Status.PickedUp {
+            return RouteAction(action: Action.Dropoff, commodity: commodity, location: location)
+          }
         }
       }
     }

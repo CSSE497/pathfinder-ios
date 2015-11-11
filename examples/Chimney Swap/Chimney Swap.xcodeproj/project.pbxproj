@@ -13,7 +13,6 @@
 		661682781BEFAF8800DD1DCC /* employee.png in Resources */ = {isa = PBXBuildFile; fileRef = 661682771BEFAF8800DD1DCC /* employee.png */; };
 		6616827A1BEFAFE800DD1DCC /* customer.png in Resources */ = {isa = PBXBuildFile; fileRef = 661682791BEFAFE800DD1DCC /* customer.png */; };
 		664722491BDDDBC500E067A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664722481BDDDBC500E067A7 /* AppDelegate.swift */; };
-		6647224B1BDDDBC500E067A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6647224A1BDDDBC500E067A7 /* ViewController.swift */; };
 		6647224E1BDDDBC500E067A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6647224C1BDDDBC500E067A7 /* Main.storyboard */; };
 		664722511BDDDBC500E067A7 /* Chimney_Swap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6647224F1BDDDBC500E067A7 /* Chimney_Swap.xcdatamodeld */; };
 		664722531BDDDBC600E067A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 664722521BDDDBC600E067A7 /* Assets.xcassets */; };
@@ -34,6 +33,9 @@
 		665D99EE1BF00527006ABD1B /* SwapChimneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665D99ED1BF00527006ABD1B /* SwapChimneyViewController.swift */; };
 		665D99F21BF17CE5006ABD1B /* AcceptSwapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665D99F11BF17CE5006ABD1B /* AcceptSwapViewController.swift */; };
 		665D99F41BF18D8E006ABD1B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665D99F31BF18D8E006ABD1B /* Constants.swift */; };
+		665D99F91BF3024D006ABD1B /* MapTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665D99F81BF3024D006ABD1B /* MapTasks.swift */; };
+		665D99FB1BF30587006ABD1B /* finish_flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 665D99FA1BF30587006ABD1B /* finish_flag.png */; };
+		665D99FD1BF3058D006ABD1B /* chimney.png in Resources */ = {isa = PBXBuildFile; fileRef = 665D99FC1BF3058D006ABD1B /* chimney.png */; };
 		9B38EE4EA5DA679923B39439 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B6D2C9C1D9664B5FC481760 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +49,6 @@
 		661682791BEFAFE800DD1DCC /* customer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = customer.png; path = Resources/customer.png; sourceTree = "<group>"; };
 		664722451BDDDBC500E067A7 /* Chimney Swap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chimney Swap.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		664722481BDDDBC500E067A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6647224A1BDDDBC500E067A7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6647224D1BDDDBC500E067A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		664722501BDDDBC500E067A7 /* Chimney_Swap.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Chimney_Swap.xcdatamodel; sourceTree = "<group>"; };
 		664722521BDDDBC600E067A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,6 +71,9 @@
 		665D99ED1BF00527006ABD1B /* SwapChimneyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwapChimneyViewController.swift; sourceTree = "<group>"; };
 		665D99F11BF17CE5006ABD1B /* AcceptSwapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptSwapViewController.swift; sourceTree = "<group>"; };
 		665D99F31BF18D8E006ABD1B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		665D99F81BF3024D006ABD1B /* MapTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTasks.swift; sourceTree = "<group>"; };
+		665D99FA1BF30587006ABD1B /* finish_flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = finish_flag.png; path = Resources/finish_flag.png; sourceTree = "<group>"; };
+		665D99FC1BF3058D006ABD1B /* chimney.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chimney.png; path = Resources/chimney.png; sourceTree = "<group>"; };
 		ABDCB064EF1DA1E96C8F4715 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,22 +119,13 @@
 			isa = PBXGroup;
 			children = (
 				665018541BED7538002230B6 /* Resources */,
-				664722481BDDDBC500E067A7 /* AppDelegate.swift */,
-				6647224A1BDDDBC500E067A7 /* ViewController.swift */,
-				6647224C1BDDDBC500E067A7 /* Main.storyboard */,
-				665D99F11BF17CE5006ABD1B /* AcceptSwapViewController.swift */,
+				665D99F71BF2B291006ABD1B /* Shared */,
+				665D99F51BF2B250006ABD1B /* Customer */,
+				665D99F61BF2B25A006ABD1B /* Employee */,
 				664722521BDDDBC600E067A7 /* Assets.xcassets */,
-				6650186B1BED8272002230B6 /* LaunchScreen.storyboard */,
 				664722571BDDDBC600E067A7 /* Info.plist */,
 				6647224F1BDDDBC500E067A7 /* Chimney_Swap.xcdatamodeld */,
 				6647225D1BDDDD4700E067A7 /* Chimney Swap-Bridging-Header.h */,
-				6616826D1BEFA24B00DD1DCC /* EmployeeViewController.swift */,
-				6616826F1BEFA35300DD1DCC /* EmployeeLoginViewController.swift */,
-				661682711BEFA50E00DD1DCC /* CustomerLoginViewController.swift */,
-				665D99E71BEFDEB0006ABD1B /* CustomerViewController.swift */,
-				665D99E91BEFE988006ABD1B /* Chimney.swift */,
-				665D99ED1BF00527006ABD1B /* SwapChimneyViewController.swift */,
-				665D99F31BF18D8E006ABD1B /* Constants.swift */,
 			);
 			path = "Chimney Swap";
 			sourceTree = "<group>";
@@ -138,6 +133,8 @@
 		665018541BED7538002230B6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				665D99FA1BF30587006ABD1B /* finish_flag.png */,
+				665D99FC1BF3058D006ABD1B /* chimney.png */,
 				665D99E51BEFD326006ABD1B /* chimney.jpg */,
 				661682791BEFAFE800DD1DCC /* customer.png */,
 				661682771BEFAF8800DD1DCC /* employee.png */,
@@ -153,6 +150,39 @@
 				6650186D1BED82BF002230B6 /* launch_screen.png */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		665D99F51BF2B250006ABD1B /* Customer */ = {
+			isa = PBXGroup;
+			children = (
+				661682711BEFA50E00DD1DCC /* CustomerLoginViewController.swift */,
+				665D99E91BEFE988006ABD1B /* Chimney.swift */,
+				665D99F11BF17CE5006ABD1B /* AcceptSwapViewController.swift */,
+				665D99E71BEFDEB0006ABD1B /* CustomerViewController.swift */,
+				665D99ED1BF00527006ABD1B /* SwapChimneyViewController.swift */,
+			);
+			name = Customer;
+			sourceTree = "<group>";
+		};
+		665D99F61BF2B25A006ABD1B /* Employee */ = {
+			isa = PBXGroup;
+			children = (
+				6616826F1BEFA35300DD1DCC /* EmployeeLoginViewController.swift */,
+				6616826D1BEFA24B00DD1DCC /* EmployeeViewController.swift */,
+				665D99F81BF3024D006ABD1B /* MapTasks.swift */,
+			);
+			name = Employee;
+			sourceTree = "<group>";
+		};
+		665D99F71BF2B291006ABD1B /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				665D99F31BF18D8E006ABD1B /* Constants.swift */,
+				664722481BDDDBC500E067A7 /* AppDelegate.swift */,
+				6647224C1BDDDBC500E067A7 /* Main.storyboard */,
+				6650186B1BED8272002230B6 /* LaunchScreen.storyboard */,
+			);
+			name = Shared;
 			sourceTree = "<group>";
 		};
 		C46270401E869A45EDB4BE48 /* Pods */ = {
@@ -237,8 +267,10 @@
 				661682781BEFAF8800DD1DCC /* employee.png in Resources */,
 				6616827A1BEFAFE800DD1DCC /* customer.png in Resources */,
 				665018641BED78A7002230B6 /* logo40x40.png in Resources */,
+				665D99FD1BF3058D006ABD1B /* chimney.png in Resources */,
 				6650185A1BED76D9002230B6 /* logo180x180.png in Resources */,
 				6650186E1BED82BF002230B6 /* launch_screen.png in Resources */,
+				665D99FB1BF30587006ABD1B /* finish_flag.png in Resources */,
 				664722531BDDDBC600E067A7 /* Assets.xcassets in Resources */,
 				6650185C1BED77C6002230B6 /* logo120x120.png in Resources */,
 				6647224E1BDDDBC500E067A7 /* Main.storyboard in Resources */,
@@ -304,11 +336,11 @@
 				665D99F41BF18D8E006ABD1B /* Constants.swift in Sources */,
 				664722511BDDDBC500E067A7 /* Chimney_Swap.xcdatamodeld in Sources */,
 				661682721BEFA50E00DD1DCC /* CustomerLoginViewController.swift in Sources */,
-				6647224B1BDDDBC500E067A7 /* ViewController.swift in Sources */,
 				664722491BDDDBC500E067A7 /* AppDelegate.swift in Sources */,
 				665D99EE1BF00527006ABD1B /* SwapChimneyViewController.swift in Sources */,
 				665D99F21BF17CE5006ABD1B /* AcceptSwapViewController.swift in Sources */,
 				665D99EA1BEFE988006ABD1B /* Chimney.swift in Sources */,
+				665D99F91BF3024D006ABD1B /* MapTasks.swift in Sources */,
 				661682701BEFA35300DD1DCC /* EmployeeLoginViewController.swift in Sources */,
 				665D99E81BEFDEB0006ABD1B /* CustomerViewController.swift in Sources */,
 			);

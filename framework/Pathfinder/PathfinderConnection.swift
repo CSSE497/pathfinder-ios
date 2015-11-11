@@ -21,6 +21,9 @@ class PathfinderConnection {
   var commodityFns: [CommodityFn]
   var transportFns: [TransportFn]
 
+  // This is a hack.
+  var commodityStatuses = Dictionary<Int, Commodity.Status>()
+
   var transportRouteSubscribers: [Int:Transport]
 
   let pathfinderSocketUrl = "ws://api.thepathfinder.xyz:9000/socket"
@@ -87,6 +90,7 @@ class PathfinderConnection {
           "startLongitude": commodity.start!.longitude,
           "endLatitude": commodity.destination!.latitude,
           "endLongitude": commodity.destination!.longitude,
+          "status": commodity.status.description,
           "param": commodity.parameters!.first!.1,
           "clusterId": commodity.cluster.id!
         ]
@@ -132,6 +136,10 @@ class PathfinderConnection {
     ])
   }
 
+  func unsubscribe(transport: Transport) {
+    // TODO: Implement this when the backend supports it
+  }
+
   func subscribe(commodity: Commodity) {
     writeData([
       "subscribe": [
@@ -169,6 +177,7 @@ class PathfinderConnection {
       transportFns.removeFirst()(transportResponse)
     } else if let commodityResponse: CommodityResponse = CommodityResponse.parse(message) {
       print("PathfinderConnection handling CommodityResponse")
+      commodityStatuses[commodityResponse.id] = commodityResponse.status
       commodityFns.removeFirst()(commodityResponse)
     } else if let routedResponse = RoutedResponse.parse(message) {
       print("PathfinderConnection handling RoutedResponse")

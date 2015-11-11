@@ -13,6 +13,7 @@ class Chimney {
   static let baseUrl = "http://chimneyswap.xyz/"
   static let postUrl = baseUrl + "chimney"
 
+  var id: Int?
   let description: String
   let location: CLLocationCoordinate2D
   let image: UIImage
@@ -20,10 +21,16 @@ class Chimney {
   let imageWidth: CGFloat = 480
   let imageHeight: CGFloat =  640
 
+
   init(description: String, location: CLLocationCoordinate2D, image: UIImage) {
     self.description = description
     self.location = location
     self.image = Chimney.resizeImage(image, width: imageWidth, height: imageHeight)
+  }
+
+  convenience init(id: Int, description: String, location: CLLocationCoordinate2D, image: UIImage) {
+    self.init(description: description, location: location, image: image)
+    self.id = id
   }
 
   class func resizeImage(image: UIImage, width: CGFloat, height: CGFloat) -> UIImage {
@@ -35,6 +42,7 @@ class Chimney {
   }
 
   func post() {
+    print("About to post chimney with name \(description)")
     let imageData = UIImageJPEGRepresentation(image, 0.9)
     let base64string = imageData?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
     let data = [
@@ -67,6 +75,20 @@ class Chimney {
     while (!done) { }
   }
 
+  func delete() {
+    print("About to delete chimney \(id)")
+    let session = NSURLSession.sharedSession()
+    let request = NSMutableURLRequest(URL: NSURL(string: Chimney.postUrl + "?id=\(id!)")!)
+    request.HTTPMethod = "DELETE"
+    var done = false
+    let task = session.dataTaskWithRequest(request) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+      print("Received response from webserver: \(response) with data \(NSString(data: data!, encoding: NSASCIIStringEncoding))")
+      done = true
+    }
+    task.resume()
+    while (!done) { }
+  }
+
   class func parse(jsonResponse: NSDictionary) -> Chimney? {
     print("Attempting to parse as Chimney: \(jsonResponse)")
     let description = jsonResponse["name"] as! String
@@ -76,8 +98,9 @@ class Chimney {
       lat = position["lat"] as! Double
       lng = position["lng"] as! Double
     }
-    let imagePath = jsonResponse["image"] as! String
-    let imageData = NSData(contentsOfURL: NSURL(string: baseUrl + imagePath)!)
-    return Chimney(description: description, location: CLLocationCoordinate2D(latitude: lat, longitude: lng), image: UIImage(data: imageData!)!)
+    let id = jsonResponse["id"] as! Int
+    let imageUrl = jsonResponse["image"] as! String
+    let imageData = NSData(contentsOfURL: NSURL(string: imageUrl)!)
+    return Chimney(id: id, description: description, location: CLLocationCoordinate2D(latitude: lat, longitude: lng), image: UIImage(data: imageData!)!)
   }
 }

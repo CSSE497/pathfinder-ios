@@ -18,13 +18,11 @@ class AcceptSwapViewController : UIViewController {
   let imagePicker = UIImagePickerController()
   let locationManager = CLLocationManager()
   var location: CLLocationCoordinate2D?
-  var tradeDescription: String?
-  var tradeImage: UIImage?
-  var tradeLocation: CLLocationCoordinate2D?
+  var tradeChimney: Chimney?
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    tradeImageView.image = tradeImage
+    tradeImageView.image = tradeChimney!.image
     imagePicker.delegate = self
     locationManager.requestAlwaysAuthorization()
     locationManager.delegate = self
@@ -42,25 +40,19 @@ class AcceptSwapViewController : UIViewController {
   }
 
   @IBAction func performSwap() {
-    let description = descriptionText.text!
-    let image = imageView.image!
-    let lat = location!.latitude
-    let lng = location!.longitude
-    Chimney(description: description, location: CLLocationCoordinate2D(latitude: lat, longitude: lng), image: image).post()
+    tradeChimney?.delete()
 
-    if let userCreds = NSUserDefaults.standardUserDefaults().objectForKey(Constants.ChimneySwap.customerToken) as? String {
-      // default cluster for application
-      let cluster = Pathfinder(applicationIdentifier: Constants.Pathfinder.applicationId, userCredentials: userCreds).cluster()
+    let userCreds = NSUserDefaults.standardUserDefaults().objectForKey(Constants.ChimneySwap.customerToken) as! String
 
-      // Current user's old chimney
-      cluster.createCommodity(location!, destination: tradeLocation!, parameters: ["chimney": 1]).request()
+    // default cluster for application
+    let cluster = Pathfinder(applicationIdentifier: Constants.Pathfinder.applicationId, userCredentials: userCreds).cluster()
 
-      // Current user's new chimney
-      cluster.createCommodity(tradeLocation!, destination: location!, parameters: ["chimney": 1]).request()
+    // Current user's old chimney
+    cluster.createCommodity(location!, destination: tradeChimney!.location, parameters: ["chimney": 1]).request()
 
-    } else {
-      print("Oops, no user creds were found for Pathfinder")
-    }
+    // Current user's new chimney
+    cluster.createCommodity(tradeChimney!.location, destination: location!, parameters: ["chimney": 1]).request()
+
     navigationController?.popViewControllerAnimated(true)
   }
 }
