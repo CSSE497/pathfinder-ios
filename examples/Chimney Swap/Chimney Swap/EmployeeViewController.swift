@@ -27,7 +27,7 @@ class EmployeeViewController: UIViewController {
     // Set up Pathfinder. Subscribe to the transport after the connection is confirmed.
     let userCreds = NSUserDefaults.standardUserDefaults().objectForKey(Constants.ChimneySwap.customerToken) as! String
     let cluster = Pathfinder(applicationIdentifier: Constants.Pathfinder.applicationId, userCredentials: userCreds).cluster()
-    transport = cluster.createTransport(Transport.Status.Offline, parameterCapacities: ["chimney": 1])
+    transport = cluster.createTransport(Transport.Status.Offline, metadata: ["chimney": 1])
     transport.delegate = self
     transport.connect()
 

@@ -62,7 +62,7 @@ public protocol ClusterDelegate {
 
   - Parameter commodity: The commodity that cancelled its transportation request.
   */
-  func commodityWasCancelled(c: Commodity)
+  func commodityWasCancelled(commodity: Commodity)
 
   /**
   The routing for the cluster was updated. Since every transport in a cluster has the potential to transport any transport in the same cluster, routes are calculated on a cluster level. When this method is called, all previously provided routes should be considered obsolete.

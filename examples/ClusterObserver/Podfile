@@ -4,4 +4,4 @@ platform :ios, '9.0'
 use_frameworks!
 
 pod 'GoogleMaps'
-pod 'Pathfinder', :path => '../../'
+pod 'thepathfinder', :path => '../../'

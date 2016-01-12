@@ -1,20 +1,20 @@
 PODS:
-  - GoogleMaps (1.10.4)
-  - Pathfinder (0.1):
+  - GoogleMaps (1.11.1)
+  - Starscream (1.0.2)
+  - thepathfinder (0.0.2):
     - Starscream
-  - Starscream (1.0.1)
 
 DEPENDENCIES:
   - GoogleMaps
-  - Pathfinder (from `../../`)
+  - thepathfinder (from `../../`)
 
 EXTERNAL SOURCES:
-  Pathfinder:
+  thepathfinder:
     :path: ../../
 
 SPEC CHECKSUMS:
-  GoogleMaps: 134bcf57e8d489efbc0c29d532ed421554fabdb2
-  Pathfinder: c8d79c6977edae56b6d15eef700a34607a9cdeff
-  Starscream: 7b731637cd167ed5a059331f52c0254b1aa69095
+  GoogleMaps: c947160008f414c66707a5ea60f35e92055c7670
+  Starscream: 40e2c4c1c770d811f24116b8b7dbeb4542c56767
+  thepathfinder: 55b92c7fa59e9aebe9360220c5258ffb45fb681d
 
 COCOAPODS: 0.39.0

@@ -12,7 +12,7 @@ import CoreLocation
 class TransportResponse {
   let id: Int
   let location: CLLocationCoordinate2D
-  let capacity: Int
+  let metadata: [String:AnyObject]
 
   class func parse(message: NSDictionary) -> TransportResponse? {
     if let update = message["updated"] as? NSDictionary {
@@ -21,7 +21,8 @@ class TransportResponse {
         let id = value["id"] as! Int
         let lat = value["latitude"] as! Double
         let lng = value["longitude"] as! Double
-        return TransportResponse(id: id, location: CLLocationCoordinate2D(latitude: lat, longitude: lng), capacity: 3)
+        let metadata = value["metadata"] as! [String:AnyObject]
+        return TransportResponse(id: id, location: CLLocationCoordinate2D(latitude: lat, longitude: lng), metadata: metadata)
       }
     }
     if let update = message["created"] as? NSDictionary {
@@ -30,15 +31,16 @@ class TransportResponse {
         let id = value["id"] as! Int
         let lat = value["latitude"] as! Double
         let lng = value["longitude"] as! Double
-        return TransportResponse(id: id, location: CLLocationCoordinate2D(latitude: lat, longitude: lng), capacity: 3)
+        let metadata = value["metadata"] as! [String:AnyObject]
+        return TransportResponse(id: id, location: CLLocationCoordinate2D(latitude: lat, longitude: lng), metadata: metadata)
       }
     }
     return nil
   }
 
-  init(id: Int, location: CLLocationCoordinate2D, capacity: Int) {
+  init(id: Int, location: CLLocationCoordinate2D, metadata: [String:AnyObject]) {
     self.id = id
     self.location = location
-    self.capacity = capacity
+    self.metadata = metadata
   }
 }

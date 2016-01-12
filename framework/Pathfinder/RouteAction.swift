@@ -62,16 +62,18 @@ public class RouteAction {
       } else if actionString == "pickup" {
         if let commodity = Commodity.parse(message["commodity"] as! NSDictionary) {
           print("Parsed commodity with status \(commodity.status)")
-          if commodity.status == Commodity.Status.Waiting {
+//          if commodity.status == Commodity.Status.Waiting {
+            // TODO: Fix this.
             return RouteAction(action: Action.Pickup, commodity: commodity, location: location)
-          }
+//          }
         }
       } else if actionString == "dropoff" {
         if let commodity = Commodity.parse(message["commodity"] as! NSDictionary) {
           print("Parsed commodity with status \(commodity.status)")
-          if commodity.status == Commodity.Status.Waiting || commodity.status == Commodity.Status.PickedUp {
+//          if commodity.status == Commodity.Status.Waiting || commodity.status == Commodity.Status.PickedUp {
+            // TODO: Fix this
             return RouteAction(action: Action.Dropoff, commodity: commodity, location: location)
-          }
+//          }
         }
       }
     }

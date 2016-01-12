@@ -48,10 +48,10 @@ class AcceptSwapViewController : UIViewController {
     let cluster = Pathfinder(applicationIdentifier: Constants.Pathfinder.applicationId, userCredentials: userCreds).cluster()
 
     // Current user's old chimney
-    cluster.createCommodity(location!, destination: tradeChimney!.location, parameters: ["chimney": 1]).request()
+    cluster.createCommodity(location!, destination: tradeChimney!.location, metadata: ["chimney": 1]).request()
 
     // Current user's new chimney
-    cluster.createCommodity(tradeChimney!.location, destination: location!, parameters: ["chimney": 1]).request()
+    cluster.createCommodity(tradeChimney!.location, destination: location!, metadata: ["chimney": 1]).request()
 
     navigationController?.popViewControllerAnimated(true)
   }

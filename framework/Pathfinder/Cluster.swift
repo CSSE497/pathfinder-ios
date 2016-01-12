@@ -33,7 +33,7 @@ public class Cluster {
   public var connected: Bool
 
   /// All of the routes that are currently in progress for the cluster.
-  public let routes: [Route]
+  public var routes: [Route]
 
   /// The transports that are currently online within the cluster.
   public var transports: [Transport]
@@ -67,6 +67,7 @@ public class Cluster {
   * Vehicles pick up or drop off commodities.
   */
   public func subscribe() {
+    conn.subscribe(self)
   }
 
   /// Stops the Pathfinder service from sending update notifications.
@@ -79,8 +80,8 @@ public class Cluster {
 
   - Parameter capacities:  The limiting constraints of the transport of the parameters of your application's routing calculations. The set of parameters needs to be defined and prioritized via the Pathfinder web interface in advance. All transports will be routed while keeping their sum occupant parameters to be less than or equal to their limiting constraints.
   */
-  public func createTransport(status: Transport.Status, parameterCapacities: [String:Int]) -> Transport {
-    return Transport(cluster: self, capacities: parameterCapacities, status: status)
+  public func createTransport(status: Transport.Status, metadata: [String:AnyObject]) -> Transport {
+    return Transport(cluster: self, metadata: metadata, status: status)
   }
 
   /**
@@ -97,8 +98,8 @@ public class Cluster {
    - Parameter destination:  The destination location of the commodity.
    - Parameter parameters:   The quantities the parameters of your application's routing calculations. The set of parameters needs to be defined and prioritized via the Pathfinder web interface in advance.
    */
-  public func createCommodity(start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, parameters: [String:Int]) -> Commodity {
-    return Commodity(cluster: self, start: start, destination: destination, parameters: parameters)
+  public func createCommodity(start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, metadata: [String:AnyObject]) -> Commodity {
+    return Commodity(cluster: self, start: start, destination: destination, metadata: metadata)
   }
 
   public func getCommodity(id: Int) -> Commodity {

@@ -20,10 +20,10 @@ A typical use case looks like this:
 let clusterToRouteIn = self.cluster
 let start = CLLocationCoordinate2D(latitude: startLat, longitude: startLng)
 let end = CLLocationCoordinate2D(latitude: endLat, longitude: endLng)
-let parameters = [String:Int]()
-parameters["people"] = 2
-parameters["sheep"] = 0
-let commodity = pathfinder.cluster("/USA/West/Seattle").createCommodity(start, destination: end, parameters: parameters)
+let metadata = [String:AnyObject]()
+metadata["people"] = 2
+metadata["sheep"] = 0
+let commodity = pathfinder.cluster("/USA/West/Seattle").createCommodity(start, destination: end, metadata: metadata)
 commodity.connect()
 commodity.request()
 ```
@@ -67,8 +67,8 @@ public class Commodity {
   /// The destination location of the commodity's journey.
   public var destination: CLLocationCoordinate2D?
 
-  /// The parameters that constrain the number of commodities that can be transported by one transport.
-  public var parameters: [String:Int]?
+  /// The routing parameters, capacities and any other information associated with the commodity.
+  public var metadata: [String:AnyObject]?
 
   /// The route that is assigned to pick up the commodity, if there is one.
   public var route: Route?
@@ -125,33 +125,33 @@ public class Commodity {
     self.id = id
   }
 
-  init(id: Int, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, parameters: [String:Int]) {
+  init(id: Int, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, metadata: [String:AnyObject]) {
     self.id = id
     self.start = start
     self.destination = destination
-    self.parameters = parameters
+    self.metadata = metadata
   }
 
-  init(cluster: Cluster, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, parameters: [String:Int]) {
+  init(cluster: Cluster, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, metadata: [String:AnyObject]) {
     self.cluster = cluster
     self.start = start
     self.destination = destination
-    self.parameters = parameters
+    self.metadata = metadata
   }
 
-  init(cluster: Cluster, id: Int, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, parameters: [String:Int]) {
+  init(cluster: Cluster, id: Int, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, metadata: [String:AnyObject]) {
     self.cluster = cluster
     self.id = id
     self.start = start
     self.destination = destination
-    self.parameters = parameters
+    self.metadata = metadata
   }
 
-  init(clusterId: Int, id: Int, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, parameters: [String:Int]) {
+  init(clusterId: Int, id: Int, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, metadata: [String:AnyObject]) {
     self.id = id
     self.start = start
     self.destination = destination
-    self.parameters = parameters
+    self.metadata = metadata
   }
 
   class func parse(message: NSDictionary) -> Commodity? {
@@ -160,13 +160,12 @@ public class Commodity {
         if let endLat = message["endLatitude"] as? Double {
           if let endLng = message["endLongitude"] as? Double {
             if let id = message["id"] as? Int {
-              if let param = message["param"] as? Int {
+              if let metadata = message["metadata"] as? [String:AnyObject] {
                 if let statusStr = message["status"] as? String {
                   let status = Commodity.Status(rawValue: statusStr)!
                   let start = CLLocationCoordinate2D(latitude: startLat, longitude: startLng)
                   let end = CLLocationCoordinate2D(latitude: endLat, longitude: endLng)
-                  let parameters = ["chimney":param]
-                  let commodity = Commodity(id: id, start: start, destination: end, parameters: parameters)
+                  let commodity = Commodity(id: id, start: start, destination: end, metadata: metadata)
                   commodity.status = status
                   return commodity
                 }

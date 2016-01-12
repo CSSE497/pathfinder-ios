@@ -1,6 +1,0 @@
-framework module Pathfinder {
-  umbrella header "Pathfinder-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -13,8 +13,8 @@ class ApplicationResponse {
   let clusterIds: [Int]
 
   class func parse(message: NSDictionary) -> ApplicationResponse? {
-    if let value: NSDictionary = message["applicationCluster"] as? NSDictionary {
-      let clusterId = value["clusterId"] as! Int
+    if message["message"] as! String == "ApplicationCluster" {
+      let clusterId = message["clusterId"] as! Int
       return ApplicationResponse(defaultId: clusterId, clusterIds: [Int]())
     }
     return nil

@@ -25,12 +25,13 @@ class PathfinderConnection {
   var commodityStatuses = Dictionary<Int, Commodity.Status>()
 
   var transportRouteSubscribers: [Int:Transport]
+  var clusterRouteSubscribers: [Int:Cluster]
 
-  let pathfinderSocketUrl = "ws://api.thepathfinder.xyz:9000/socket"
+  let pathfinderSocketUrl = "ws://api.thepathfinder.xyz/socket"
   let pathfinderSocket: WebSocket
   let applicationIdentifier: String
 
-  var queuedMessages = [[String:NSDictionary]]()
+  var queuedMessages = [[String:NSObject]]()
 
   var connected = false
 
@@ -45,6 +46,7 @@ class PathfinderConnection {
     self.transportFns = [TransportFn]()
 
     self.transportRouteSubscribers = [Int:Transport]()
+    self.clusterRouteSubscribers = [Int:Cluster]()
 
     pathfinderSocket.delegate = self
     pathfinderSocket.connect()
@@ -52,30 +54,31 @@ class PathfinderConnection {
 
   func getDefaultCluster(callback: ApplicationFn) {
     applicationFns.append(callback)
-    writeData([ "getApplicationCluster": [ "id": applicationIdentifier ] ])
+    writeData([
+      "message": "GetApplicationCluster",
+      "id": applicationIdentifier
+    ])
   }
 
   func getClusterById(id: Int, callback: ClusterFn) {
     clusterFns.append(callback)
     writeData([
-      "read": [
-        "model": "Cluster",
-        "id": id
-      ]
+      "message": "Read",
+      "model": "Cluster",
+      "id": id
     ])
   }
 
   func create(transport: Transport, callback: TransportFn) {
     transportFns.append(callback)
     writeData([
-      "create": [
-        "model": "Vehicle",
-        "value": [
-          "latitude": transport.location!.latitude,
-          "longitude": transport.location!.longitude,
-          "capacity": transport.capacities!.first!.1,
-          "clusterId": transport.cluster.id!
-        ]
+      "message": "Create",
+      "model": "Vehicle",
+      "value": [
+        "latitude": transport.location!.latitude,
+        "longitude": transport.location!.longitude,
+        "metadata": transport.metadata!,
+        "clusterId": transport.cluster.id!
       ]
     ])
   }
@@ -83,17 +86,16 @@ class PathfinderConnection {
   func create(commodity: Commodity, callback: CommodityFn) {
     commodityFns.append(callback)
     writeData([
-      "create": [
-        "model": "Commodity",
-        "value": [
-          "startLatitude": commodity.start!.latitude,
-          "startLongitude": commodity.start!.longitude,
-          "endLatitude": commodity.destination!.latitude,
-          "endLongitude": commodity.destination!.longitude,
-          "status": commodity.status.description,
-          "param": commodity.parameters!.first!.1,
-          "clusterId": commodity.cluster.id!
-        ]
+      "message": "Create",
+      "model": "Commodity",
+      "value": [
+        "startLatitude": commodity.start!.latitude,
+        "startLongitude": commodity.start!.longitude,
+        "endLatitude": commodity.destination!.latitude,
+        "endLongitude": commodity.destination!.longitude,
+        "status": commodity.status.description,
+        "metadata": commodity.metadata!,
+        "clusterId": commodity.cluster.id!
       ]
     ])
   }
@@ -101,14 +103,13 @@ class PathfinderConnection {
   func update(transport: Transport, callback: TransportFn) {
     transportFns.append(callback)
     writeData([
-      "update": [
-        "model": "Vehicle",
-        "id": transport.id!,
-        "value": [
-          "latitude": transport.location!.latitude,
-          "longitude": transport.location!.longitude,
-          "status": transport.status.description
-        ]
+      "message": "Update",
+      "model": "Vehicle",
+      "id": transport.id!,
+      "value": [
+        "latitude": transport.location!.latitude,
+        "longitude": transport.location!.longitude,
+        "status": transport.status.description
       ]
     ])
   }
@@ -116,23 +117,30 @@ class PathfinderConnection {
   func update(commodity: Commodity, callback: CommodityFn) {
     commodityFns.append(callback)
     writeData([
-      "update": [
-        "model": "Commodity",
-        "id": commodity.id!,
-        "value": [
-          "status": commodity.status.description
-        ]
+      "message": "Update",
+      "model": "Commodity",
+      "id": commodity.id!,
+      "value": [
+        "status": commodity.status.description
       ]
+    ])
+  }
+
+  func subscribe(cluster: Cluster) {
+    clusterRouteSubscribers[cluster.id!] = cluster
+    writeData([
+      "message": "RouteSubscribe",
+      "model": "Cluster",
+      "id": cluster.id!
     ])
   }
 
   func subscribe(transport: Transport) {
     transportRouteSubscribers[transport.id!] = transport
     writeData([
-      "routeSubscribe": [
-        "model": "Vehicle",
-        "id": transport.id!
-      ]
+      "message": "RouteSubscribe",
+      "model": "Vehicle",
+      "id": transport.id!
     ])
   }
 
@@ -142,14 +150,13 @@ class PathfinderConnection {
 
   func subscribe(commodity: Commodity) {
     writeData([
-      "subscribe": [
-        "model": "Commodity",
-        "id": commodity.id!
-      ]
+      "message": "Subscribe",
+      "model": "Commodity",
+      "id": commodity.id!
     ])
   }
 
-  func writeData(data: [String:NSDictionary]) {
+  func writeData(data: [String:NSObject]) {
     if connected == true {
       print("Sending message: \(data)")
       do {
@@ -179,11 +186,16 @@ class PathfinderConnection {
       print("PathfinderConnection handling CommodityResponse")
       commodityStatuses[commodityResponse.id] = commodityResponse.status
       commodityFns.removeFirst()(commodityResponse)
-    } else if let routedResponse = RoutedResponse.parse(message) {
-      print("PathfinderConnection handling RoutedResponse")
-      let transport = transportRouteSubscribers[routedResponse.route.transport.id!]
-      transport?.route = routedResponse.route
-      transport?.delegate?.wasRouted(routedResponse.route, transport: transport!)
+    } else if let clusterRoutedResponse = ClusterRoutedResponse.parse(message) {
+      print("PathfinderConnection handling ClusterRoutedResponse")
+      let cluster = clusterRouteSubscribers[clusterRoutedResponse.id]
+      cluster?.routes = clusterRoutedResponse.routes
+      cluster?.delegate?.clusterWasRouted(clusterRoutedResponse.routes)
+    } else if let transportRoutedResponse = TransportRoutedResponse.parse(message) {
+      print("PathfinderConnection handling TransportRoutedResponse")
+      let transport = transportRouteSubscribers[transportRoutedResponse.route.transport.id!]
+      transport?.route = transportRoutedResponse.route
+      transport?.delegate?.wasRouted(transportRoutedResponse.route, transport: transport!)
     } else {
       print("PathfinderConnection handling unparseable message: \(message)")
     }
@@ -196,10 +208,10 @@ extension PathfinderConnection: WebSocketDelegate {
   func websocketDidConnect(socket: WebSocket) {
     print("PathfinderConnection received connect from \(socket)")
     connected = true
-    queuedMessages.forEach {  (data: [String:NSDictionary]) -> Void in
+    queuedMessages.forEach {  (data: [String:NSObject]) -> Void in
       writeData(data)
     }
-    queuedMessages = [[String:NSDictionary]]()
+    queuedMessages = [[String:NSObject]]()
   }
 
   func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
