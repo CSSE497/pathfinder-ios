@@ -27,7 +27,7 @@ class PathfinderConnection {
   var transportRouteSubscribers: [Int:Transport]
   var clusterRouteSubscribers: [Int:Cluster]
 
-  let pathfinderSocketUrl = "ws://api.thepathfinder.xyz/socket"
+  let pathfinderSocketUrl: String!
   let pathfinderSocket: WebSocket
   let applicationIdentifier: String
 
@@ -36,6 +36,7 @@ class PathfinderConnection {
   var connected = false
 
   init(applicationIdentifier: String) {
+    pathfinderSocketUrl = "wss://api.thepathfinder.xyz/socket?\(applicationIdentifier)"
     print("PathfinderConnection created, attempting to connect to \(pathfinderSocketUrl)")
     pathfinderSocket = WebSocket(url: NSURL(string: pathfinderSocketUrl)!)
     self.applicationIdentifier = applicationIdentifier
