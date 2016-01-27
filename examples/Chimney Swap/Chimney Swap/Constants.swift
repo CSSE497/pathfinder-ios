@@ -10,7 +10,7 @@ import Foundation
 
 struct Constants {
   struct Pathfinder {
-    static let applicationId = "9c4166bb-9535-49e1-8844-1904a0b1f45b"
+    static let applicationId = "9869bd06-12ec-451f-8207-2c5f217eb4d0"
   }
 
   struct ChimneySwap {
