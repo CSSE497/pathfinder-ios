@@ -57,23 +57,17 @@ public class RouteAction {
       let longitude = message["longitude"] as! Double
       let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
       print("Attempting to parse RouteAction at location \(location)")
-      if actionString == "start" {
+      if actionString == "Start" {
         return RouteAction(action: Action.Start, location: location)
-      } else if actionString == "pickup" {
+      } else if actionString == "PickUp" {
         if let commodity = Commodity.parse(message["commodity"] as! NSDictionary) {
           print("Parsed commodity with status \(commodity.status)")
-//          if commodity.status == Commodity.Status.Waiting {
-            // TODO: Fix this.
-            return RouteAction(action: Action.Pickup, commodity: commodity, location: location)
-//          }
+          return RouteAction(action: Action.Pickup, commodity: commodity, location: location)
         }
-      } else if actionString == "dropoff" {
+      } else if actionString == "DropOff" {
         if let commodity = Commodity.parse(message["commodity"] as! NSDictionary) {
           print("Parsed commodity with status \(commodity.status)")
-//          if commodity.status == Commodity.Status.Waiting || commodity.status == Commodity.Status.PickedUp {
-            // TODO: Fix this
-            return RouteAction(action: Action.Dropoff, commodity: commodity, location: location)
-//          }
+          return RouteAction(action: Action.Dropoff, commodity: commodity, location: location)
         }
       }
     }

@@ -25,7 +25,7 @@ class PathfinderConnection {
   var commodityStatuses = Dictionary<Int, Commodity.Status>()
 
   var transportRouteSubscribers: [Int:Transport]
-  var clusterRouteSubscribers: [Int:Cluster]
+  var clusterRouteSubscribers: [String:Cluster]
 
   let pathfinderSocketUrl: String!
   let pathfinderSocket: WebSocket
@@ -36,7 +36,7 @@ class PathfinderConnection {
   var connected = false
 
   init(applicationIdentifier: String) {
-    pathfinderSocketUrl = "wss://api.thepathfinder.xyz/socket?\(applicationIdentifier)"
+    pathfinderSocketUrl = "wss://api.thepathfinder.xyz/socket?AppId=\(applicationIdentifier)"
     print("PathfinderConnection created, attempting to connect to \(pathfinderSocketUrl)")
     pathfinderSocket = WebSocket(url: NSURL(string: pathfinderSocketUrl)!)
     self.applicationIdentifier = applicationIdentifier
@@ -47,21 +47,13 @@ class PathfinderConnection {
     self.transportFns = [TransportFn]()
 
     self.transportRouteSubscribers = [Int:Transport]()
-    self.clusterRouteSubscribers = [Int:Cluster]()
+    self.clusterRouteSubscribers = [String:Cluster]()
 
     pathfinderSocket.delegate = self
     pathfinderSocket.connect()
   }
 
-  func getDefaultCluster(callback: ApplicationFn) {
-    applicationFns.append(callback)
-    writeData([
-      "message": "GetApplicationCluster",
-      "id": applicationIdentifier
-    ])
-  }
-
-  func getClusterById(id: Int, callback: ClusterFn) {
+  func getClusterById(id: String, callback: ClusterFn) {
     clusterFns.append(callback)
     writeData([
       "message": "Read",
@@ -79,7 +71,7 @@ class PathfinderConnection {
         "latitude": transport.location!.latitude,
         "longitude": transport.location!.longitude,
         "metadata": transport.metadata!,
-        "clusterId": transport.cluster.id!
+        "clusterId": transport.cluster.id
       ]
     ])
   }
@@ -96,7 +88,7 @@ class PathfinderConnection {
         "endLongitude": commodity.destination!.longitude,
         "status": commodity.status.description,
         "metadata": commodity.metadata!,
-        "clusterId": commodity.cluster.id!
+        "clusterId": commodity.cluster.id
       ]
     ])
   }
@@ -128,11 +120,11 @@ class PathfinderConnection {
   }
 
   func subscribe(cluster: Cluster) {
-    clusterRouteSubscribers[cluster.id!] = cluster
+    clusterRouteSubscribers[cluster.id] = cluster
     writeData([
       "message": "RouteSubscribe",
       "model": "Cluster",
-      "id": cluster.id!
+      "id": cluster.id
     ])
   }
 

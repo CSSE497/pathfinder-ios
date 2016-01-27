@@ -11,35 +11,28 @@ import CoreLocation
 
 class TransportResponse {
   let id: Int
+  let clusterId: String
   let location: CLLocationCoordinate2D
   let metadata: [String:AnyObject]
 
   class func parse(message: NSDictionary) -> TransportResponse? {
-    if let update = message["updated"] as? NSDictionary {
-      if update["model"] as? String == "Vehicle" {
-        let value = update["value"] as! NSDictionary
+    if message["model"] as? String == "Vehicle" {
+      if message["message"] as? String == "Created" || message["message"] as? String == "Updated" {
+        let value = message["value"] as! NSDictionary
         let id = value["id"] as! Int
+        let clusterId = value["clusterId"] as! String
         let lat = value["latitude"] as! Double
         let lng = value["longitude"] as! Double
         let metadata = value["metadata"] as! [String:AnyObject]
-        return TransportResponse(id: id, location: CLLocationCoordinate2D(latitude: lat, longitude: lng), metadata: metadata)
-      }
-    }
-    if let update = message["created"] as? NSDictionary {
-      if update["model"] as? String == "Vehicle" {
-        let value = update["value"] as! NSDictionary
-        let id = value["id"] as! Int
-        let lat = value["latitude"] as! Double
-        let lng = value["longitude"] as! Double
-        let metadata = value["metadata"] as! [String:AnyObject]
-        return TransportResponse(id: id, location: CLLocationCoordinate2D(latitude: lat, longitude: lng), metadata: metadata)
+        return TransportResponse(id: id, clusterId: clusterId, location: CLLocationCoordinate2D(latitude: lat, longitude: lng), metadata: metadata)
       }
     }
     return nil
   }
 
-  init(id: Int, location: CLLocationCoordinate2D, metadata: [String:AnyObject]) {
+  init(id: Int, clusterId: String, location: CLLocationCoordinate2D, metadata: [String:AnyObject]) {
     self.id = id
+    self.clusterId = clusterId
     self.location = location
     self.metadata = metadata
   }

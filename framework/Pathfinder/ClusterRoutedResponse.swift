@@ -12,7 +12,7 @@ class ClusterRoutedResponse {
   class func parse(message: NSDictionary) -> ClusterRoutedResponse? {
     if message["message"] as! String == "Routed" && message["model"] as! String == "Cluster" {
       let value = message["value"] as! NSDictionary
-      let id = value["id"] as! Int
+      let id = value["id"] as! String
       let routeArr = message["route"] as! NSArray
       var routes = [Route]()
       for routeObj in routeArr {
@@ -25,10 +25,10 @@ class ClusterRoutedResponse {
     return nil
   }
 
-  let id: Int
+  let id: String
   let routes: [Route]
 
-  init(id: Int, routes: [Route]) {
+  init(id: String, routes: [Route]) {
     self.id = id
     self.routes = routes
   }

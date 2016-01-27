@@ -147,7 +147,7 @@ public class Commodity {
     self.metadata = metadata
   }
 
-  init(clusterId: Int, id: Int, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, metadata: [String:AnyObject]) {
+  init(clusterId: String, id: Int, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, metadata: [String:AnyObject]) {
     self.id = id
     self.start = start
     self.destination = destination
