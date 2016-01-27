@@ -75,7 +75,7 @@ extension CustomerViewController : UITableViewDataSource {
     print("TableView requested cell for row at index path \(indexPath)")
     let cell = tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
     cell.textLabel!.text = chimneys[indexPath.row].description
-    cell.imageView!.contentMode = .ScaleAspectFill
+    cell.imageView!.contentMode = .ScaleToFill
     cell.imageView!.frame = CGRectMake(0, 0, 40, 40)
     cell.imageView!.image = chimneys[indexPath.row].image
     let location = chimneys[indexPath.row].location

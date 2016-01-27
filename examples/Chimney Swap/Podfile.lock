@@ -23,7 +23,7 @@ PODS:
   - GoogleSymbolUtilities (1.0.0)
   - GoogleUtilities (1.0.1):
     - GoogleSymbolUtilities (~> 1.0)
-  - Starscream (1.0.2)
+  - Starscream (1.1.1)
   - thepathfinder (0.0.2):
     - Starscream
 
@@ -46,7 +46,7 @@ SPEC CHECKSUMS:
   GoogleSignIn: bfeffe8bbb5f5b377d9cc0d36e97e5f4758cfec4
   GoogleSymbolUtilities: a7b0feed1fe667c8d5e647177938d0ecd62d6948
   GoogleUtilities: e3475cd4d45134221d2f3f3626095a1c49b62041
-  Starscream: 40e2c4c1c770d811f24116b8b7dbeb4542c56767
+  Starscream: d74dd8d122a6abd244d8d5e51f32891c796d0827
   thepathfinder: 55b92c7fa59e9aebe9360220c5258ffb45fb681d
 
 COCOAPODS: 0.39.0
