@@ -109,14 +109,27 @@ class PathfinderConnection {
 
   func update(commodity: Commodity, callback: CommodityFn) {
     commodityFns.append(callback)
-    writeData([
-      "message": "Update",
-      "model": "Commodity",
-      "id": commodity.id!,
-      "value": [
-        "status": commodity.status.description
-      ]
-    ])
+    if (commodity.transport != nil) {
+      writeData([
+        "message": "Update",
+        "model": "Commodity",
+        "id": commodity.id!,
+        "value": [
+          "status": commodity.status.description,
+          "vehicleId": commodity.transport!.id!
+        ]
+      ])
+    } else {
+      writeData([
+        "message": "Update",
+        "model": "Commodity",
+        "id": commodity.id!,
+        "value": [
+          "status": commodity.status.description
+        ]
+      ])
+    }
+
   }
 
   func subscribe(cluster: Cluster) {
@@ -138,7 +151,11 @@ class PathfinderConnection {
   }
 
   func unsubscribe(transport: Transport) {
-    // TODO: Implement this when the backend supports it
+    writeData([
+      "message": "Unsubscribe",
+      "model": "Vehicle",
+      "id": transport.id!
+      ])
   }
 
   func subscribe(commodity: Commodity) {

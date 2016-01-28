@@ -26,7 +26,8 @@ transport.connect()
 */
 public class Transport: NSObject {
 
-  let locationUpdateTimerInterval: Double = 30000
+  let locationUpdateTimerInterval: Double = 5
+  var lastLocationUpdate: Double = 0
 
   // MARK: - Enums -
 
@@ -117,8 +118,10 @@ public class Transport: NSObject {
     switch routeAction!.action {
     case RouteAction.Action.Pickup:
       commodity.status = Commodity.Status.PickedUp
+      commodity.transport = self
     case RouteAction.Action.Dropoff:
       commodity.status = Commodity.Status.DroppedOff
+      commodity.transport = nil
     default:
       break
     }
@@ -222,11 +225,15 @@ extension Transport: CLLocationManagerDelegate {
 
   /// :nodoc:
   public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    print("Transport location updated to \(locations[0].coordinate)")
     location = locations[0].coordinate
+    print("Time is \(NSDate.timeIntervalSinceReferenceDate())")
     if connected {
-      self.cluster.conn.update(self) { (resp: TransportResponse) -> Void in
-        print("Location update acknowedged")
+      if (NSDate.timeIntervalSinceReferenceDate() > lastLocationUpdate + locationUpdateTimerInterval) {
+        print("Transport location updated to \(locations[0].coordinate)")
+        lastLocationUpdate = NSDate.timeIntervalSinceReferenceDate()
+        self.cluster.conn.update(self) { (resp: TransportResponse) -> Void in
+          print("Location update acknowedged")
+        }
       }
     }
   }
