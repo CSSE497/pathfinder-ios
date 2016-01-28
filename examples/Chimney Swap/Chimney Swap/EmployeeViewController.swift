@@ -25,7 +25,6 @@ class EmployeeViewController: UIViewController {
     super.viewDidLoad()
 
     // Set up Pathfinder. Subscribe to the transport after the connection is confirmed.
-//    let userCreds = NSUserDefaults.standardUserDefaults().objectForKey(Constants.ChimneySwap.customerToken) as! String
     let path = "/root/midwest/th"
     let cluster = Pathfinder(applicationIdentifier: Constants.Pathfinder.applicationId, userCredentials: "").cluster(path)
     transport = cluster.createTransport(Transport.Status.Offline, metadata: ["chimney": 1])
@@ -43,6 +42,11 @@ class EmployeeViewController: UIViewController {
     locationManager.requestAlwaysAuthorization()
     locationManager.desiredAccuracy = kCLLocationAccuracyBest
     locationManager.startUpdatingLocation()
+  }
+
+  override func viewWillDisappear(animated: Bool) {
+    print("Employee view controller is closing, taking transport offline")
+    transport.goOffline()
   }
 
   @IBAction func online(sender: UISegmentedControl) {
