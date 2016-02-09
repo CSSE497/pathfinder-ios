@@ -76,6 +76,9 @@ public class Commodity {
   /// The current status of the commodity. All commodities are inactive upon creation.
   public var status: Status = Status.Inactive
 
+  /// The transport that is transporting the commodity. If status is not PickedUp, this will be nil
+  public var transport: Transport?
+
   var cluster: Cluster!
 
   // MARK: - Methods -
@@ -147,7 +150,7 @@ public class Commodity {
     self.metadata = metadata
   }
 
-  init(clusterId: Int, id: Int, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, metadata: [String:AnyObject]) {
+  init(clusterId: String, id: Int, start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D, metadata: [String:AnyObject]) {
     self.id = id
     self.start = start
     self.destination = destination

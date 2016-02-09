@@ -19,6 +19,7 @@ class AcceptSwapViewController : UIViewController {
   let locationManager = CLLocationManager()
   var location: CLLocationCoordinate2D?
   var tradeChimney: Chimney?
+  let path = "/root/midwest/th"
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -42,10 +43,7 @@ class AcceptSwapViewController : UIViewController {
   @IBAction func performSwap() {
     tradeChimney?.delete()
 
-    let userCreds = NSUserDefaults.standardUserDefaults().objectForKey(Constants.ChimneySwap.customerToken) as! String
-
-    // default cluster for application
-    let cluster = Pathfinder(applicationIdentifier: Constants.Pathfinder.applicationId, userCredentials: userCreds).cluster()
+    let cluster = Pathfinder(applicationIdentifier: Constants.Pathfinder.applicationId, userCredentials: "").cluster(path)
 
     // Current user's old chimney
     cluster.createCommodity(location!, destination: tradeChimney!.location, metadata: ["chimney": 1]).request()

@@ -10,14 +10,14 @@ import Foundation
 import CoreLocation
 
 class ClusterResponse {
-  let id: Int
+  let id: String
   let transports: [Transport]
   let commodities: [Commodity]
 
   class func parse(message: NSDictionary) -> ClusterResponse? {
     if message["message"] as! String == "Model" && message["model"] as! String == "Cluster" {
       let value = message["value"] as! NSDictionary
-      let clusterId = value["id"] as! Int
+      let clusterId = value["id"] as! String
       let transports = (value["vehicles"] as! NSArray).map() { (anyObj: AnyObject) -> Transport in
         let transportDict = anyObj as! NSDictionary
         let id = transportDict["id"] as! Int
@@ -40,7 +40,7 @@ class ClusterResponse {
     return nil
   }
 
-  init(id: Int, transports: [Transport], commodities: [Commodity]) {
+  init(id: String, transports: [Transport], commodities: [Commodity]) {
     self.id = id
     self.transports = transports
     self.commodities = commodities

@@ -10,22 +10,19 @@ import Foundation
 
 class TransportRoutedResponse {
   class func parse(message: NSDictionary) -> TransportRoutedResponse? {
-    if let routed = message["routed"] as? NSDictionary {
-      let model = routed["model"] as! String
-      if let routeDict = routed["route"] as? NSDictionary {
+    if message["message"] as? String == "Routed" && message["model"] as? String == "Vehicle" {
+      if let routeDict = message["route"] as? NSDictionary {
         if let route = Route.parse(routeDict) {
-          return TransportRoutedResponse(model: model, route: route)
+          return TransportRoutedResponse(route: route)
         }
       }
     }
     return nil
   }
 
-  let model: String
   let route: Route
 
-  init(model: String, route: Route) {
-    self.model = model
+  init(route: Route) {
     self.route = route
   }
 }
