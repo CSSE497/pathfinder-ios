@@ -137,8 +137,10 @@ public class Transport: NSObject {
   */
   public func goOnline() {
     status = .Online
-    cluster.conn.update(self) { (TransportResponse) -> Void in
-      self.delegate?.didGoOnline(self)
+    if id != nil {
+      cluster.conn.update(self) { (TransportResponse) -> Void in
+        self.delegate?.didGoOnline(self)
+      }
     }
   }
 
@@ -213,12 +215,8 @@ extension Transport: CLLocationManagerDelegate {
     print("LocationManager authorization status changed: \(status)")
     //NSTimer.scheduledTimerWithTimeInterval(locationUpdateTimerInterval, target: self, selector: "sendLocationUpdate", userInfo: nil, repeats: true)
     if status == CLAuthorizationStatus.AuthorizedAlways {
-      self.cluster.connect() { (cluster: Cluster) -> Void in
-        self.cluster.conn.create(self) { (resp: TransportResponse) -> Void in
-          self.connected = true
-          self.id = resp.id
-          self.delegate?.connected(self)
-        }
+      if location != nil {
+        register()
       }
     }
   }
@@ -234,6 +232,18 @@ extension Transport: CLLocationManagerDelegate {
         self.cluster.conn.update(self) { (resp: TransportResponse) -> Void in
           print("Location update acknowedged")
         }
+      }
+    } else {
+      register()
+    }
+  }
+
+  private func register() {
+    self.cluster.connect() { (cluster: Cluster) -> Void in
+      self.cluster.conn.create(self) { (resp: TransportResponse) -> Void in
+        self.connected = true
+        self.id = resp.id
+        self.delegate?.connected(self)
       }
     }
   }
