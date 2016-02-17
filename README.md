@@ -179,7 +179,7 @@ Clone the repository as
 git clone https://github.com/csse497/pathfinder-ios
 ```
 
-The framework can be build either through XCode 7 or with the command
+The framework can be build either through Xcode 7 or with the command
 
 ```
 xcodebuild -workspace framework/Pathfinder.xcworkspace -scheme Pathfinder -sdk iphonesimulator -configuration RELEASE
