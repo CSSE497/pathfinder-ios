@@ -25,6 +25,11 @@ extension CustomerLoginViewController : GITInterfaceManagerDelegate, GITClientDe
     let userDefaults = NSUserDefaults.standardUserDefaults()
     userDefaults.setObject(token, forKey: "customerToken")
     userDefaults.synchronize()
-    performSegueWithIdentifier("signInCustomer", sender: self)
+    performSegueWithIdentifier("signInCustomer", sender: token)
+  }
+
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    let destination = (segue.destinationViewController) as! CustomerViewController
+    destination.idToken = sender as! String
   }
 }

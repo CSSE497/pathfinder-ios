@@ -17,6 +17,7 @@ class CustomerViewController : UIViewController {
 
   var chimneys = [Chimney]()
   var refreshControl: UIRefreshControl!
+  var idToken: String!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -24,7 +25,7 @@ class CustomerViewController : UIViewController {
     refreshControl = UIRefreshControl()
     refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh chimneys")
     refreshControl.backgroundColor = UIColor.whiteColor()
-    refreshControl.addTarget(self, action: "fetchChimneys", forControlEvents: UIControlEvents.ValueChanged)
+    refreshControl.addTarget(self, action: #selector(CustomerViewController.fetchChimneys), forControlEvents: UIControlEvents.ValueChanged)
     tableView.addSubview(refreshControl)
     fetchChimneys()
   }
@@ -60,6 +61,7 @@ extension CustomerViewController : UITableViewDelegate {
     print("User selected row at index path \(indexPath)")
     let vc = storyboard?.instantiateViewControllerWithIdentifier("AcceptSwapViewController") as? AcceptSwapViewController
     vc?.tradeChimney = chimneys[indexPath.row]
+    vc?.idToken = idToken
     navigationController?.pushViewController(vc!, animated: true)
   }
 }

@@ -28,8 +28,7 @@ public class Pathfinder {
   /// The application id that was assigned by the Pathfinder web portal when you registered your application.
   public let applicationIdentifier: String
 
-  let userCredentials: String
-  let conn: PathfinderConnection
+  var conn: PathfinderConnection!
 
   // MARK: - Initializers -
 
@@ -37,15 +36,37 @@ public class Pathfinder {
   This is the starting point for all interactions with Pathfinder. Once you have constructed a Pathfinder instance, you can begin to interact with transports and commodities.
 
   - Parameter applicationIdentifier:  The application id that you were assigned when you registered the application through the web portal.
-  - Parameter userCredentials:        The user's id token/authentication token as distributed by the Pathfinder authentication mechanism.
+  - Parameter authenticate:           A closure that is executed after the Pathfinder connection is initialized but before authentication is attempted with your authentication provider.
   */
-  public init(applicationIdentifier: String, userCredentials: String) {
+  public init(applicationIdentifier: String) {
     self.applicationIdentifier = applicationIdentifier
-    self.userCredentials = userCredentials
-    self.conn = PathfinderConnection(applicationIdentifier: applicationIdentifier)
   }
 
   // MARK: - Methods -
+
+  public func connect(onConnect: (connectionId: String) -> Void) {
+    self.conn = PathfinderConnection(applicationIdentifier: applicationIdentifier, onConnectFn: onConnect)
+  }
+
+  public func connectAndAuthenticateWithPathfinderAuth(idToken: String, onAuthenticate: (success: Bool) -> Void) {
+    connect() { (connectionId: String) -> Void in
+      let url = NSURL(string: "https://auth.thepathfinder.xyz/connection?id_token=\(idToken)&connection_id=\(connectionId)&application_id=\(self.applicationIdentifier)")!
+      let request = NSMutableURLRequest(URL: url)
+      request.HTTPMethod = "POST"
+      let queue = NSOperationQueue()
+      NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { response, data, error in
+        print("Received response from pathfinder auth")
+        print(error)
+        print(response)
+        print(NSString(data: data!, encoding: NSUTF8StringEncoding))
+        if (error != nil) {
+          onAuthenticate(success: false)
+        } else {
+          self.authenticate(onAuthenticate)
+        }
+      })
+    }
+  }
 
   /**
   The top-level cluster for the application, including references to all transports, commodities and subclusters within it. The resulting object can be used to watch for events including transport and commodity updates and route assignments.
@@ -63,5 +84,9 @@ public class Pathfinder {
   */
   public func cluster(path: String) -> Cluster {
     return Cluster(conn: conn, path: path)
+  }
+
+  public func authenticate(onAuthenticate: (Bool) -> Void) {
+    conn.authenticate(onAuthenticate)
   }
 }

@@ -25,6 +25,11 @@ extension EmployeeLoginViewController : GITInterfaceManagerDelegate, GITClientDe
     let userDefaults = NSUserDefaults.standardUserDefaults()
     userDefaults.setObject(token, forKey: "employeeToken")
     userDefaults.synchronize()
-    self.performSegueWithIdentifier("signInEmployee", sender: self)
+    self.performSegueWithIdentifier("signInEmployee", sender: token)
+  }
+
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    let destination = (segue.destinationViewController) as! EmployeeViewController
+    destination.idToken = sender as! String
   }
 }
