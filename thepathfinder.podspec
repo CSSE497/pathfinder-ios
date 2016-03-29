@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.summary = 'Pathfinder makes routing easy.'
   s.requires_arc = true
 
-  s.version = '0.0.2'
+  s.version = '0.0.3'
 
   s.description = 'Pathfinder is a routing service that removes the ' \
                   'complexities of logistics handling from your app.'
