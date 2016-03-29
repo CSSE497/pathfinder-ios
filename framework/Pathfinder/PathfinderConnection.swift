@@ -66,7 +66,7 @@ class PathfinderConnection {
     transportFns.append(callback)
     writeData([
       "message": "Create",
-      "model": "Vehicle",
+      "model": "Transport",
       "value": [
         "latitude": transport.location!.latitude,
         "longitude": transport.location!.longitude,
@@ -97,7 +97,7 @@ class PathfinderConnection {
     transportFns.append(callback)
     writeData([
       "message": "Update",
-      "model": "Vehicle",
+      "model": "Transport",
       "id": transport.id!,
       "value": [
         "latitude": transport.location!.latitude,
@@ -116,7 +116,7 @@ class PathfinderConnection {
         "id": commodity.id!,
         "value": [
           "status": commodity.status.description,
-          "vehicleId": commodity.transport!.id!
+          "transportId": commodity.transport!.id!
         ]
       ])
     } else {
@@ -145,7 +145,7 @@ class PathfinderConnection {
     transportRouteSubscribers[transport.id!] = transport
     writeData([
       "message": "RouteSubscribe",
-      "model": "Vehicle",
+      "model": "Transport",
       "id": transport.id!
     ])
   }
@@ -153,7 +153,7 @@ class PathfinderConnection {
   func unsubscribe(transport: Transport) {
     writeData([
       "message": "Unsubscribe",
-      "model": "Vehicle",
+      "model": "Transport",
       "id": transport.id!
       ])
   }
