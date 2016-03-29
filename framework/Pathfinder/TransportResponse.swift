@@ -16,7 +16,7 @@ class TransportResponse {
   let metadata: [String:AnyObject]
 
   class func parse(message: NSDictionary) -> TransportResponse? {
-    if message["model"] as? String == "Vehicle" {
+    if message["model"] as? String == "Transport" {
       if message["message"] as? String == "Created" || message["message"] as? String == "Updated" {
         let value = message["value"] as! NSDictionary
         let id = value["id"] as! Int

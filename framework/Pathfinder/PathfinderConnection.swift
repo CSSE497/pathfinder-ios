@@ -33,13 +33,17 @@ class PathfinderConnection {
 
   var queuedMessages = [[String:NSObject]]()
 
+  let onConnectFn: String -> Void
+  var onAuthenticateFn: (Bool -> Void)?
   var connected = false
+  var authenticated: Bool = false
 
-  init(applicationIdentifier: String) {
+  init(applicationIdentifier: String, onConnectFn: (String) -> Void) {
     pathfinderSocketUrl = "wss://api.thepathfinder.xyz/socket?AppId=\(applicationIdentifier)"
     print("PathfinderConnection created, attempting to connect to \(pathfinderSocketUrl)")
     pathfinderSocket = WebSocket(url: NSURL(string: pathfinderSocketUrl)!)
     self.applicationIdentifier = applicationIdentifier
+    self.onConnectFn = onConnectFn
 
     self.applicationFns = [ApplicationFn]()
     self.clusterFns = [ClusterFn]()
@@ -66,7 +70,7 @@ class PathfinderConnection {
     transportFns.append(callback)
     writeData([
       "message": "Create",
-      "model": "Vehicle",
+      "model": "Transport",
       "value": [
         "latitude": transport.location!.latitude,
         "longitude": transport.location!.longitude,
@@ -97,7 +101,7 @@ class PathfinderConnection {
     transportFns.append(callback)
     writeData([
       "message": "Update",
-      "model": "Vehicle",
+      "model": "Transport",
       "id": transport.id!,
       "value": [
         "latitude": transport.location!.latitude,
@@ -116,7 +120,7 @@ class PathfinderConnection {
         "id": commodity.id!,
         "value": [
           "status": commodity.status.description,
-          "vehicleId": commodity.transport!.id!
+          "transportId": commodity.transport!.id!
         ]
       ])
     } else {
@@ -145,7 +149,7 @@ class PathfinderConnection {
     transportRouteSubscribers[transport.id!] = transport
     writeData([
       "message": "RouteSubscribe",
-      "model": "Vehicle",
+      "model": "Transport",
       "id": transport.id!
     ])
   }
@@ -153,7 +157,7 @@ class PathfinderConnection {
   func unsubscribe(transport: Transport) {
     writeData([
       "message": "Unsubscribe",
-      "model": "Vehicle",
+      "model": "Transport",
       "id": transport.id!
       ])
   }
@@ -166,19 +170,28 @@ class PathfinderConnection {
     ])
   }
 
+  func authenticate(onAuthenticateFn: (Bool) -> Void) {
+    self.onAuthenticateFn = onAuthenticateFn
+    writeDataNow(["message": "Authenticate"])
+  }
+
   func writeData(data: [String:NSObject]) {
-    if connected == true {
-      print("Sending message: \(data)")
-      do {
-        let jsonData = try NSJSONSerialization.dataWithJSONObject(data, options: NSJSONWritingOptions(rawValue: 0))
-        let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding)
-        pathfinderSocket.writeString(jsonString! as String)
-      } catch {
-        print(error)
-      }
+    if connected == true && authenticated == true {
+      writeDataNow(data)
     } else {
       print("Waiting to send message: \(data)")
       queuedMessages.append(data)
+    }
+  }
+
+  func writeDataNow(data: [String:NSObject]) {
+    print("Sending message: \(data)")
+    do {
+      let jsonData = try NSJSONSerialization.dataWithJSONObject(data, options: NSJSONWritingOptions(rawValue: 0))
+      let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding)
+      pathfinderSocket.writeString(jsonString! as String)
+    } catch {
+      print(error)
     }
   }
 
@@ -206,6 +219,19 @@ class PathfinderConnection {
       let transport = transportRouteSubscribers[transportRoutedResponse.route.transport.id!]
       transport?.route = transportRoutedResponse.route
       transport?.delegate?.wasRouted(transportRoutedResponse.route, transport: transport!)
+    } else if message["message"] as! String == "ConnectionId" {
+      print("PathfinderConnection handling ConnectionId response")
+      onConnectFn(message["id"] as! String)
+    } else if message["message"] as! String == "Authenticated" {
+      print("PathfinderConnection handling Authenticated response")
+      self.authenticated = true
+      onAuthenticateFn?(true)
+      queuedMessages.forEach {  (data: [String:NSObject]) -> Void in
+        writeData(data)
+      }
+      queuedMessages = [[String:NSObject]]()
+    } else if message["message"] as! String == "Error" && message["error"] is String && message["error"]!.hasPrefix("Connection refused") {
+      onAuthenticateFn?(false)
     } else {
       print("PathfinderConnection handling unparseable message: \(message)")
     }
@@ -218,10 +244,6 @@ extension PathfinderConnection: WebSocketDelegate {
   func websocketDidConnect(socket: WebSocket) {
     print("PathfinderConnection received connect from \(socket)")
     connected = true
-    queuedMessages.forEach {  (data: [String:NSObject]) -> Void in
-      writeData(data)
-    }
-    queuedMessages = [[String:NSObject]]()
   }
 
   func websocketDidDisconnect(socket: WebSocket, error: NSError?) {

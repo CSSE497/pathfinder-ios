@@ -60,7 +60,7 @@ public class Route {
       let actions = actionArray.map { (actionObj: AnyObject) -> RouteAction? in
         return RouteAction.parse(actionObj as! NSDictionary)
         }.flatMap { $0 }
-      if let transportDict = message["vehicle"] as? NSDictionary {
+      if let transportDict = message["transport"] as? NSDictionary {
         if let transport = Transport.parse(transportDict) {
           print("Parsed route with \(actions.count) actions")
           return Route(transport: transport, actions: actions)

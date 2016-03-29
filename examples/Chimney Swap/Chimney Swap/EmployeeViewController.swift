@@ -15,6 +15,7 @@ class EmployeeViewController: UIViewController {
 
   var locationManager = CLLocationManager()
   var didFindMyLocation = false
+  var idToken: String!
 
   @IBOutlet weak var onlineControl: UISegmentedControl!
   @IBOutlet weak var mapView: GMSMapView!
@@ -26,10 +27,19 @@ class EmployeeViewController: UIViewController {
 
     // Set up Pathfinder. Subscribe to the transport after the connection is confirmed.
     let path = "/root/midwest/th"
-    let cluster = Pathfinder(applicationIdentifier: Constants.Pathfinder.applicationId, userCredentials: "").cluster(path)
-    transport = cluster.createTransport(Transport.Status.Offline, metadata: ["chimney": 1])
-    transport.delegate = self
-    transport.connect()
+    let pathfinder = Pathfinder(applicationIdentifier: Constants.Pathfinder.applicationId)
+    pathfinder.connectAndAuthenticateWithPathfinderAuth(idToken) { (success: Bool) -> Void in
+      if (success) {
+        let cluster = pathfinder.cluster(path)
+        self.transport = cluster.createTransport(Transport.Status.Offline, metadata: ["chimney": 1])
+        self.transport.delegate = self
+        self.transport.connect()
+      } else {
+        let authFailedAlert = UIAlertController(title: "Authorization failed", message: "Your account lacks permissions to access ChimneySwap.", preferredStyle: UIAlertControllerStyle.Alert)
+        authFailedAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { action in }))
+        self.presentViewController(authFailedAlert, animated: true, completion: nil)
+      }
+    }
 
     // Set up Google Maps
     mapView.delegate = self
@@ -46,7 +56,9 @@ class EmployeeViewController: UIViewController {
 
   override func viewWillDisappear(animated: Bool) {
     print("Employee view controller is closing, taking transport offline")
-    transport.goOffline()
+    if (transport != nil) {
+      transport.goOffline()
+    }
   }
 
   @IBAction func online(sender: UISegmentedControl) {
@@ -73,7 +85,6 @@ extension EmployeeViewController: CLLocationManagerDelegate {
     print("ViewController is now authorized to view location.")
     if status == CLAuthorizationStatus.AuthorizedAlways || status == CLAuthorizationStatus.AuthorizedWhenInUse {
       mapView.myLocationEnabled = true
-      transport.connect()
     }
   }
 }

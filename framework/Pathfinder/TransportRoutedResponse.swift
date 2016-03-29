@@ -10,7 +10,7 @@ import Foundation
 
 class TransportRoutedResponse {
   class func parse(message: NSDictionary) -> TransportRoutedResponse? {
-    if message["message"] as? String == "Routed" && message["model"] as? String == "Vehicle" {
+    if message["message"] as? String == "Routed" && message["model"] as? String == "Transport" {
       if let routeDict = message["route"] as? NSDictionary {
         if let route = Route.parse(routeDict) {
           return TransportRoutedResponse(route: route)

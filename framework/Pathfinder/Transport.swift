@@ -14,7 +14,7 @@ A registered transport that can be routed to transport commodities.
 
 This class should never be instantiated directly because it represents the state of the data from the Pathfinder backend. Instead, connect your device as a transport.
 
-The standard use case involves creating a new vehicle within a known cluster. This can be accomplished as follows:
+The standard use case involves creating a new transport within a known cluster. This can be accomplished as follows:
 
 ```swift
 let pathfinder = Pathfinder(pathfinderAppId, userCreds)
@@ -31,7 +31,7 @@ public class Transport: NSObject {
 
   // MARK: - Enums -
 
-  /// All transports exist in one of two states, online or offline. On creation, vehicles are placed into the offline state. Vehicles that are offline will not receive routes.
+  /// All transports exist in one of two states, online or offline. On creation, transports are placed into the offline state. Transports that are offline will not receive routes.
   public enum Status: String, CustomStringConvertible {
     case Offline = "Offline"
     case Online = "Online"
@@ -84,10 +84,10 @@ public class Transport: NSObject {
   /**
   Subscribes to updates for the model. On each update to the transport in the Pathfinder service, a push notification will be sent and the corresponding method on the delegate will be called. Updates will be send on the following events:
    
-  * The vehicle moved.
-  * The vehicle was assigned a new route.
-  * The vehicle picked up or dropped off a commodity.
-  * The vehicle was removed or went offline.
+  * The transport moved.
+  * The transport was assigned a new route.
+  * The transport picked up or dropped off a commodity.
+  * The transport was removed or went offline.
   */
   public func subscribe() {
     self.cluster.conn.subscribe(self)
@@ -133,7 +133,7 @@ public class Transport: NSObject {
   /**
   Adds the transport to the set of active transports that can be routed. If commodities are waiting to be picked up, the transport will be routed immediately.
 
-  When the vehicle is successfully set to online, the corresponding method on its delegate will be called.
+  When the transport is successfully set to online, the corresponding method on its delegate will be called.
   */
   public func goOnline() {
     status = .Online
@@ -147,7 +147,7 @@ public class Transport: NSObject {
   /**
   Removes the transport from the set of active transports that can be routed. If the transport is on route to pick up commodities, all of those commodities will be rerouted with a new transport. If the transport is currently transporting passengers, it cannot go offline.
    
-  When the vehicle is successfully taken offline, the corresponding method on its delegate will be called.
+  When the transport is successfully taken offline, the corresponding method on its delegate will be called.
   */
   public func goOffline() {
     status = .Offline

@@ -113,9 +113,9 @@ public class Commodity {
   }
 
   /**
-  Updates the commodity's status. This can be used to cancel the transportation request or to indicate that the commodity was picked up or dropped off by the vehicle. Commodities are created with status `Inactive`.
+  Updates the commodity's status. This can be used to cancel the transportation request or to indicate that the commodity was picked up or dropped off by the transport. Commodities are created with status `Inactive`.
    
-  - Parameter status:  The new status of the vehicle.
+  - Parameter status:  The new status of the transport.
   */
   public func update(status: Status) {
     self.cluster.conn.update(self) { (resp: CommodityResponse) -> Void in

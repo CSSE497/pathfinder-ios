@@ -60,8 +60,8 @@ public class Cluster {
   * New commodities or transports are created within the cluster.
   * Commodities request transportation within the cluster.
   * Commodities cancel their transportation request.
-  * Vehicles in the cluster receive a new route.
-  * Vehicles pick up or drop off commodities.
+  * Transports in the cluster receive a new route.
+  * Transports pick up or drop off commodities.
   */
   public func subscribe() {
     conn.subscribe(self)
@@ -82,7 +82,7 @@ public class Cluster {
   }
 
   /**
-  Constructs a reference to a previously created vehicle within the cluster. T
+  Constructs a reference to a previously created transport within the cluster. T
   */
   public func getTransport(id: Int) -> Transport {
     return Transport(cluster: self, id: id)
