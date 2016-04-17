@@ -7,13 +7,13 @@
 [cocoadocs]: http://cocoadocs.org/docsets/thepathfinder
 
 
-<img align="right" src="https://raw.githubusercontent.com/CSSE497/pathfinder-webclient/dev/app/assets/images/logo-small.png"/>
+<img align="right" src="https://thepathfinder.xyz/img/logo.png"/>
 
 The Pathfinder iOS Client Library allows developers to easily integrate Pathfinder routing service in their iOS applications.
 
 Pathfinder provides routing as a service, removing the need for developers to implement their own routing logistics. This SDK allows for iOS applications to act as commodities that need transportation or transportation providers. Additionally, there is support for viewing routes for sets of commodities and transportation providers.
 
-To register your application to use Pathfinder, visit our website at [http://thepathfinder.xyz](http://thepathfinder.xyz).
+To register your application to use Pathfinder, visit our website at [https://thepathfinder.xyz](https://thepathfinder.xyz).
 
 To get up to speed on integrating Pathfinder in your iOS application, checkout the API docs at [http://cocoadocs.org/docsets/thepathfinder](http://cocoadocs.org/docsets/thepathfinder).
 
