@@ -31,7 +31,7 @@ class EmployeeViewController: UIViewController {
     pathfinder.connectAndAuthenticateWithPathfinderAuth(idToken) { (success: Bool) -> Void in
       if (success) {
         let cluster = pathfinder.cluster(path)
-        self.transport = cluster.createTransport(Transport.Status.Offline, metadata: ["chimney": 1])
+        self.transport = cluster.createTransport(Transport.Status.Offline, metadata: [:])
         self.transport.delegate = self
         self.transport.connect()
       } else {

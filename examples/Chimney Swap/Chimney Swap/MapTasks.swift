@@ -65,7 +65,7 @@ class MapTasks {
         let response = try NSJSONSerialization.JSONObjectWithData(directionsData!, options: NSJSONReadingOptions.MutableContainers) as! [NSObject:AnyObject]
         if let routes = response["routes"] as? [[NSObject:AnyObject]] {
           if let overviewPolyline = routes.first?["overview_polyline"] as? [NSObject:AnyObject] {
-            self.draw(GMSPath(fromEncodedPath: overviewPolyline["points"] as! String))
+            self.draw(GMSPath(fromEncodedPath: overviewPolyline["points"] as! String)!)
           } else {
             print("Google Maps response missing overview polyline: \(routes)")
           }
