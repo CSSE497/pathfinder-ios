@@ -1,2 +1,12 @@
 #!/bin/sh
-jazzy --swift-version 2.1 --source-directory framework --author "Adam Michael" --author_url "https://github.com/csse497/pathfinder" --github_url "https://github.com/csse497/pathfinder-ios" --readme README.md -x -workspace framework/Pathfinder.xcworkspace -x -scheme=Pathfinder
+pushd framework
+jazzy \
+  --swift-version 2.2 \
+  --author "Adam Michael" \
+  --author_url "https://thepathfinder.xyz" \
+  --github_url "https://github.com/csse497/pathfinder-ios" \
+  --output ../docs \
+  --readme ../README.md \
+  -x -workspace Pathfinder.xcworkspace \
+  -x -scheme=Pathfinder
+popd

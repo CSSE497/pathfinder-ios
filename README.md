@@ -15,7 +15,7 @@ Pathfinder provides routing as a service, removing the need for developers to im
 
 To register your application to use Pathfinder, visit our website at [https://thepathfinder.xyz](https://thepathfinder.xyz).
 
-To get up to speed on integrating Pathfinder in your iOS application, checkout the API docs at [http://cocoadocs.org/docsets/thepathfinder](http://cocoadocs.org/docsets/thepathfinder).
+To get up to speed on integrating Pathfinder in your iOS application, checkout the API docs at [http://cocoadocs.org/docsets/thepathfinder](http://cocoadocs.org/docsets/thepathfinder) or the tutorials at [https://pathfinder.readme.io](https://pathfinder.readme.io).
 
 Pathfinder is distributed through CocoaPods. To use Pathfinder in your application, add the following line to your Podfile:
 
@@ -32,7 +32,7 @@ All Pathfinder routes are calculated within "clusters". A cluster is just a cont
 
 ```swift
 let myAppId: String = 'application id from pathfinder web port'
-let userCreds = fetchUserCreds()
+let userCreds = getGoogleIdToken()
 let pathfinderRef = Pathfinder(applicationIdentifier: myAppId, userCredentials: userCreds)
 ```
 
